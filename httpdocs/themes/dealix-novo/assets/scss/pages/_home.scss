@@ -1,0 +1,262 @@
+
+.top{
+    position: relative;
+}
+
+.swap{
+    width: 100%;
+    max-width: 31.113rem;
+    padding-top: 4rem;
+}
+
+.swap h1{
+    line-height: 5rem;
+}
+
+.swap > p{
+    line-height: 2rem;
+}
+
+.top .top-image{
+    width: 88rem;
+}
+
+.top .after-top{
+    position: absolute;
+    bottom: -30%;
+    left: -21%;
+    width: 16.75rem;
+    @include media-breakpoint-down(md) {
+        bottom: -7%;
+    }
+}
+
+
+.dialog{
+    background: rgb(136,0,255);
+    background: linear-gradient(90deg, rgba(136,0,255,1) 0%, rgba(31,0,255,1) 100%);
+    color: $white;
+    width: 100%;
+    max-width: 24.063rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3.5rem;
+    border-radius: 6px;
+    position: relative;
+
+    h3{
+        margin: 0;
+    }
+
+    &::before{
+        content: '';
+        width: 13px;
+        height: 13px;
+        position: absolute;
+        top: -6px;
+        left: 20px;
+        transform: rotate(
+    45deg);
+        background-color: #8100ff;
+    }
+}
+
+.swap .help{
+    margin-top: 6.25rem;
+    margin-bottom: 11.75rem;
+}
+
+.destaque{
+    width: 100%;
+    max-width: 33.875rem;
+    > span{
+      line-height: 2.063rem;
+    }
+    h1{
+        line-height: 5rem;
+    }
+    > p{
+        line-height: 2rem;
+    }
+}
+
+.funcionalidades{
+    margin-top: 10.75rem;
+    margin-bottom: 6.5rem;
+    @include media-breakpoint-down(md) {
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.f-item img{
+    width: 3rem;
+}
+
+.f-item h1{
+    line-height: 2.188rem;
+}
+
+.f-item p{
+    line-height: 1.438rem;
+}
+
+.f-item .badge{
+    padding: 5px 10px;
+}
+
+.plataforma{
+    position: relative;
+}
+
+.plataforma .after-plataforma{
+    position: absolute;
+    top: -1%;
+    right: -4%;
+    width: 20.813rem;
+}
+
+.plataforma h1{
+    margin-top: 6.813rem;
+    margin-bottom: 4.813rem;
+}
+
+.plataforma .p-item{}
+.plataforma .p-item p{
+   width: 100%;
+   max-width: 15.625rem;
+}
+.plataforma .p-item .message{}
+.plataforma .p-item .message span{
+    height: 3.938rem;
+    width: 1px;
+    background-color: #dddddd;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 3.1rem;
+}
+.plataforma .p-item .message .sucess{
+    width: 78px;
+    height: 77px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plataforma .img-p{
+    width: 110%;
+    margin-left: -10%;
+}
+
+.possibilidades{
+    display: flex;
+    align-items: center;
+}
+.possibilidades .p-image{
+    width: 69.938rem;
+}
+
+.possibilidades .p-afterimage{
+    position: absolute;
+    bottom: -10%;
+    left: -4%;
+    width: 21.563rem;
+}
+
+.futuro{
+    margin-top: 18.125rem;
+    margin-bottom: 14.813rem;
+    @include media-breakpoint-down(md) {
+        margin-top: 14.125rem;
+        margin-bottom: 10.813rem;
+    }
+}
+
+.slide-price{
+    display: flex;
+    position: relative;
+    height: 439px;
+}
+
+.next{
+    position: absolute;
+    right: 0;
+    top: 45%;
+    cursor: pointer;
+}
+
+.slide-item{
+    background-color: $indigo;
+    color: $white;
+    border-radius: 1.438rem;
+    text-align: center;
+    width: 100%;
+    max-width: 32.438rem;
+    min-height: 43.313rem;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 500ms ease;
+    position: absolute;
+}
+
+.slide-item .price h1{
+    font-size: 6.813rem;
+    line-height: 1;
+    font-weight: 300;
+    position: relative;
+    margin: 0;
+}
+
+.slide-item .price h1 span{
+    display: block;
+    width: 7px;
+    height: 81px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: calc(100% - 55%);
+    transform: rotate3d(1, 1, 1,
+307deg);
+}
+
+.slide-item .price span{
+    font-size: 1.813rem;
+}
+
+.slide-item .btn-slide{
+    background-color: $white;
+    color: $indigo;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 15.25rem;
+    height: 3.688rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: linear 0.2s;
+}
+
+.slide-item.i1 {
+    transform:translateX(0) scale(1);
+    z-index: 10;
+}
+
+.slide-item.i2 {
+    transform:translateX(69px) scale(0.9);
+    z-index: 9;
+    background-color: #3923D4;
+}
+
+.slide-item.i3 {
+    transform:translateX(129px) scale(0.8);
+    z-index: 8;
+    background-color: #2412A7;
+}

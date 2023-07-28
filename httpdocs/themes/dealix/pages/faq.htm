@@ -1,0 +1,35 @@
+title = "FAQ"
+url = "/faq"
+layout = "default"
+
+[viewBag]
+activeMenu = "faq"
+
+[dealix_faq_questions]
+
+[prices]
+
+[newsSubscribe newsletterForm]
+category = 1
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Perguntas Frequentes' | _ }}</h2>
+            <p>{{ 'Conheça mais sobre a Dealix' | _ }}</p>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+{% component 'dealix_faq_questions' %}
+
+{% component 'prices' %}
+
+{% partial 'sections/free-trial-area' %}
+
+{% component 'newsletterForm' %}

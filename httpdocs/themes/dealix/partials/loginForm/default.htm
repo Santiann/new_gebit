@@ -1,0 +1,72 @@
+{% if not user and not get('reset') %}
+
+<!-- Start Login Area -->
+<section class="login-area">
+    <div class="row m-0">
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="login-image">
+                <img src="{{ 'assets/img/login-bg.jpg' | theme }}" alt="image">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="login-content">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="login-form">
+                            <div class="logo">
+                                <a href="{{ 'home' | page }}"><img src="{{ 'assets/img/logo-dealix-vertical.png' | theme }}" alt="Dealix"></a>
+                            </div>
+
+                            {% set plan_id = this.param.plan_id %}
+                            <p>{{ 'Novo na Dealix?' | _ }} 
+                                {% if plan_id %}
+                                    <a href="{{ 'register' | page({'plan_id': plan_id}) }}">
+                                {% else %}
+                                    <a href="{{ 'register' | page }}">
+                                {% endif %}
+                                        {{ 'Assine' | _ }}
+                                    </a></p>
+
+                            {{ form_ajax('onSignin') }}
+
+                                <div class="form-group">
+                                    <input id="userSigninLogin" type="email" name="login" placeholder="Your email address" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <input name="password" type="password" placeholder="Your password" class="form-control">
+                                </div>
+
+                                <button type="submit" class="default-btn"><i class="bx bxs-hot"></i>Login<span></span></button>
+
+                                {% if rememberLoginMode == 'ask' %}
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                    <label><input name="remember" type="checkbox" value="0">Stay logged in</label>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <div class="forgot-password">
+                                    <a href="{{ 'restore_password' | page }}">{{ 'Esqueceu sua senha?' | _ }}</a>
+                                </div>
+
+{#                                <div class="connect-with-social">#}
+{#                                    <button type="submit" class="facebook"><i class='bx bxl-facebook'></i> Connect with Facebook</button>#}
+{#                                    <button type="submit" class="google"><i class='bx bxl-google'></i> Connect with Google</button>#}
+{#                                </div>#}
+                            {{ form_close() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Login Area -->
+{% elseif get('reset') %}
+
+    {% component 'resetPasswordForm' %}
+
+{% endif %}

@@ -1,0 +1,27 @@
+title = "Página inicial"
+url = "/"
+layout = "default"
+
+[viewBag]
+activeMenu = "home"
+
+[dealix_faq_questions]
+
+[prices]
+
+[newsSubscribe newsletterForm]
+==
+
+{% partial 'common/header' %}
+
+{% partial 'sections/main-banner-area' %}
+
+{% partial 'sections/features-area' %}
+
+{% partial 'sections/features-area-2' %}
+
+{% component 'prices' %}
+
+{% component 'dealix_faq_questions' %}
+
+{% component 'newsletterForm' %}

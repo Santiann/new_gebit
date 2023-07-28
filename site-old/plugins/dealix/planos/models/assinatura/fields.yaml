@@ -1,0 +1,162 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+tabs:
+    stretch: true
+    defaultTab: Usuário
+    fields:
+        # Usuário
+        customer_name:
+            label: 'Nome completo'
+            disabled: true
+            type: text
+            tab: Usuário
+        customer_email:
+            label: 'E-mail'
+            disabled: true
+            type: text
+            span: storm
+            cssClass: col-md-6
+            tab: Usuário
+        customer_phone:
+            label: 'Telefone'
+            disabled: true
+            type: text
+            span: storm
+            cssClass: col-md-6
+            tab: Usuário
+        # Assinatura
+        plano:
+            label: Plano
+            type: relation
+            nameFrom: nome
+            span: storm
+            cssClass: col-md-6
+            tab: Assinatura
+        plan_days:
+            label: 'Dias'
+            disabled: true
+            type: text
+            span: storm
+            cssClass: col-md-6
+            tab: Assinatura
+        status:
+            label: 'Status:'
+            type : partial
+            path: ~/plugins/dealix/planos/models/assinatura/_status.htm
+            tab: Assinatura
+            disabled: true
+        date_updated:
+            label: 'Última atualização'
+            disabled: true
+            type: datepicker
+            tab: Assinatura
+        current_period_start:
+            label: 'Início da assinatura'
+            disabled: true
+            type: datepicker
+            tab: Assinatura
+        current_period_end:
+            label: 'Fim da assinatura'
+            disabled: true
+            type: datepicker
+            tab: Assinatura
+        settle_charges:
+            label: 'Pular cobranças'
+            type: text
+            comment: Informe o número de cobranças deseja pular
+            span: storm
+            cssClass: col-md-6
+            tab: Assinatura
+            placeholder: "Ex.: 2 (em plano mensal, 2 meses não serão cobrados)."
+            trigger:
+                action: show 
+                field: status
+                condition: value[pending_payment]
+            attributes:
+                data-mask: "9999"
+        payment_method:
+            label: 'Método de pagamento:'
+            gender:
+            type: balloon-selector
+            tab: Assinatura
+            options:
+                credit_card: Cartão de crédito
+                boleto: Boleto
+        card_brand:
+            label: 'Bandeira: '
+            type: partial
+            path: ~/plugins/dealix/planos/models/assinatura/_card_info.htm
+            tab: Assinatura
+            trigger:
+                action: show 
+                field: payment_method
+                condition: value[credit_card]
+        card_last_digits:
+            label: 'Últimos dígitos: '
+            type: partial
+            path: ~/plugins/dealix/planos/models/assinatura/_card_info.htm
+            tab: Assinatura
+            trigger:
+                action: show 
+                field: payment_method
+                condition: value[credit_card]
+        card_number:
+            label: 'Número do cartão'
+            type: text
+            comment: Somente preencha este campo se deseja alterar o cartão cadastrado
+            span: storm
+            cssClass: col-md-6
+            tab: Assinatura
+            placeholder: "1234567890"
+            attributes:
+                data-mask: "0000000000000000"
+            trigger:
+                action: show 
+                field: payment_method
+                condition: value[credit_card]
+        card_holder_name:
+            label: 'Nome no cartão'
+            type: text
+            comment: Somente preencha este campo se deseja alterar o cartão cadastrado
+            span: storm
+            cssClass: col-md-6
+            tab: Assinatura
+            placeholder: "Fulano de tal"
+            trigger:
+                action: show 
+                field: payment_method
+                condition: value[credit_card]
+        card_expiration_date:
+            label: 'Data de expiração'
+            type: text
+            comment: Somente preencha este campo se deseja alterar o cartão cadastrado
+            span: storm
+            cssClass: col-md-6
+            tab: Assinatura
+            placeholder: "00/00"
+            attributes:
+                data-mask: "00/00"
+            trigger:
+                action: show 
+                field: payment_method
+                condition: value[credit_card]
+        card_cvv:
+            label: 'CVV'
+            type: text
+            comment: Somente preencha este campo se deseja alterar o cartão cadastrado
+            span: storm
+            cssClass: col-md-6
+            tab: Assinatura
+            placeholder: "0000"
+            attributes:
+                data-mask: "0009"
+            trigger:
+                action: show 
+                field: payment_method
+                condition: value[credit_card]
+        # Transações
+        transactions:
+            tab: 'Transações'
+            type : partial
+            path: ~/plugins/dealix/planos/models/assinatura/_transactions.htm

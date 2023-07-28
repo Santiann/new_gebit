@@ -1,0 +1,39 @@
+1628642931a:1:{s:30:"resetPasswordForm/complete.htm";a:5:{s:8:"fileName";s:30:"resetPasswordForm/complete.htm";s:7:"content";s:836:"<div class="container pb-5">
+    <div class="contact-inner">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6">
+                <p class="lead">
+                    {{ 'Senha alterada com sucesso, acesse o sistema utilizando-a.' |_ }}
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-12 col-12 text-center">
+                {% set api_token = this.session.get('api_token') %}
+                {% set email = this.session.get('user_email') %}
+                <a href={{ env('URL_SISTEMA') ~ "/login/#{email}/#{api_token}" }} target="_blank" class="default-btn px-4">
+                    {{ 'Clique aqui para acessar o sistema' |_ }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>";s:5:"mtime";i:1623966623;s:6:"markup";s:836:"<div class="container pb-5">
+    <div class="contact-inner">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6">
+                <p class="lead">
+                    {{ 'Senha alterada com sucesso, acesse o sistema utilizando-a.' |_ }}
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-12 col-12 text-center">
+                {% set api_token = this.session.get('api_token') %}
+                {% set email = this.session.get('user_email') %}
+                <a href={{ env('URL_SISTEMA') ~ "/login/#{email}/#{api_token}" }} target="_blank" class="default-btn px-4">
+                    {{ 'Clique aqui para acessar o sistema' |_ }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>";s:4:"code";N;}}

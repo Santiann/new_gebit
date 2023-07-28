@@ -1,0 +1,148 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyRootNamespaceHttp\Requests;
+use DummyRootNamespaceHttp\Controllers\_DefaultController as DefaultController;
+use Yajra\DataTables\DataTables;
+{{useModels}}
+use DummyRootNamespace{{modelName}};
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+
+use App\Http\Controllers\Controller;
+use Session;
+use Auth;
+use Entrust;
+
+class DummyClass extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware(['permission:{{viewName}}-show|{{viewName}}-create|{{viewName}}-edit|{{viewName}}-delete']);
+    }
+
+    public function datatable(Request $request)
+    {
+        $edit = Entrust::can('{{viewName}}-edit');
+        $show = Entrust::can('{{viewName}}-show');
+        $delete = Entrust::can('{{viewName}}-delete');
+        return Datatables::of(
+            {{modelName}}::query()
+        )
+        ->addColumn('action', function ($row) use ($edit,$show,$delete) {
+            $acoes = "";
+            if($edit){
+                $acoes .= '<a class="btn btn-xs btn-primary" href="/{{viewName}}/'.$row->{{pk}}.'/edit" ><span class="fa fa-edit" aria-hidden="true"></span></a> ';
+            }
+            if($show){
+                //$acoes .= '<a class="btn btn-xs btn-default" href="/{{viewName}}/'.$row->{{pk}}.'" ><span class="fa fa-eye" aria-hidden="true"></span></a> ';
+            }
+            if($delete){
+                $acoes .= '<form method="POST" action="/{{viewName}}/'.$row->{{pk}}.'" style="display:inline">
+                    <input name="_method" value="DELETE" type="hidden">
+                    '. csrf_field() .'
+                    <button type="button" class="btn btn-xs btn-danger" title="Excluir {{modelNamespace}}" onclick="ConfirmaExcluir(\'Confirma Excluir {{modelNamespace}}?\',this)">
+                       <span class="fa fa-trash"></span>
+                    </button>
+                </form>';
+            }
+            return $acoes;
+        })
+        ->escapeColumns(['*'])
+        ->make(true);
+    }
+
+    public function index(Request $request)
+    {
+        return view('{{viewPath}}{{viewName}}.index');
+    }
+
+    public function create()
+    {
+        {{varOption}}
+        return view('{{viewPath}}{{viewName}}.create', compact(''{{nomeOption}}));
+    }
+
+    public function store(Request $request)
+    {
+        {{validationRules}}
+        $requestData = $request->all();
+        $requestData['created_at_user'] = Auth::user()->id;
+        $requestData['updated_at_user'] = Auth::user()->id;
+        {{fileSnippet}}
+
+        DB::beginTransaction();
+        try {
+
+            {{modelName}}::create($requestData);
+            Session::flash('flash_message', '{{modelNamespace}} adicionado!');
+            return redirect('{{routeGroup}}{{viewName}}');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Session::flash('flash_message', 'Não foi possível criar o {{modelNamespace}}!');
+            return redirect('{{routeGroup}}{{viewName}}');
+        }
+    }
+
+    public function show($id)
+    {
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        {{varOption}}
+
+        return view('{{viewPath}}{{viewName}}.show', compact('{{crudNameSingular}}'{{nomeOption}}));
+    }
+
+    public function edit($id)
+    {
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        {{varOption}}
+
+        return view('{{viewPath}}{{viewName}}.edit', compact('{{crudNameSingular}}'{{nomeOption}}));
+    }
+
+    public function update(Request $request, $id)
+    {
+        {{validationRules}}
+        $requestData = $request->all();
+        $requestData['created_at_user'] = Auth::user()->id;
+        $requestData['updated_at_user'] = Auth::user()->id;
+        {{fileSnippet}}
+
+        DB::beginTransaction();
+        try {
+
+            ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+            ${{crudNameSingular}}->update($requestData);
+
+            Session::flash('flash_message', '{{modelNamespace}} atualizado!');
+            return redirect('{{routeGroup}}{{viewName}}');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Session::flash('flash_message', 'Não foi possível atualizar o {{modelNamespace}}!');
+            return redirect('{{routeGroup}}{{viewName}}');
+        }
+    }
+
+    public function destroy($id)
+    {
+        DB::beginTransaction();
+        try {
+
+            {{modelName}}::findOrFail($id)->delete();
+            Session::flash('flash_message', '{{modelNamespace}} excluído!');
+            return redirect('{{routeGroup}}{{viewName}}');
+
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+            Session::flash('flash_message', 'Não foi possível excluir o {{modelNamespace}}!');
+            return redirect('{{routeGroup}}{{viewName}}');
+        }
+    }
+
+    {{privatePublicFunction}}
+}

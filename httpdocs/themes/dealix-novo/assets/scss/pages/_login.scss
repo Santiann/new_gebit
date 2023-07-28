@@ -1,0 +1,215 @@
+.login{
+    min-height: 100vh;
+    position: relative;
+}
+
+.login .bg{
+    position: absolute;
+    height: 100vh;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.login .bg .image{
+    position: absolute;
+    height: 100vh;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 229px center;
+}
+
+.login .bg > div:first-of-type{
+    width: 73%;
+    height: 100%;
+}
+
+@include media-breakpoint-down(md) {
+    .login footer{
+        max-width: 71%;
+        font-size: 2.3rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .login .content > h1 {
+        margin-right: auto;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+        max-width: 80%;
+        font-size: 2.3rem;
+        line-height: inherit;
+    }
+
+    .login .content .text{
+        margin-right: auto;
+
+        p{
+            max-width: 90%;
+            margin-bottom: 4rem;
+        }
+
+         h1 {
+            margin-right: auto;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            max-width: 80%;
+            font-size: 2.3rem;
+            line-height: inherit;
+        }
+    }
+
+    .login .bg {
+        height: 135vh;
+    }
+}
+
+@media (min-width: 1400px) {
+    .login{
+        display: contents;
+    }
+}
+
+@media (min-width: 1700px) {
+    .login .bg > div:first-of-type {
+        width: 68%;
+    }
+}
+
+.login .top header img{
+    width: 11.313rem;
+}
+
+.acess-card{
+    width: 100%;
+    max-width: 32.875rem;
+    padding: 4.625rem 3.813rem;
+    border-radius: 10px;
+
+    @include media-breakpoint-down(md){
+        padding: 2.813rem;
+    }
+
+    background-color: $white;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
+	-moz-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
+	box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
+}
+
+.acess-card p{
+    font-size: 1.063rem;
+    font-weight: 1.813rem;
+}
+
+.acess-card .nav-tabs .nav-link{
+    font-size: 1.25rem;
+    color: #747474;
+}
+
+.acess-card .nav-tabs .nav-link.active, .acess-card .nav-tabs .nav-item.show .nav-link{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 3px solid $primary;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $primary;
+}
+
+.acess-card .nav-tabs .nav-link:hover, .acess-card .nav-tabs .nav-link:focus{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.form-switch .form-check-input {
+    width: 3em;
+    height: 1.5rem;
+    margin-top: 0px;
+    margin-left: -3.5em;
+}
+
+.form-group{
+	position: relative;
+	z-index: 0;
+	margin-bottom: 20px !important;
+	a{
+		color: lighten($black,50%);
+	}
+}
+
+.form-control {
+	height: 3.813rem;
+	background: transparent;
+	color: $black;
+	font-size: 0.813rem;
+	border-radius: 5px;
+	box-shadow: none;
+	border: 1px solid rgba(39, 27, 27, 0.1);
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: rgba(0,0,0,.2) !important;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: rgba(0,0,0,.2) !important;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: rgba(0,0,0,.2) !important;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: rgba(0,0,0,.2) !important;
+	}
+	&:focus, &:active {
+		outline: none !important;
+		box-shadow: none;
+		border: 1px solid $primary;
+	}
+}
+
+.field-icon {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	transform: translateY(-50%);
+	color: rgba(0,0,0,.3);
+}
+
+.form-control-placeholder {
+    position: absolute;
+    top: 8px;
+    padding: 5px;
+    transition: all 400ms;
+    opacity: 0.6;
+    background-color: #fff;
+    left: 20px;
+    z-index: -1;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+    padding: 5px;
+    transform: translate3d(0, -75%, 0);
+    opacity: 1;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    color: $primary;
+    font-weight: 600;
+    left: 10px;
+    z-index: 2;
+}
+
+.btn-cinza{
+    background-color: #707070;
+    border: 0;
+    color: $white;
+    font-size: 0.938rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}

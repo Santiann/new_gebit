@@ -1,0 +1,71 @@
+1690502270a:1:{s:17:"blog/internal.htm";a:10:{s:8:"fileName";s:17:"blog/internal.htm";s:7:"content";s:1272:"title = "Blog Internal"
+url = "/blog/post/:slug"
+layout = "default"
+
+[blogPost]
+
+[blogCategories blog_categorias]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "blog/category"
+==
+<?php
+function onEnd()
+{
+    // Optional - set the page title to the post title
+    if ($this->post)
+        $this->page->title = $this->post->title;
+}
+?>
+==
+
+<div class="container blog px-5 d-flex align-items-start align-items-md-end justify-content-between flex-column flex-md-row">
+    <div class="blog-title">
+        <span class="h23 fsemi-bold text-extra2">{{ 'Blog Dealix' | _ }}</span>
+        <h1 class="h61 fmedium">{{ post.title }}</h1>
+    </div>
+    <div class="categorias text-right mb-3">
+        <h3 class="h23 fsemi-bold mb-3">{{ 'Navegue por nossos conteúdos' | _ }}</h3>
+        <div class="d-flex align-items-center">
+            {% for category in categories %}
+                <a href="{{ 'blog/category' | page({slug: category.slug}) }}" class="btn-extra2 mx-2">
+                    {{ category.name }}
+                </a>
+            {% else %}
+                <p class="btn-extra2 mx-2">
+                    {{ 'Não existem categorias criadas'|_ }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% component 'blog_post' %}
+
+";s:5:"mtime";i:1689760851;s:6:"markup";s:925:"<div class="container blog px-5 d-flex align-items-start align-items-md-end justify-content-between flex-column flex-md-row">
+    <div class="blog-title">
+        <span class="h23 fsemi-bold text-extra2">{{ 'Blog Dealix' | _ }}</span>
+        <h1 class="h61 fmedium">{{ post.title }}</h1>
+    </div>
+    <div class="categorias text-right mb-3">
+        <h3 class="h23 fsemi-bold mb-3">{{ 'Navegue por nossos conteúdos' | _ }}</h3>
+        <div class="d-flex align-items-center">
+            {% for category in categories %}
+                <a href="{{ 'blog/category' | page({slug: category.slug}) }}" class="btn-extra2 mx-2">
+                    {{ category.name }}
+                </a>
+            {% else %}
+                <p class="btn-extra2 mx-2">
+                    {{ 'Não existem categorias criadas'|_ }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% component 'blog_post' %}";s:4:"code";s:145:"function onEnd()
+{
+    // Optional - set the page title to the post title
+    if ($this->post)
+        $this->page->title = $this->post->title;
+}";s:5:"title";s:13:"Blog Internal";s:3:"url";s:16:"/blog/post/:slug";s:6:"layout";s:7:"default";s:8:"blogPost";a:0:{}s:30:"blogCategories blog_categorias";a:3:{s:4:"slug";s:11:"{{ :slug }}";s:12:"displayEmpty";s:1:"0";s:12:"categoryPage";s:13:"blog/category";}}}

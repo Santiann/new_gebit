@@ -1,0 +1,136 @@
+1690502269a:1:{s:14:"user/login.htm";a:10:{s:8:"fileName";s:14:"user/login.htm";s:7:"content";s:3790:"title = "Login"
+url = "/login/:reset?"
+layout = "default-user"
+
+[viewBag]
+activeMenu = "login"
+
+[account loginForm]
+
+==
+
+<div class="login">
+    <div class="bg" style="background-image: url({{ 'assets/img/bg-svg.svg'|theme }})">
+        <div class="bg-primary"></div>
+        <div class="bg-white"></div>
+        <div class="image" style="background-image: url({{ 'assets/img/user.svg'|theme }})"></div>
+    </div>
+    <div class="top vh-100">
+        <div class="container h-100 py-5 d-flex flex-column justify-content-between">
+            <header class="d-flex align-items-center justify-content-between">
+                <img class="footer-logo" src="{{ 'assets/img/logo-white.svg'|theme }}" alt="Dealix">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <!-- <a href="{{ 'user/register' | page }}" class="btn btn-primary btn-lg text-uppercase h13 fmedium">{{
+                        'QUERO Registrar' | _ }}</a> -->
+                    <a href="{{ 'redirect' }}" class="btn btn-primary btn-lg text-uppercase h13 fmedium">{{ 'VOLTAR PARA HOME' }}</a>
+                </div>
+
+            </header>
+            <div class="content d-flex align-items-center justify-content-between flex-column flex-md-row px-0 px-md-5">
+                <h1 class="h71 fmedium text-white">{{ 'Acesse sua' | _ }}</br>
+                    {{ 'conta e aproveite' | _ }}</br> {{ 'todos os recursos' | _ }}
+                </h1>
+                <div class="acess-card rounde-lg">
+                    <h1 class="h24 fmedium mb-4">{{ 'Faça Login' | _ }}</h1>
+                    {{ form_ajax('onSignin') }}
+                    <div class="form-group mt-3">
+                        <input type="email" name="login" class="form-control" required="">
+                        <label class="form-control-placeholder" for="username">{{ 'E-mail' | _ }}</label>
+                    </div>
+                    <div class="form-group">
+                        <input id="password-field" type="password" name="password" class="form-control" required="">
+                        <label class="form-control-placeholder" for="password">{{ 'Senha' | _ }}</label>
+                        <span toggle="#password-field" id="toggle-password"
+                            class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-cinza form-control btn btn-primary rounded submit px-3">{{
+                            'Entrar' | _ }}</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="w-100 text-left d-none">
+                            <label class="checkbox-wrap checkbox-primary mb-0">{{ 'Remember Me' | _ }}
+                                <input type="checkbox" checked="">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="w-100 text-center">
+                            <a href="#">{{ 'Esqueci a senha' | _ }}</a>
+                        </div>
+                        <div class="w-100 text-center">
+                            <a href="{{ 'user/registerr' | page }}">{{
+                                'QUERO Registrar'  | _ }}</a>
+                        </div>
+                    </div>
+                    {{ form_close() }}
+                </div>
+            </div>
+            <footer>
+                <h4 class="h12 text-white text-uppercase">{{ 'DEALIX - GESTÃO INTELIGENTE © 2021 - TODOS OS DIREITOS
+                    RESERVADOS | CPNJ 36.569.594/0001-01' | _ }}</h4>
+            </footer>
+        </div>
+    </div>
+</div>";s:5:"mtime";i:1690501667;s:6:"markup";s:3669:"<div class="login">
+    <div class="bg" style="background-image: url({{ 'assets/img/bg-svg.svg'|theme }})">
+        <div class="bg-primary"></div>
+        <div class="bg-white"></div>
+        <div class="image" style="background-image: url({{ 'assets/img/user.svg'|theme }})"></div>
+    </div>
+    <div class="top vh-100">
+        <div class="container h-100 py-5 d-flex flex-column justify-content-between">
+            <header class="d-flex align-items-center justify-content-between">
+                <img class="footer-logo" src="{{ 'assets/img/logo-white.svg'|theme }}" alt="Dealix">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <!-- <a href="{{ 'user/register' | page }}" class="btn btn-primary btn-lg text-uppercase h13 fmedium">{{
+                        'QUERO Registrar' | _ }}</a> -->
+                    <a href="{{ 'redirect' }}" class="btn btn-primary btn-lg text-uppercase h13 fmedium">{{ 'VOLTAR PARA HOME' }}</a>
+                </div>
+
+            </header>
+            <div class="content d-flex align-items-center justify-content-between flex-column flex-md-row px-0 px-md-5">
+                <h1 class="h71 fmedium text-white">{{ 'Acesse sua' | _ }}</br>
+                    {{ 'conta e aproveite' | _ }}</br> {{ 'todos os recursos' | _ }}
+                </h1>
+                <div class="acess-card rounde-lg">
+                    <h1 class="h24 fmedium mb-4">{{ 'Faça Login' | _ }}</h1>
+                    {{ form_ajax('onSignin') }}
+                    <div class="form-group mt-3">
+                        <input type="email" name="login" class="form-control" required="">
+                        <label class="form-control-placeholder" for="username">{{ 'E-mail' | _ }}</label>
+                    </div>
+                    <div class="form-group">
+                        <input id="password-field" type="password" name="password" class="form-control" required="">
+                        <label class="form-control-placeholder" for="password">{{ 'Senha' | _ }}</label>
+                        <span toggle="#password-field" id="toggle-password"
+                            class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-cinza form-control btn btn-primary rounded submit px-3">{{
+                            'Entrar' | _ }}</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="w-100 text-left d-none">
+                            <label class="checkbox-wrap checkbox-primary mb-0">{{ 'Remember Me' | _ }}
+                                <input type="checkbox" checked="">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="w-100 text-center">
+                            <a href="#">{{ 'Esqueci a senha' | _ }}</a>
+                        </div>
+                        <div class="w-100 text-center">
+                            <a href="{{ 'user/registerr' | page }}">{{
+                                'QUERO Registrar'  | _ }}</a>
+                        </div>
+                    </div>
+                    {{ form_close() }}
+                </div>
+            </div>
+            <footer>
+                <h4 class="h12 text-white text-uppercase">{{ 'DEALIX - GESTÃO INTELIGENTE © 2021 - TODOS OS DIREITOS
+                    RESERVADOS | CPNJ 36.569.594/0001-01' | _ }}</h4>
+            </footer>
+        </div>
+    </div>
+</div>";s:4:"code";N;s:5:"title";s:5:"Login";s:3:"url";s:14:"/login/:reset?";s:6:"layout";s:12:"default-user";s:7:"viewBag";a:1:{s:10:"activeMenu";s:5:"login";}s:17:"account loginForm";a:0:{}}}

@@ -1,0 +1,22 @@
+<div class="control-list">
+    <table class="table data">
+        <thead>
+            <tr>
+                <th><span>Status</span></th>
+                <th><span>Valor pago</span></th>
+                <th><span>Método de pagamento</span></th>
+                <th class="active sort-desc"><span>Última atualização</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($transactions as $transaction){ ?>
+            <tr>
+                <td><?= $transaction->status; ?></td>
+                <td><?php echo "R$ ". number_format(($transaction->paid_amount / 100), 2, ',', '.'); ?></td>
+                <td><?= $transaction->payment_method; ?></td>
+                <td><?php echo date_format(date_create($transaction->date_updated),"d/m/Y H:i:s"); ?></td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,294 @@
+<?php
+    $mySettings = System\Classes\SettingsManager::instance()->listItems('mysettings');
+$context = BackendMenu::getContext();
+$contextSidenav = BackendMenu::getContextSidenavPartial($context->owner, $context->mainMenuCode);
+$menuItens = \General\Painel\Classes\BackendMenu::listMenu();
+$menu_color_mode = Backend\Models\BrandSetting::get('menu_color_mode', 'light');
+
+?>
+<?php if ($contextSidenav): ?>
+<div style="height: 100vh; position: fixed">
+    <?= $this->makePartial($contextSidenav) ?>
+</div>
+<div class="spacer" style="width: 387px; height: 100vh"></div>
+<?php else: ?>
+<nav
+        <?php if($menu_color_mode === 'dark'): ?>
+            style="background-color: <?= Backend\Models\BrandSetting::get('primary_color', '#12263f') ?>;"
+        <?php endif; ?>
+        class="navbar navbar-vertical fixed-left navbar-expand-md navbar-<?= $menu_color_mode ?>"
+        id="sidebar">
+    <div class="container-fluid">
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse"
+                aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Brand -->
+        <a class="navbar-brand d-block" href="<?= Backend::url('') ?>">
+            <?php if($logo = Backend\Models\BrandSetting::getLogo()): ?>
+            <img src="<?= e(Backend\Models\BrandSetting::getLogo()) ?>" class="navbar-brand-img mx-auto"
+                 alt="<?= e(Backend\Models\BrandSetting::get('app_name')) ?>">
+            <?php else: ?>
+            <?= e(Backend\Models\BrandSetting::get('app_name')) ?>
+            <?php endif; ?>
+        </a>
+
+        <!-- Brand Icon -->
+        <a class="navbar-brand-icon text-center mt-md-4 p-md-2 d-none" href="<?= Backend::url('') ?>">
+            <?php if($favicon = Backend\Models\BrandSetting::getFavicon()): ?>
+            <img src="<?= e(Backend\Models\BrandSetting::getFavicon()) ?>" class="navbar-brand-img mx-auto"
+                 alt="<?= e(Backend\Models\BrandSetting::get('app_name')) ?>">
+            <?php else: ?>
+            <?= e(Backend\Models\BrandSetting::get('app_name')) ?>
+            <?php endif; ?>
+        </a>
+
+        <div class="d-none d-md-block">
+             <hr class="navbar-divider my-3">
+        </div>
+
+        <!-- User (xs) -->
+        <div class="navbar-user d-md-none">
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+
+                <!-- Toggle -->
+                <a href="#!" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <img src="<?= $this->user->getAvatarThumb(90, ['mode' => 'crop', 'extension' => 'png']) ?>"
+                             class="avatar-img rounded-circle" alt="...">
+                        <p class="text-center"><?= $this->user->first_name ?></p>
+                    </div>
+                </a>
+
+                <!-- Menu -->
+                <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
+                    <?php foreach ($mySettings as $category => $items): ?>
+                    <?php foreach ($items as $item): ?>
+                    <a href="<?= $item->url ?>" class="dropdown-item"><?= e(trans($item->label)) ?></a>
+                    <?php endforeach ?>
+                    <hr class="dropdown-divider">
+                    <?php endforeach ?>
+
+                    <a href="<?= Backend::url('backend/auth/signout') ?>" class="dropdown-item">
+                        <?= e(trans('backend::lang.account.sign_out')) ?>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidebarCollapse">
+
+            <!-- Toggler -->
+            <button class="navbar-toggler d-block d-md-none" type="button" data-toggle="collapse" data-target="#sidebarCollapse"
+                    aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span><i class="fe fe-x"></i></span>
+            </button>
+
+            <!-- Form -->
+            <?php /** ?>
+            <form class="mt-4 mb-3">
+                <div class="input-group input-group-rounded input-group-merge">
+                    <input type="search" autocomplete="off"
+                           class="form-control form-control-rounded form-control-prepended"
+                           name="search-menu"
+                           placeholder="Buscar menu" aria-label="Buscar menu">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fe fe-search"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <?php **/ ?>
+
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+                <?php foreach($menuItens as $item):?>
+                <li class="nav-item <?php if($context->mainMenuCode === $item->code) : ?>active<?php endif;?>">
+                    <a class="nav-link"
+                    <?php if(count($item->sideMenu) > 0): ?>href="#<?= $item->code ?>"<?php else: ?>
+                    href="<?= $item->url?>"
+                        data-tooltip
+                        title="<?= trans($item->label) ?>"
+                    <?php endif; ?>
+                    <?php if(count($item->sideMenu) > 0): ?>
+                        data-toggle="collapse"
+                    <?php endif; ?>
+                    role="button"
+                    <?php if($context->mainMenuCode === $item->code) : ?>aria-expanded="true"<?php else: ?>
+                    aria-expanded="false"<?php endif;?>
+                    aria-controls="<?= $item->code ?>">
+                    <i class="fe <?=$item->icon ?>"></i> <?= trans($item->label) ?>
+                    <?php if($item->counter): ?>
+                    <span class="badge badge-danger ml-auto" <?= $item->counterLabel ? 'title="' . e(trans($item->counterLabel)) . '"' : '' ?>><?= e($item->counter) ?></span>
+                    <?php endif; ?>
+                    </a>
+                    <?php if(count($item->sideMenu) > 0) : ?>
+                    <div class="collapse <?php if($context->mainMenuCode == $item->code): ?>show<?php endif; ?>"
+                         id="<?= $item->code ?>">
+                        <ul class="nav nav-sm flex-column">
+                            <?php foreach($item->sideMenu as $subitem):?>
+                                <?php $subMenu = property_exists($subitem, 'subMenu') ? $subitem->subMenu : []; ?>
+                                <a href="<?= $subMenu ? '#subMenu-' . $subitem->code : $subitem->url ?>"
+                                    <?= Html::attributes($subitem->attributes) ?>
+                                    <?php if($subMenu): ?>
+                                        aria-expanded="true"
+                                        role="button"
+                                        data-toggle="collapse"
+                                        aria-controls="subMenu-<?= $subitem->code ?>"
+                                    <?php endif; ?>
+                                   class="nav-link <?php if($context->sideMenuCode == $subitem->code): ?>active<?php endif;?>">
+                                    <li class="nav-item">
+                                        <?= trans($subitem->label) ?>
+                                    </li>
+                                    <?php if($subitem->counter): ?>
+                                        <span class="badge badge-danger ml-auto" <?= $subitem->counterLabel ? 'title="' . e(trans($subitem->counterLabel)) . '"' : '' ?>><?= e($subitem->counter) ?></span>
+                                    <?php endif; ?>
+                                </a>
+
+                                <?php if (count($subMenu) > 0) : ?>
+                                    <div class="collapse <?php if($context->mainMenuCode == $item->code): ?>show<?php endif; ?>"
+                                         id="subMenu-<?= $subitem->code ?>">
+                                        <ul class="nav nav-sm flex-column">
+                                            <?php foreach($subMenu as $subitem_code => $subitem2):?>
+                                                <a href="<?= $subitem2['url'] ?? null ?>"
+                                                <?= Html::attributes($subitem2['attributes'] ?? []) ?>
+                                                class="nav-link <?php if($context->sideMenuCode == $subitem->code): ?>active<?php endif;?>">
+                                                    <li class="nav-item">
+                                                        <?= trans($subitem2['label'] ?? '') ?>
+                                                    </li>
+                                                    <?php if($subitem2['counter'] ?? null): ?>
+                                                        <span class="badge badge-danger ml-auto" <?= isset($subitem2['counterLabel']) && $subitem2['counterLabel'] ? 'title="' . e(trans($subitem2['counterLabel'])) . '"' : '' ?>><?= e($subitem2['counter']) ?></span>
+                                                    <?php endif; ?>
+                                                </a>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
+
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+                </li>
+                <?php endforeach; ?>
+
+                <li>
+                    <hr class="navbar-divider my-3">
+                </li>
+
+                <!-- Settings Menu -->
+                <?php
+                    $systemItems = System\Classes\SettingsManager::instance()->listItems('system');
+                    $contextSettings = System\Classes\SettingsManager::instance()->getContext();
+                ?>
+
+                <?php if($systemItems): ?>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="#menu-settings"
+                       data-toggle="collapse"
+                       role="button"
+                    <?= $contextSettings->owner ? 'aria-expanded="false"' : '' ?>
+                    aria-controls="menu-settings">
+                    <i class="fe fe-settings"></i>Configurações
+                    </a>
+
+                    <div class="collapse <?= $contextSettings->owner ? 'show' : false ?>"
+                         id="menu-settings">
+                        <ul class="nav nav-sm flex-column">
+                            <?php foreach ($systemItems as $category => $items): ?>
+                            <div
+                                class="nav-item <?= collect($items)->where('code', strtolower($contextSettings->itemCode))->count() ? 'show' : '' ?>">
+                                <a
+                                    href="#settings-<?= str_slug($category) ?>"
+                                    class="nav-link"
+                                    data-toggle="collapse"
+                                <?= collect($items)->where('code', strtolower($contextSettings->itemCode))->count() ?
+                                'aria-expanded="true"' : 'aria-expanded="false"' ?>
+                                role="button"
+                                aria-controls="settings-<?= str_slug($category) ?>">
+                                <?= e(trans($category))?>
+                                </a>
+                                <div
+                                    class="collapse <?= collect($items)->where('code', strtolower($contextSettings->itemCode))->count() ? 'show' : '' ?>"
+                                    id="settings-<?= str_slug($category) ?>">
+                                    <ul class="nav nav-sm flex-column">
+
+                                        <?php foreach ($items as $item): ?>
+                                        <li class="nav-item">
+                                            <a href="<?= $item->url ?>"
+                                               class="nav-link <?= strtolower($item->owner) == $contextSettings->owner && strtolower($item->code) == $contextSettings->itemCode ? 'active' : '' ?>">
+                                                <!-- <i class="<?= $item->icon ?>" style="margin-right: 7px;"></i> --><?= e(trans($item->
+                                                label)) ?></a>
+                                        </li>
+                                        <?php endforeach ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </li>
+                <?php endif; ?>
+            </ul>
+
+            <div class="fix-to-bottom">
+                <!-- Push content down -->
+                <div class="mt-auto text-center">
+                    <button type="button" id="menu-icons-new" class="border-0 rounded-circle mb-4" style="width: 40px; height: 40px; cursor: pointer;">
+                        <i class="navbar-toggler-icon" style="color: var(--secondary);"></i>
+                    </button>
+                </div>
+
+                <!-- User (md) -->
+                <div class="navbar-user d-none d-md-flex" id="sidebarUser">
+
+                    <!-- Dropup -->
+                    <div class="dropdown dropup">
+
+                        <!-- Toggle -->
+                        <a href="#" data-toggle="dropdown">
+                            <div class="avatar avatar-sm avatar-online">
+                                <img src="<?= $this->user->getAvatarThumb(90, ['mode' => 'crop', 'extension' => 'png']) ?>"
+                                    class="avatar-img rounded-circle" alt="...">
+                                <p class="text-center"><?= $this->user->first_name ?></p>
+                            </div>
+                        </a>
+
+                        <!-- Menu -->
+                        <ul class="dropdown-menu" role="menu" data-dropdown-title="Account Menu">
+                            <?php foreach ($mySettings as $category => $items): ?>
+                            <?php foreach ($items as $item): ?>
+                            <li role="presentation">
+                                <a href="<?= $item->url ?>" role="menuitem" tabindex="-1"><?= e(trans($item->label)) ?></a>
+                            </li>
+                            <?php endforeach ?>
+                            <li role="separator" class="divider"></li>
+                            <?php endforeach ?>
+                            <li role="presentation">
+                                <a href="<?= Backend::url('backend/auth/signout') ?>" role="menuitem" tabindex="-1">
+                                    <?= e(trans('backend::lang.account.sign_out')) ?>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div> <!-- / .navbar-collapse -->
+
+    </div>
+</nav>
+<?php endif ?>

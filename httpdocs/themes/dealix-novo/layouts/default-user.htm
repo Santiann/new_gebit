@@ -1,0 +1,18 @@
+description = "Default layout"
+[localePicker]
+forceUrl = 0
+
+==
+function onEnd() {
+    if($this['activeLocale'] == 'pt-br')
+        $this['dateFormat'] = 'Y-M-d';
+    else
+        $this['dateFormat'] = 'd/M/Y';
+}
+==
+
+{% partial "site/header" noheader=true %}
+
+    {% page %}
+
+{% partial "site/footer" nofooter=true %}

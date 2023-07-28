@@ -1,0 +1,13 @@
+1658924975a:1:{s:29:"resetPasswordForm/default.htm";a:5:{s:8:"fileName";s:29:"resetPasswordForm/default.htm";s:7:"content";s:192:"<div id="partialUserResetForm">
+    {% if __SELF__.code == null %}
+        {% partial __SELF__ ~ '::restore' %}
+    {% else %}
+        {% partial __SELF__ ~ '::reset' %}
+    {% endif %}
+</div>";s:5:"mtime";i:1623966623;s:6:"markup";s:192:"<div id="partialUserResetForm">
+    {% if __SELF__.code == null %}
+        {% partial __SELF__ ~ '::restore' %}
+    {% else %}
+        {% partial __SELF__ ~ '::reset' %}
+    {% endif %}
+</div>";s:4:"code";N;}}

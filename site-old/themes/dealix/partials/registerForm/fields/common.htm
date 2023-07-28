@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+            <input type="text" name="name" id="name" class="form-control" data-minlength="3" data-error="{{ 'Nome inválido' |_ }}" required placeholder="{{ 'Nome completo' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+            <input type="text" name="a001_cpf" id="a001_cpf" data-minlength="14" data-maxlength="14" data-mask="000.000.000-00" data-mask-reverse="true" required data-error="{{ 'CPF inválido' |_ }}" class="form-control" placeholder="{{ 'Seu CPF' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+            <input type="email" name="email" id="email" class="form-control" required data-error="{{ 'E-mail inválido' |_ }}" placeholder="{{ 'Seu e-mail' |_ }}">
+            <input hidden type="password" name="password" id="password" class="form-control d-none" value="xxxxxxxxx">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+            <input readonly type="text" name="a001_telefone" id="a001_telefone" class="form-control" required placeholder="{{ 'Seu telefone' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <!-- Campo só para jurídica -->
+    <div data-id-tab="company" class="col-lg-6 col-md-6" style="display: none;">
+        <div class="form-group">
+            <input type="text" name="a001_cargo" id="a001_cargo" class="form-control" placeholder="{{ 'Seu cargo' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+
+{% component 'localization' prefix='a001' %}

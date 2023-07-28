@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Service;
+
+use App\Base\BaseRepository;
+use App\Models\{{modelName}};
+
+
+class {{service}} extends BaseRepository
+{
+     public function getModel()
+        {
+            $this->model = new {{modelName}}();
+        }
+
+}

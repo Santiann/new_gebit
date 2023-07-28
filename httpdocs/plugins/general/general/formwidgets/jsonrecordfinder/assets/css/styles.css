@@ -1,0 +1,70 @@
+div.item-relacao a:hover{
+    text-decoration: none;
+}
+
+div.item-relacao a:active{
+    text-decoration: none;
+}
+
+div.item-relacao a:visited{
+    text-decoration: none;
+}
+
+div.item-relacao a i.icon-bars{
+    cursor: move;
+}
+
+div.multiple-finder div.item-relacao{
+    background-color: #1ABC9C;
+    width: 20.5%;
+    color: white;
+    float: left;
+    margin-top: 0.25%;
+    margin-left: 0.25%;
+    margin-bottom: 0.25%;
+    padding: 7px;
+    position: relative;
+    z-index: 99;
+    overflow: hidden;
+}
+
+div.multiple-finder {
+    overflow: visible !important;
+    position: relative;
+    float: left;
+    width: 100%;
+    padding-left: 40px;
+}
+
+div.multiple-finder div.item-relacao a.remove {
+    position: absolute;
+    top: 2px;
+    right: 26px;
+    font-size: 18px;
+    color: white;
+}
+
+div.multiple-finder div.item-relacao a.mover {
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    font-size: 17px;
+    color: white;
+}
+
+div.multiple-finder div.text-muted {
+    margin: 10px;
+    width: 100%;
+    text-align: center
+}
+
+div.multiple-finder div.item-relacao span.field-to-show{
+    overflow: hidden;
+    width: 84%;
+    display: block;
+    height: 19px;
+}
+
+.field-recordfinder .btn {
+    left: -2px !important;
+}

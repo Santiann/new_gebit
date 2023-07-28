@@ -1,0 +1,5 @@
+{% for code, name in locales %}
+    <a href="javascript:;" data-request="onSwitchLocale" data-request-data="'locale': '{{ code }}'">
+        <img src="{{ ('assets/img/flags-icons/' ~ code ~ '.png') | theme }}" style="width: 30px; height: 30px;" />
+    </a>
+{% endfor %}

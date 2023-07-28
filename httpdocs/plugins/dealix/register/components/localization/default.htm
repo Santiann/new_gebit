@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-md-3 col-12">
+        <div class="form-group">
+            <input onfocusout="findAddressByCep_{{prefix}}(this)" type="text" name="{{ prefix }}_cep" data-mask="00000-000" id="{{ prefix }}_cep" pattern="\d{5}-?\d{3}" class="form-control" required data-error="{{ 'CEP inválido' |_ }}" placeholder="{{ 'CEP' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <input type="text" name="{{ prefix }}_endereco" id="{{ prefix }}_endereco" class="form-control" required placeholder="{{ 'Endereço' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-md-3 col-12">
+        <div class="form-group">
+            <input type="text" name="{{ prefix }}_numero_end" id="{{ prefix }}_numero_end" class="form-control" required placeholder="{{ 'Número' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-12">
+        <div class="form-group">
+            <input type="text" name="{{ prefix }}_complemento_end" id="{{ prefix }}_complemento_end" class="form-control" placeholder="{{ 'Complemento' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-md-8 col-12">
+        <div class="form-group">
+            <input type="text" name="{{ prefix }}_bairro" id="{{ prefix }}_bairro" class="form-control" required placeholder="{{ 'Bairro' |_ }}">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-12">
+        <div class="form-group">
+            <select name="{{ prefix }}_pais" id="{{ prefix }}_pais" required class="custom-select form-control">
+                {% for country in countries %}
+                <option val="{{ country.a049_id_pais }}">{{ country.a049_nome_pais }}</option>
+                {% endfor %}
+            </select>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-12">
+        <div class="form-group">
+            <select name="{{ prefix }}_id_estado"
+                data-request="onSelectState"
+                data-request-data="prefix: '{{ prefix }}' "
+                data-request-update="registerForm/fields/cities : '#{{ prefix }}_city' "
+                required class="custom-select form-control"
+            >
+                {% for state in states %}
+                <option value="{{ state.a048_id_estado }}">{{ state.a048_uf }}</option>
+                {% endfor %}
+            </select>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-12">
+        <div class="form-group">
+            {% partial 'registerForm/fields/cities' prefix=prefix %}
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+
+{% put scripts %}
+<script>
+    function findAddressByCep_{{prefix}}(input)
+    {
+        let cep = $(input).val()
+        let prefix = "{{ prefix }}"
+
+        $.ajax({
+            type: "POST",
+            url: "/findAddressByCep",
+            data: {'cep': cep},
+            success : function(result){
+                let data = JSON.parse(result)
+
+                $(`#${prefix}_endereco`).val( data.street )
+                $(`#${prefix}_bairro`).val( data.neighborhood )
+                $(`#${prefix}_id_estado`).val( data.state )
+            }
+        });
+    }
+</script>
+{% endput %}

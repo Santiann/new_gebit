@@ -1,0 +1,67 @@
+<div id="verify_phone_number">
+    <div class="mb-5 w-100 text-center">
+        <h6><span class="mr-3">Antes de prosseguirmos com o cadastro, precisamos verificar seu número. Vamos enviar um código para você.</span></h6>
+    </div>
+    <div class="form-group mt-3">
+    <div class="form-group mt-3 has-error">
+        <input id="phone_number" type="text" class="form-control" data-minlength="13" data-mask="(00) 000000000" required="" autocomplete="off" maxlength="14">
+        <label class="form-control-placeholder" for="telefone">Telefone de contato</label>
+    </div>
+    <div class="form-group">
+        <button type="button" onclick="verifyPhone()" class="btn-validate-phone btn-lg text-uppercase form-control btn rounded submit px-3">{{ 'Enviar' | _ }}</button>
+    </div>
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+{% partial 'register/validation/validate-phone' %}
+
+{% put scripts %}
+<script type="text/javascript">
+    function verifyPhone () {
+        let number = $('#phone_number').val().replace(/[^\d]+/g,'')
+
+        if (number.length < 10) {
+            alert('O número não é válido')
+        }
+        else {
+            $.ajax({
+                method: "POST",
+                url: "/verifyPhone",
+                data: { phone_number: number }
+            })
+            .done(function(response){
+                $('#validatePhone').modal('toggle')
+            })
+            .fail(function(response){
+                alert('Ocorreu um erro, confira o console ou contate o administrador')
+                console.log(response)
+            })
+        }
+    }
+
+    function verifyCodePhone ()
+    {
+        let number = $('#phone_number').val().replace(/[^\d]+/g,'')
+        let code = $('#phone_code').val()
+
+        $.ajax({
+            method: "POST",
+            url: "/verifyCodePhone",
+            data: { phone_number: number, token: code}
+        })
+        .done(function(response){
+            $('#verify_phone_number').hide()
+            $('#form_fields').show()
+
+            $('#a001_telefone').val(number)
+
+            $('#validatePhone').modal('toggle')
+        })
+        .fail(function(response){
+            alert('Código inválido')
+            console.log(response)
+        })
+    }
+</script>
+{% endput %}

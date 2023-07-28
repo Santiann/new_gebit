@@ -1,0 +1,60 @@
+1690349936a:1:{s:15:"site/header.htm";a:5:{s:8:"fileName";s:15:"site/header.htm";s:7:"content";s:1470:"<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% placeholder page_title default %}{{ this.page.title }}{% endplaceholder %} | Dealix</title>
+        {% partial "meta/styles" %}
+        {% partial "meta/seo" %}
+        <link rel="shortcut icon" href="{{ 'assets/img/favicon.ico' | theme }}" type="image/x-icon' }}" type="image/x-icon">
+        <link rel="icon" href="{{ 'assets/img/favicon.ico' | theme }}" type="image/x-icon' }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="icon" href="{{ 'assets/img/homes/favicon.svg' | theme }}" sizes="24x24" type="image/svg">
+    </head>
+    {% set pageId = this.page.id %}
+    {% set pageTitle = this.page.title %}
+    {% if pageId is empty %}
+        {% set pageId = page.id %}
+    {% endif %}
+    {% if pageTitle is empty %}
+        {% set pageTitle = page.title %}
+    {% endif %}
+    {% if noheader == false %}
+        <body style="background-image: url({{ 'assets/img/bg-svg.svg'|theme }})">
+            {% partial 'common/navbar' %}
+    {% else %}
+        <body>
+    {% endif %}
+";s:5:"mtime";i:1689760851;s:6:"markup";s:1469:"<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% placeholder page_title default %}{{ this.page.title }}{% endplaceholder %} | Dealix</title>
+        {% partial "meta/styles" %}
+        {% partial "meta/seo" %}
+        <link rel="shortcut icon" href="{{ 'assets/img/favicon.ico' | theme }}" type="image/x-icon' }}" type="image/x-icon">
+        <link rel="icon" href="{{ 'assets/img/favicon.ico' | theme }}" type="image/x-icon' }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="icon" href="{{ 'assets/img/homes/favicon.svg' | theme }}" sizes="24x24" type="image/svg">
+    </head>
+    {% set pageId = this.page.id %}
+    {% set pageTitle = this.page.title %}
+    {% if pageId is empty %}
+        {% set pageId = page.id %}
+    {% endif %}
+    {% if pageTitle is empty %}
+        {% set pageTitle = page.title %}
+    {% endif %}
+    {% if noheader == false %}
+        <body style="background-image: url({{ 'assets/img/bg-svg.svg'|theme }})">
+            {% partial 'common/navbar' %}
+    {% else %}
+        <body>
+    {% endif %}";s:4:"code";N;}}

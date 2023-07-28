@@ -1,0 +1,32 @@
+{% set pager = __SELF__.getPaginator() %}
+{% set parent = __SELF__.getParent() %}
+{% set field = __SELF__.getField() %}
+
+{% if pager.lastPage > 1 %}
+<ul class="pagination">
+
+    {% if pager.currentPage > 1 %}
+    	{% set page = pager.currentPage - 1 %}
+    	<li><a href="{{ parent.queryString({ 'paginacao' : page }) }}" 
+    		data-request="{{ parent }}::onUpdate" 
+    		data-request-data="{{ field }} : {{ page }}" >&larr; Prev</a>
+   		</li>
+    {% endif %}
+
+    {% for page in 1..pager.lastPage %}
+    	<li><a href="{{ parent.queryString({ 'paginacao' : page }) }}" 
+    		data-request="{{ parent }}::onUpdate" 
+    		data-request-data="{{ field }} : {{ page }}" >{{ page }}</a>
+   		</li>
+    {% endfor %}
+
+    {% if pager.lastPage > pager.currentPage %}
+    	{% set page = pager.currentPage + 1 %}
+    	<li><a href="{{ parent.queryString({ 'paginacao' : page }) }}" 
+    		data-request="{{ parent }}::onUpdate" 
+    		data-request-data="{{ field }} : {{ page }}">Next &rarr;</a>
+   		</li>
+    {% endif %}
+    
+</ul>
+{% endif %}

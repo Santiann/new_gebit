@@ -1,0 +1,9 @@
+import:
+    title: 'general.translate::lang.messages.import_messages_link'
+    modelClass: General\Translate\Models\MessageImport
+    redirect: general/translate/messages
+
+export:
+    title: 'general.translate::lang.messages.export_messages_link'
+    modelClass: General\Translate\Models\MessageExport
+    redirect: general/translate/messages

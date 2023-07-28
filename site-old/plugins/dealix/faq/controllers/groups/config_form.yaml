@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Groupo
+
+# Model Form Field configuration
+form: plugins/dealix/faq/models/group/fields.yaml
+
+# Model Class name
+modelClass: Dealix\Faq\Models\Group
+
+# Default redirect location
+defaultRedirect: dealix/faq/groups
+
+# Create page
+create:
+    title: Criar Groups
+    redirect: dealix/faq/groups/update/:id
+    redirectClose: dealix/faq/groups
+
+# Update page
+update:
+    title: Editar Grupo
+    redirect: dealix/faq/groups
+    redirectClose: dealix/faq/groups
+
+# Preview page
+preview:
+    title: Ver Grupo

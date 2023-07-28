@@ -1,0 +1,31 @@
+title = "Log-In"
+url = "/login/:plan_id?:reset?"
+layout = "default"
+
+[viewBag]
+activeMenu = "login"
+
+[account loginForm]
+redirect = "home"
+
+[resetPassword resetPasswordForm]
+
+[newsSubscribe newsletterForm]
+category = 1
+
+==
+
+function onStart()
+{
+    if (\Auth::user() && !get('reset')) {
+        return \Redirect::to('/');
+    }
+}
+
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+{% component 'loginForm' %}
+
+{% component 'newsletterForm' %}

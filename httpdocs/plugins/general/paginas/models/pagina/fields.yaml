@@ -1,0 +1,81 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    title:
+        label: Nome da Pagina
+        type: text
+        required: true
+        span : left
+
+    identifier:
+        label: Identificador
+        type: text
+        preset:
+            field: title
+            type: slug
+        span : right
+        required: true
+
+    icon :
+        label : Icone
+        type : text
+        span : left
+        comment : 'Os icones devem ser selecionados de : http://daftspunk.github.io/Font-Autumn/'
+
+    ordem :
+        label : Ordem
+        type : number
+        span : right
+
+    section_code :
+        type : section
+        label : Codigo extra na Pagina
+        commnet : codigo qeu sera colocado no rodape da pagina
+
+    appendCode :
+        type : codeeditor
+        language : html
+
+    section_modulos:
+            type : section
+            label : Modulos Relacionados
+            comment: Modulos relacionados com essa pagina
+            containerAttributes :
+                style : 'margin-top : 25px'
+
+    modulos:
+        type: repeater
+        prompt : Clique aqui para adicionar novo modulo relacionado
+        form:
+            fields:
+
+                modulo_yaml :
+                    label : Arquivo de Configuracao do Modulo
+                    type : text
+                    span : right
+
+                modulo_title :
+                    label : Titulo do Modulo
+                    type : text
+                    span : left
+
+                modulo_id :
+                    label : Identificador
+                    type : text
+                    span : left
+                    preset :
+                        field : modulo_title
+
+                modulo_ctrl :
+                    label : Arquivo de Controle
+                    type : text
+                    span : right
+
+    section_campos:
+        type : section
+        label : Campos
+        comment: Campos apresentados dentro dessa pagina
+        containerAttributes :
+            style : 'margin-top : 25px'

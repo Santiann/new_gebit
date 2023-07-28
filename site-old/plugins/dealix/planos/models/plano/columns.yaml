@@ -1,0 +1,28 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    nome :
+        label : Nome
+        searchable : true
+
+    valor :
+        label : Valor (R$)
+        searchable : false
+
+    is_monthly :
+        label : Plano mensal
+        searchable : false
+        type: switch
+
+    publicado:
+        label: Publicado
+        type : partial
+        path: ~/plugins/dealix/planos/models/plano/_switch.htm
+
+    created_at:
+        label: Data de Cadastro
+        type: datetime
+        format: d/m/Y H:i:s

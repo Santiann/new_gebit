@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="<?= App::getLocale() ?>" class="no-js <?= $this->makeLayoutPartial('browser_detector') ?>" >
+
+<head>
+    <?= $this->makeLayoutPartial('head') ?>
+</head>
+
+<body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
+
+
+<!-- MAIN CONTENT
+================================================== -->
+<div class="container-fluid" style="width: 100%;">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6 my-5">
+
+            <!-- Heading -->
+            <div class="display-4 mb-1 text-center">
+                <img style="margin-bottom: 41px;" src="<?= e(Backend\Models\BrandSetting::getLogo()) ?>" alt="<?= e(Backend\Models\BrandSetting::get('app_name')) ?>">
+            </div>
+
+            <?php if(!Backend\Models\BrandSetting::getLogo()): ?>
+                <!-- Heading -->
+                <h1 class="display-4 mb-1">
+                    <?= e(Backend\Models\BrandSetting::get('app_name')) ?>
+                </h1>
+            <?php endif; ?>
+
+            <?= Block::placeholder('body') ?>
+
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+
+            <!-- Image -->
+            <div class="bg-cover vh-100"
+                 style="background-image: url('<?= Backend\Models\BrandSetting::instance()->background ? Backend\Models\BrandSetting::instance()->background->getPath() : '' ?>');">
+            </div>
+
+        </div>
+    </div> <!-- / .row -->
+</div>
+<!-- / .main-content -->
+
+<?= $this->makeLayoutPartial('footer') ?>
+
+<!-- Flash Messages -->
+<div id="layout-flash-messages"><?= $this->makeLayoutPartial('flash_messages') ?></div>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<p class="lead">
+    <strong>{{ 'Esqueceu sua senha?' |_ }}</strong> {{ 'Entre com seu e-mail para verificarmos sua conta.' |_ }}
+</p>
+
+<form
+    data-request="{{ __SELF__ }}::onRestorePassword">
+    <div class="form-group">
+        <label for="userRestoreEmail">E-mail</label>
+        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="{{ 'Insira seu e-mail' |_ }}">
+    </div>
+
+    <button type="submit" class="btn btn-success">{{ 'Restaurar senha' |_ }}</button>
+</form>

@@ -1,0 +1,33 @@
+title = "Serviços"
+url = "/services"
+layout = "default"
+
+[viewBag]
+activeMenu = "services"
+
+[prices]
+
+[newsSubscribe newsletterForm]
+category = 1
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Serviços' |_ }}</h2>
+            <!-- <p>Our Services</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+{% partial 'sections/features-area' %}
+
+{% component 'prices' %}
+
+{% partial 'sections/free-trial-area' %}
+
+{% component 'newsletterForm' %}

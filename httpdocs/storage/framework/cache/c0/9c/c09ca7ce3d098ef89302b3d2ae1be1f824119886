@@ -1,0 +1,22 @@
+1690502271a:1:{s:12:"meta/seo.htm";a:5:{s:8:"fileName";s:12:"meta/seo.htm";s:7:"content";s:462:"{% if this.theme.googleanalytics_id is not empty %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ this.theme.googleanalytics_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ this.theme.googleanalytics_id }}');
+    </script>
+{% endif %}
+";s:5:"mtime";i:1689760851;s:6:"markup";s:461:"{% if this.theme.googleanalytics_id is not empty %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ this.theme.googleanalytics_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ this.theme.googleanalytics_id }}');
+    </script>
+{% endif %}";s:4:"code";N;}}

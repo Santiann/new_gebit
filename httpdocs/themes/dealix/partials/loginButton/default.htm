@@ -1,0 +1,9 @@
+{% if user %}
+<a href="#" data-request="{{ __SELF__ }}::onLogout" class="optional-btn">
+    <i class="bx bx-log-in"></i>{{ 'Sair' |_ }}<span></span>
+</a>
+{% else %}
+<a href="{{ 'login' | page }}" class="optional-btn">
+    <i class="bx bx-log-in"></i>{{ 'Log In' | _ }}<span></span>
+</a>
+{% endif %}

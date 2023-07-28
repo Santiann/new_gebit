@@ -1,0 +1,33 @@
+{% for post in posts %}
+<div class="col-12 col-md-3 mb-5">
+    <a href="{{ 'blog/internal' | page({slug: post.slug}) }}">
+        <div class="card">
+            {% set image = post.featured_images.first %}
+            <img
+                data-src="{{ image.filename }}"
+                src="{{ image | resize(263, 171, { mode: 'crop' }) }}"
+                class="card-img-top"
+                alt="{{ post.title }}">
+            <div class="card-body p-4">
+              <h5 class="card-title h24 fmedium">{{ (post.title|length > 80 ? post.title|slice(0, 80) ~ '…' : post.title)  }}</h5>
+              <p class="card-text h13">{{ post.summary|raw }}</p>
+            </div>
+            <hr class="mx-3 my-0" style="border-style: dashed;">
+            <div class="author d-flex align-items-center justify-content-between p-4">
+              <div class="d-flex align-items-center">
+                <img src="{{ 'assets/img/author-image.png'|theme }}" alt="Dealix - Author name">
+                <div class="author-content ml-2">
+                    <h3 class="mb-0 fmedium text-black">por Equipe Dealix</h3>
+                    <h5 class="mb-0 text-cinza-100">Gestão de contratos</h5>
+                </div>
+              </div>
+              <h4 class="text-primary fmedium">6MIN</h4>
+            </div>
+        </div>
+    </a>
+</div>
+{% else %}
+    <div class="container" style="text-align: center;">
+        <h4>{{ __SELF__.noPostsMessage }}</h4>
+    </div>
+{% endfor %}

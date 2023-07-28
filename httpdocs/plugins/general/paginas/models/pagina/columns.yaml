@@ -1,0 +1,17 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    ordem :
+        label : Ordem
+        searchable : true
+
+    title :
+        label : Title
+        searchable : true
+
+    identifier :
+        label : Identificador
+        searchable : true

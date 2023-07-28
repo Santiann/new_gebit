@@ -1,0 +1,56 @@
+<?php foreach ($items as $pageObj): ?>
+    <?php
+        $fileName       = $pageObj->page->getBaseFileName();
+        $pageTitle      = array_get($pageObj->page->settings,'title');
+        $pageUrl        = array_get($pageObj->page->settings,'url');
+
+        $groupStatus    = $this->getGroupStatus($fileName);
+        $dataId         = $this->dataIdPrefix.'-'.$fileName;
+
+        $subModule      = $pageObj->modules;
+        $subPages       = $pageObj->subpages;
+        $hasSubmenu     = (count($subModule) + count($subPages)) > 0;
+        $urlDestination = Backend::url('general/paginas/conteudo/carregar/'.$fileName);
+        $isActive       = $urlDestination == Request::url();
+    ?>
+    <li
+        class="page-item <?= $hasSubmenu ? ' has-subitems' : null ?> <?= $isActive ? 'active' : null ?>"
+        data-status="<?= $groupStatus ? 'expanded' : 'collapsed' ?>"
+        data-group-id="<?= e($fileName) ?>"
+        data-item-path="<?= e($fileName) ?>"
+        data-no-drag-mode
+        data-id="<?= e($dataId) ?>"
+    >
+        <div class="inside-container" >
+
+            <a>
+                <?= $pageTitle ?>
+                <span class="comment" ><?= $pageUrl ?></span>
+            </a>
+
+            <div class="action-bar">
+                <a class="action-link oc-icon-pencil" href="<?= $urlDestination ?>"></a>
+            </div>
+
+            <input class="status-holder" type="hidden" name="object[<?= e($fileName) ?>]" value="0"/>
+
+        </div>
+
+        <?php if($hasSubmenu): ?>
+
+        <ol class="subitens" style="<?= $groupStatus ? 'display:block' : 'display:none' ?>" data-hide="<?= $groupStatus ? 'false' : 'true' ?>">
+
+            <?php if ($subModule): ?>
+                <?= $this->makePartial('modulesbranch', ['items' => $subModule, 'currentUrlId' => $currentUrlId]) ?>
+            <?php endif ?>
+
+            <?php if ($subPages): ?>
+            <?= $this->makePartial('treebranch', ['items' => $subPages, 'currentUrlId' => $currentUrlId]) ?>
+            <?php endif ?>
+
+        </ol>
+
+        <?php endif; ?>
+
+    </li>
+<?php endforeach ?>

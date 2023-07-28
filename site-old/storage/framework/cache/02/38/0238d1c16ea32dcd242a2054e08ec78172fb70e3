@@ -1,0 +1,41 @@
+1660050883a:1:{s:9:"login.htm";a:12:{s:8:"fileName";s:9:"login.htm";s:7:"content";s:457:"title = "Log-In"
+url = "/login/:plan_id?:reset?"
+layout = "default"
+
+[viewBag]
+activeMenu = "login"
+
+[account loginForm]
+redirect = "home"
+
+[resetPassword resetPasswordForm]
+
+[newsSubscribe newsletterForm]
+category = 1
+
+==
+
+function onStart()
+{
+    if (\Auth::user() && !get('reset')) {
+        return \Redirect::to('/');
+    }
+}
+
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+{% component 'loginForm' %}
+
+{% component 'newsletterForm' %}
+";s:5:"mtime";i:1623966623;s:6:"markup";s:121:"{% partial 'common/header' menuClass="navbar-style-two" %}
+
+{% component 'loginForm' %}
+
+{% component 'newsletterForm' %}";s:4:"code";s:105:"function onStart()
+{
+    if (\Auth::user() && !get('reset')) {
+        return \Redirect::to('/');
+    }
+}";s:5:"title";s:6:"Log-In";s:3:"url";s:23:"/login/:plan_id?:reset?";s:6:"layout";s:7:"default";s:7:"viewBag";a:1:{s:10:"activeMenu";s:5:"login";}s:17:"account loginForm";a:1:{s:8:"redirect";s:4:"home";}s:31:"resetPassword resetPasswordForm";a:0:{}s:28:"newsSubscribe newsletterForm";a:1:{s:8:"category";s:1:"1";}}}

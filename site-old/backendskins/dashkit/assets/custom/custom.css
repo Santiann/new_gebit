@@ -1,0 +1,32 @@
+.field-multilingual.field-multilingual-text .ml-btn {
+    right: 26px !important;
+    top: 100% !important;
+    margin-top: -43px !important;
+    height: 44px !important;
+}
+
+[data-control="multilingual"] {
+    padding: 0;
+}
+
+[data-control="mlricheditor"] {
+    padding: 0;
+}
+
+#MLRichEditor-formContent-mlControl-content > ul {
+    width: 150px;
+}
+
+.field-multilingual.field-multilingual-richeditor .ml-btn {
+    right: 26px !important;
+    top: 76px !important;
+    margin-top: -43px !important;
+    height: 44px !important;
+}
+
+.field-multilingual.field-multilingual-textarea .ml-btn {
+    right: 26px !important;
+    top: 60% !important;
+    margin-top: -43px !important;
+    height: 44px !important;
+}

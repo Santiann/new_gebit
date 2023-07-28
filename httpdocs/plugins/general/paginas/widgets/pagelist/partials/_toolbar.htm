@@ -1,0 +1,21 @@
+<div class="layout-row min-size">
+    <div class="control-toolbar toolbar-padded">
+
+        <!-- Page Search -->
+        <div class="relative toolbar-item loading-indicator-container size-input-text">
+            <input
+                type="text"
+                name="search"
+                value="<?= e($this->getSearchTerm()) ?>"
+                class="form-control icon search" autocomplete="off"
+                placeholder="<?= e(trans('general.paginas::lang.sidebar.search')) ?>"
+                data-track-input
+                data-load-indicator
+                data-load-indicator-opaque
+                data-request-success="$('<?= '#'.$this->getId('delete-button') ?>').trigger('oc.triggerOn.update')"
+                data-request="<?= $this->getEventHandler('onSearch') ?>"
+            />
+        </div>
+
+    </div>
+</div>

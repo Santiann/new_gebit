@@ -1,0 +1,20 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+{{useSoftDeletes}}
+class DummyClass extends Model
+{
+    {{softDeletes}}
+
+    protected $table = '{{table}}';
+
+    //public $timestamps = false;
+
+    {{primaryKey}}
+
+    protected $fillable = {{fillable}};
+
+    {{relationships}}
+}

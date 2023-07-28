@@ -1,0 +1,336 @@
+1690349936a:1:{s:9:"about.htm";a:9:{s:8:"fileName";s:9:"about.htm";s:7:"content";s:8112:"title = "Sobre"
+url = "/sobre"
+layout = "default"
+
+[viewBag]
+localeUrl[en] = "/about"
+==
+
+{variable tab="O que Fazemos" type="text" name="oqfSpan" label="Span" span="left"}{/variable}
+{variable tab="O que Fazemos" type="richeditor" name="oqffTitle" label="Título" span="right"}{/variable}
+{variable tab="O que Fazemos" type="textarea" name="oqfSubTitle" label="Sub Título" span="left"}{/variable}
+
+<div class="container o-que-fazemos">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-4  mb-5 mb-md-0 pb-5 pb-md-0">
+            <div class="destaque">
+                <span class="h22 text-uppercase">{{ oqfSpan }}</span>
+                <h1 class="h61 fmedium">{{ oqffTitle | raw }}</span></h1>
+                <p class="h020 pr-5">{{ oqfSubTitle | raw }}</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mx-auto d-flex align-items-center justify-content-center">
+            <div class="services">
+                <div class="service px-4 d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="icom rounded-circle bg-primary d-flex align-items-center justify-content-center">
+                        <img src="{{ 'assets/img/service-icon.svg'|theme }}" alt="Icone Serviço">
+                    </div>
+                    <span class="text-primary h16 fmedium mb-2 mt-5">{{ 'Ativo' | _ }}</span>
+                    <h1 class="h31 fsemi-bold">{{ 'Serviços de Comunicação' | _ }}</h1>
+                    <p class="h14">{{ 'Prestação de Serviço' | _ }}</p>
+                    <div class="s-body d-flex align-items-center justify-content-between my-2">
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Contrato' | _ }}</h5>
+                            <h3 class="h17 text-black">3820212873</h3>
+                        </div>
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Finaliza em' | _ }}</h5>
+                            <h3 class="h17 text-black">{{ '24 Fev 2021' | _ }}</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary btn-lg f-semi-bold">{{ 'Gerenciar Contrato' | _ }}</a>
+                </div>
+                <div class="service"></div>
+                <div class="service"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mt-5 mt-md-0 pt-5 pt-md-0">
+           <div class="d-flex align-items-center mb-4">
+                <img src="{{ 'assets/img/foto-about-1.png'|theme }}" alt="Rafael Santos">
+                <div class="ml-3">
+                    <h3 class="h15 fsemi-bold">{{ 'Rafael Santos' | _ }}</h3>
+                    <p class="h15 mb-0">{{ 'Adicionou um contrato em colaboracão com você.' | _ }}</p>
+                </div>
+           </div>
+           <div class="d-flex align-items-center">
+                <img src="{{ 'assets/img/about-foto-2.png'|theme }}" alt="Rafael Santos">
+                <div class="ml-3">
+                    <h3 class="h15 fsemi-bold">{{ 'Rafael Santos' | _ }}</h3>
+                    <p class="h15 mb-0">{{ 'Adicionou um contrato em colaboracão com você.' | _ }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="image">
+    <img src="{{ 'assets/img/about-effect.svg'|theme }}" alt="Dealix">
+</div>
+
+<!-- controle-seu-negocio -->
+{variable tab="Negócio" type="richeditor" name="ngTitle" label="Título" span="right"}{/variable}
+{variable tab="Negócio" type="textarea" name="ngSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="negocios" tab="Negócio" prompt="Adicionar"}
+    {variable type="text" name="title" label="Título" span="left"}{/variable}
+    {variable type="text" name="description" label="Descrição" span="left"}{/variable}
+{/repeater}
+
+<div class="container controle-seu-negocio">
+    <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
+        <h4 class="h22 text-uppercase text-cinza-100">{{ ngTitle | raw }}</h4>
+        <h1 class="h47 fsemi-bold">{{ ngSubTitle | raw }}</h1>
+    </div>
+    <div class="row mt-4">
+        {% for item in negocios %}
+            <div class="col-12 col-md-4">
+                <h1 class="h35 text-extra2">{{ item.title }}</h1>
+                <p class="h20">
+                    {{ item.description }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Status -->
+{variable tab="Status" type="richeditor" name="stTitle" label="Título" span="right"}{/variable}
+{variable tab="Status" type="richeditor" name="stSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="status" tab="Status" prompt="Adicionar"}
+    {variable type="text" name="title" label="Título" span="right"}{/variable}
+    {variable type="richeditor" name="description" label="Descrição" span="left"}{/variable}
+{/repeater}
+
+<div class="bg-primary text-white numeros">
+    <div class="container">
+        <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
+            <h1 class="h47 bold">{{ stTitle | raw }}</h1>
+            <h4 class="h23">{{ stSubTitle | raw }}</h4>
+        </div>
+        <div class="row mt-5">
+            {% for item in status %}
+                <div class="col-12 col-md-3">
+                    <h1 class="h68 fmedium">{{ item.title }}</h1>
+                    <h5 class="h30 fmedium">{{ item.description | raw }}</h5>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Parceiros -->
+{variable tab="Parceiros" type="richeditor" name="mpTitle" label="Título" span="right"}{/variable}
+{variable tab="Parceiros" type="richeditor" name="mpSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="parceiros" tab="Parceiros" prompt="Adicionar"}
+    {variable type="mediafinder" name="image" label="Image" span="right"}{/variable}
+    {variable type="text" name="name" label="Nome" span="left"}{/variable}
+{/repeater}
+
+<div class="container mb-5">
+    <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row pb-5">
+        <h1 class="h40 fmedium">{{ mpTitle | raw }}</span></h1>
+        <h4 class="h29 fmedium">{{ mpSubTitle | raw }}</h4>
+    </div>
+    <div class="row jobs mt-5 align-items-center">
+        {% for parceiro in parceiros %}
+            <div class="col-6 col-md-2 mb-4 mb-mb-0">
+                <img class="img-fluid" src="{{ parceiro.image | media }}" alt="{{ parceiro.name }}">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% partial 'common/especialista.htm' %}
+
+{variable tab="Depoimentos" type="text" name="dpSpan" label="Span" span="left"}{/variable}
+{variable tab="Depoimentos" type="richeditor" name="dpTitle" label="Título" span="right"}{/variable}
+{variable tab="Depoimentos" type="textarea" name="dpSubTitle" label="Sub Título" span="left"}{/variable}
+
+<div class="container depoimentos">
+    <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row dep">
+        <div class="">
+            <span class="h18 text-uppercase text-cinza-100">{{ dpSpan }}</span>
+            <h1 class="h40 fmedium">{{ dpTitle | raw }}</span></h1>
+        </div>
+        <h4 class="h29">{{ dpSubTitle | raw }}</h4>
+    </div>
+
+    {repeater name="despoimentos" tab="Depoimentos" prompt="Adicionar Item"}
+        {variable type="mediafinder" name="image" label="Icone" span="right"}{/variable}
+        {variable type="richeditor" name="title" label="Título" span="left"}{/variable}
+        {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+        {variable type="text" name="nome" label="nome" span="left"}{/variable}
+    {/repeater}
+
+    <div class="row comments justify-content-between">
+        {% for depoimento in despoimentos %}
+            {% partial 'comments/comment.htm' item=depoimento %}
+        {% endfor %}
+    </div>
+</div>
+";s:5:"mtime";i:1689760851;s:6:"markup";s:8021:"{variable tab="O que Fazemos" type="text" name="oqfSpan" label="Span" span="left"}{/variable}
+{variable tab="O que Fazemos" type="richeditor" name="oqffTitle" label="Título" span="right"}{/variable}
+{variable tab="O que Fazemos" type="textarea" name="oqfSubTitle" label="Sub Título" span="left"}{/variable}
+
+<div class="container o-que-fazemos">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-4  mb-5 mb-md-0 pb-5 pb-md-0">
+            <div class="destaque">
+                <span class="h22 text-uppercase">{{ oqfSpan }}</span>
+                <h1 class="h61 fmedium">{{ oqffTitle | raw }}</span></h1>
+                <p class="h020 pr-5">{{ oqfSubTitle | raw }}</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mx-auto d-flex align-items-center justify-content-center">
+            <div class="services">
+                <div class="service px-4 d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="icom rounded-circle bg-primary d-flex align-items-center justify-content-center">
+                        <img src="{{ 'assets/img/service-icon.svg'|theme }}" alt="Icone Serviço">
+                    </div>
+                    <span class="text-primary h16 fmedium mb-2 mt-5">{{ 'Ativo' | _ }}</span>
+                    <h1 class="h31 fsemi-bold">{{ 'Serviços de Comunicação' | _ }}</h1>
+                    <p class="h14">{{ 'Prestação de Serviço' | _ }}</p>
+                    <div class="s-body d-flex align-items-center justify-content-between my-2">
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Contrato' | _ }}</h5>
+                            <h3 class="h17 text-black">3820212873</h3>
+                        </div>
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Finaliza em' | _ }}</h5>
+                            <h3 class="h17 text-black">{{ '24 Fev 2021' | _ }}</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary btn-lg f-semi-bold">{{ 'Gerenciar Contrato' | _ }}</a>
+                </div>
+                <div class="service"></div>
+                <div class="service"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mt-5 mt-md-0 pt-5 pt-md-0">
+           <div class="d-flex align-items-center mb-4">
+                <img src="{{ 'assets/img/foto-about-1.png'|theme }}" alt="Rafael Santos">
+                <div class="ml-3">
+                    <h3 class="h15 fsemi-bold">{{ 'Rafael Santos' | _ }}</h3>
+                    <p class="h15 mb-0">{{ 'Adicionou um contrato em colaboracão com você.' | _ }}</p>
+                </div>
+           </div>
+           <div class="d-flex align-items-center">
+                <img src="{{ 'assets/img/about-foto-2.png'|theme }}" alt="Rafael Santos">
+                <div class="ml-3">
+                    <h3 class="h15 fsemi-bold">{{ 'Rafael Santos' | _ }}</h3>
+                    <p class="h15 mb-0">{{ 'Adicionou um contrato em colaboracão com você.' | _ }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="image">
+    <img src="{{ 'assets/img/about-effect.svg'|theme }}" alt="Dealix">
+</div>
+
+<!-- controle-seu-negocio -->
+{variable tab="Negócio" type="richeditor" name="ngTitle" label="Título" span="right"}{/variable}
+{variable tab="Negócio" type="textarea" name="ngSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="negocios" tab="Negócio" prompt="Adicionar"}
+    {variable type="text" name="title" label="Título" span="left"}{/variable}
+    {variable type="text" name="description" label="Descrição" span="left"}{/variable}
+{/repeater}
+
+<div class="container controle-seu-negocio">
+    <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
+        <h4 class="h22 text-uppercase text-cinza-100">{{ ngTitle | raw }}</h4>
+        <h1 class="h47 fsemi-bold">{{ ngSubTitle | raw }}</h1>
+    </div>
+    <div class="row mt-4">
+        {% for item in negocios %}
+            <div class="col-12 col-md-4">
+                <h1 class="h35 text-extra2">{{ item.title }}</h1>
+                <p class="h20">
+                    {{ item.description }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Status -->
+{variable tab="Status" type="richeditor" name="stTitle" label="Título" span="right"}{/variable}
+{variable tab="Status" type="richeditor" name="stSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="status" tab="Status" prompt="Adicionar"}
+    {variable type="text" name="title" label="Título" span="right"}{/variable}
+    {variable type="richeditor" name="description" label="Descrição" span="left"}{/variable}
+{/repeater}
+
+<div class="bg-primary text-white numeros">
+    <div class="container">
+        <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
+            <h1 class="h47 bold">{{ stTitle | raw }}</h1>
+            <h4 class="h23">{{ stSubTitle | raw }}</h4>
+        </div>
+        <div class="row mt-5">
+            {% for item in status %}
+                <div class="col-12 col-md-3">
+                    <h1 class="h68 fmedium">{{ item.title }}</h1>
+                    <h5 class="h30 fmedium">{{ item.description | raw }}</h5>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Parceiros -->
+{variable tab="Parceiros" type="richeditor" name="mpTitle" label="Título" span="right"}{/variable}
+{variable tab="Parceiros" type="richeditor" name="mpSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="parceiros" tab="Parceiros" prompt="Adicionar"}
+    {variable type="mediafinder" name="image" label="Image" span="right"}{/variable}
+    {variable type="text" name="name" label="Nome" span="left"}{/variable}
+{/repeater}
+
+<div class="container mb-5">
+    <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row pb-5">
+        <h1 class="h40 fmedium">{{ mpTitle | raw }}</span></h1>
+        <h4 class="h29 fmedium">{{ mpSubTitle | raw }}</h4>
+    </div>
+    <div class="row jobs mt-5 align-items-center">
+        {% for parceiro in parceiros %}
+            <div class="col-6 col-md-2 mb-4 mb-mb-0">
+                <img class="img-fluid" src="{{ parceiro.image | media }}" alt="{{ parceiro.name }}">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% partial 'common/especialista.htm' %}
+
+{variable tab="Depoimentos" type="text" name="dpSpan" label="Span" span="left"}{/variable}
+{variable tab="Depoimentos" type="richeditor" name="dpTitle" label="Título" span="right"}{/variable}
+{variable tab="Depoimentos" type="textarea" name="dpSubTitle" label="Sub Título" span="left"}{/variable}
+
+<div class="container depoimentos">
+    <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row dep">
+        <div class="">
+            <span class="h18 text-uppercase text-cinza-100">{{ dpSpan }}</span>
+            <h1 class="h40 fmedium">{{ dpTitle | raw }}</span></h1>
+        </div>
+        <h4 class="h29">{{ dpSubTitle | raw }}</h4>
+    </div>
+
+    {repeater name="despoimentos" tab="Depoimentos" prompt="Adicionar Item"}
+        {variable type="mediafinder" name="image" label="Icone" span="right"}{/variable}
+        {variable type="richeditor" name="title" label="Título" span="left"}{/variable}
+        {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+        {variable type="text" name="nome" label="nome" span="left"}{/variable}
+    {/repeater}
+
+    <div class="row comments justify-content-between">
+        {% for depoimento in despoimentos %}
+            {% partial 'comments/comment.htm' item=depoimento %}
+        {% endfor %}
+    </div>
+</div>";s:4:"code";N;s:5:"title";s:5:"Sobre";s:3:"url";s:6:"/sobre";s:6:"layout";s:7:"default";s:7:"viewBag";a:1:{s:9:"localeUrl";a:1:{s:2:"en";s:6:"/about";}}}}

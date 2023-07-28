@@ -1,0 +1,17 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: dealix.faqs::lang.faq.title
+list: @/plugins/dealix/faqs/models/faqs/columns.yaml
+modelClass: Dealix\faqs\Models\Faq
+recordUrl: dealix/faqs/faqs/update/:id
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+noRecordsMessage: backend::lang.list.no_records
+
+toolbar:
+    buttons: @/plugins/dealix/faq/controllers/faqs/_list_toolbar.htm
+    search:
+        prompt: backend::lang.list.search_prompt

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Assinatura
+
+# Model Form Field configuration
+form: $/dealix/planos/models/assinatura/fields.yaml
+
+# Model Class name
+modelClass: Dealix\Planos\Models\Assinatura
+
+# Default redirect location
+defaultRedirect: dealix/planos/assinaturas
+
+# Create page
+create:
+    title: Criar assinatura
+    redirect: dealix/planos/assinaturas/update/:id
+    redirectClose: dealix/planos/assinaturas
+
+# Update page
+update:
+    title: Editar assinatura
+    redirect: dealix/planos/assinaturas
+    redirectClose: dealix/planos/assinaturas
+
+# Preview page
+preview:
+    title: Visualizar assinatura

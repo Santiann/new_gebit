@@ -1,0 +1,7 @@
+questions:
+  label:  Questões
+  view :
+      list: plugins/dealix/faq/models/question/columns.yaml
+      toolbarButtons: create|delete
+  manage :
+      form: plugins/dealix/faq/models/question/fields.yaml

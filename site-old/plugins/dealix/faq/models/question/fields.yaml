@@ -1,0 +1,34 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    title:
+        label: Título da Questão
+        span : left
+
+    seo_slug:
+        label : Link
+        span : right
+        preset :
+            field : title
+            type : slug
+
+    description:
+        label : Descrição
+        type : textarea
+        size : small
+
+    body:
+        label: Conteudo
+        type: richeditor
+
+    publicado :
+        label : Publicado
+        type : switch
+
+#    childs:
+#        label: Categories
+#        type: relation
+#        nameFrom: title

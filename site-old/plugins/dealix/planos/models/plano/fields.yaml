@@ -1,0 +1,40 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    nome :
+        label : Nome do plano
+        type : text
+        required : true
+    valor :
+        label : Valor (R$)
+        type : text
+        required : true
+        comment: 'Insira o valor no formato 00.00 (Exemplo: 49.00)'
+        cssClass: col-md-6 col-12
+    credits :
+        label : Quantidade de créditos
+        type : number
+        required : false
+        cssClass: col-md-6 col-12
+    publicado :
+        label : Publica&ccedil;&atilde;o
+        type : switch
+        tab : Conteudo
+        containerAttributes :
+            style : 'width: 50%'
+    is_monthly :
+        label : Plano mensal
+        type : switch
+        containerAttributes :
+            style : 'width: 50%'
+    features:
+        label: Itens do plano
+        type: repeater
+        prompt: Novo item
+        form:
+            fields:
+                description:
+                    label: Item do plano
+                    type: text

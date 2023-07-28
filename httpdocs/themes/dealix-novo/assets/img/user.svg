@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3200" height="3200" viewBox="0 0 3200 3200">
+  <g id="Grupo_58" data-name="Grupo 58" transform="translate(49.885 627)" opacity="0.13">
+    <g id="Elipse_24" data-name="Elipse 24" transform="translate(1153.115 373)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="721.5" cy="721.5" r="721.5" stroke="none"/>
+      <circle cx="721.5" cy="721.5" r="721" fill="none"/>
+    </g>
+    <g id="Elipse_25" data-name="Elipse 25" transform="translate(912.115 173)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="962.5" cy="962.5" r="962.5" stroke="none"/>
+      <circle cx="962.5" cy="962.5" r="962" fill="none"/>
+    </g>
+    <g id="Elipse_26" data-name="Elipse 26" transform="translate(672.115 -27)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="1000" cy="1000" r="1000" stroke="none"/>
+      <circle cx="1000" cy="1000" r="999.5" fill="none"/>
+    </g>
+    <g id="Elipse_27" data-name="Elipse 27" transform="translate(431.115 -227)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="1200" cy="1200" r="1200" stroke="none"/>
+      <circle cx="1200" cy="1200" r="1199.5" fill="none"/>
+    </g>
+    <g id="Elipse_28" data-name="Elipse 28" transform="translate(190.115 -427)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="1400" cy="1400" r="1400" stroke="none"/>
+      <circle cx="1400" cy="1400" r="1399.5" fill="none"/>
+    </g>
+    <g id="Elipse_29" data-name="Elipse 29" transform="translate(-49.885 -627)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="1600" cy="1600" r="1600" stroke="none"/>
+      <circle cx="1600" cy="1600" r="1599.5" fill="none"/>
+    </g>
+  </g>
+</svg>

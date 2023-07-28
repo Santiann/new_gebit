@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    
+    <script>
+        // Ignore this in your implementation
+        window.isMbscDemo = true;
+    </script>
+
+    <title>Multiple day selection</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-multiple-day-selection">
+    
+    <div mbsc-form>
+        <div class="mbsc-grid">
+            <div class="mbsc-row">
+                
+                <div class="mbsc-col-sm-12 mbsc-col-md-4">
+                    <div class="mbsc-form-group">                        
+                        <div id="demo-max-days"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+        
+</div>
+
+<script>
+
+    mobiscroll.settings = {
+        lang: 'pt-BR',                       // Specify language like: lang: 'pl' or omit setting to use default
+        theme: 'ios'                         // Specify theme like: theme: 'ios' or omit setting to use default
+    };
+    
+    $(function () {
+    
+       
+        // Mobiscroll Calendar initialization
+        $('#demo-max-days').mobiscroll().calendar({
+            display: 'inline',               // Specify display mode like: display: 'bottom' or omit setting to use default
+            select: 5,                       // More info about select: https://docs.mobiscroll.com/4-8-3/calendar#opt-select
+            headerText: 'Selecione 5 dias'  // More info about headerText: https://docs.mobiscroll.com/4-8-3/calendar#opt-headerText
+			,defaultValue: [ 
+				new Date('2019-10-23'), 
+				new Date('2019-10-02')
+			]
+			,onShow: function (event, inst) {
+				 $(".mbsc-cal-day-i").contents("div:not('.mbsc-cal-day-date')").hide()
+			}			
+			
+			,onSetDate: function (event, inst) {
+				 console.log('onSetDate',event, inst);
+				 console.log($('#demo-max-days').mobiscroll('getVal'));
+			}
+        });
+    
+        
+    
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+description = "Default layout"
+[localePicker]
+
+[session loginButton]
+
+==
+
+<!DOCTYPE html>
+
+{% placeholder head default %}
+{% partial 'common/head' %}
+{% endplaceholder %}
+
+<body>
+
+    <!-- Start Preloader Area -->
+    <div class="preloader-area">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+
+    <!-- Content -->
+    {% page %}
+
+    <!-- Footer -->
+    {% placeholder footer default %}
+    {% partial 'common/footer' %}
+    {% endplaceholder %}
+
+    {% scripts %}
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+title = "Checkout"
+url = "/checkout/:plan_id"
+layout = "default"
+
+[session]
+
+[account registerForm]
+
+[checkout]
+uploader_enable = true
+messages_success = "Seu cadastro foi finalizado com sucesso."
+group = "Cadastro"
+
+[newsSubscribe newsletterForm]
+category = 1
+
+[selectedPlan]
+
+==
+public function onStart()
+{
+    $plan_id = $this->param('plan_id');
+    $plan = \Dealix\Planos\Models\Plano::where('pagarme_id', $plan_id)->first();
+
+    if (!$plan) {
+        return \Redirect::to('pricing');
+    }
+}
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+{% if user %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Checkout' |_ }}</h2>
+            <!-- <p>The Strax Story</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Checkout Steps Area -->
+<div class="checkout-steps-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="row justify-content-end step-one">
+                    <i class='bx bxs-check-square'></i> {{ 'Cadastro' |_ }}
+                </div>
+            </div>
+            <div class="col-6 text-start">
+                <div class="row justify-content-start step-two">
+                    <i class='bx bxs-right-arrow-circle'></i> {{ 'Checkout' |_ }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Checkout Steps Area -->
+
+<!-- Start Checkout Area -->
+<section class="checkout-area">
+    <div class="container">
+
+        <div class="contact-inner">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center contact-features-list">
+                    <div class="logo">
+                        <a href="{{ 'home' | page }}"><img src="{{ 'assets/img/logo-dealix-vertical.png' | theme }}" alt="Dealix"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 pt-sm-100">
+                    <div class="checkout-form">
+                        {# <h3>{{ 'Finalize sua compra' | _ }}</h3> #}
+                        {% component 'checkout' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Checkout Area -->
+
+{% else %}
+
+<div class="checkout-steps-area mt-5 mb-5">
+    <div class="container mb-5">
+        <div class="contact-inner" >
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-md-12">
+                    <small>{{ 'Verifique seu e-mail e ative sua conta para prosseguir.' }}</small>
+                    <br>
+                    <br>
+                    <a href="javascript:location.reload()" class="btn btn-success btn-sm">{{ 'Já ativei a minha conta' | _ }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}

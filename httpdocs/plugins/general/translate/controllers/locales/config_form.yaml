@@ -1,0 +1,7 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+form: ~/plugins/general/translate/models/locale/fields.yaml
+modelClass: General\Translate\Models\Locale
+defaultRedirect: general/translate/locales

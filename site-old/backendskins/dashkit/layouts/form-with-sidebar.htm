@@ -1,0 +1,33 @@
+<div class="layout responsive-sidebar">
+    <div class="row">
+        <div class="col-12 col-xl-9">
+
+            <div class="layout">
+                <?php Block::put('breadcrumb') ?>
+                <?php if ($breadcrumbContent = Block::placeholder('breadcrumb')): ?>
+                <!-- Breadcrumb -->
+                <div class="control-breadcrumb breadcrumb-flush">
+                    <?= $breadcrumbContent ?>
+                </div>
+                <?php endif ?>
+                <?php Block::endPut() ?>
+
+
+                <!-- Content -->
+                <div class="layout-row">
+                    <div class="padded-container layout">
+                        <?= Block::placeholder('form-contents') ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <?= Block::placeholder('form-sidebar') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

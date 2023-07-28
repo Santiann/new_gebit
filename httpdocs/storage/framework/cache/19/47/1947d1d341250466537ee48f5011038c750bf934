@@ -1,0 +1,219 @@
+1690497490a:1:{s:19:"register/fields.htm";a:5:{s:8:"fileName";s:19:"register/fields.htm";s:7:"content";s:7218:"<div id="form_fields">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item w-50 text-center">
+        <a class="nav-link active" id="home-pf" data-toggle="tab" href="#pf" role="tab" aria-controls="pf" aria-selected="true">{{ 'Pessoa Física' | _ }}</a>
+        </li>
+        <li class="nav-item w-50 text-center">
+        <a class="nav-link" id="profile-pj" data-toggle="tab" href="#pj" role="tab" aria-controls="pf" aria-selected="false">{{ 'Pessoa Jurídica' | _ }}</a>
+        </li>
+    </ul>
+    <div class="tab-content mt-3" id="myTabContent">
+        <div class="tab-pane fade show active" id="pf" role="tabpanel" aria-labelledby="home-pf">
+            {% if canRegister %}
+            {{ form_ajax('onRegister', {id: 'registerForm', 'data-toggle': 'validator', 'role': 'form'}) }}
+                {{ form_token() }}
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="name" required="">
+                    <label class="form-control-placeholder" for="nome">{{ 'Nome' | _ }}</label>
+                </div>
+                <div class="form-group mt-3 bg-cinza2 rounded d-flex align-items-center justify-content-between p-3 px-4">
+                    <h4 class="h15 mb-0 ml-2">{{ 'Não sou brasileiro' | _ }}</h4>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="a001_cpf" data-minlength="14" data-maxlength="14" data-mask="000.000.000-00" data-mask-reverse="true" required="">
+                    <label class="form-control-placeholder" for="cpf">{{ 'CPF' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" data-minlength="13" data-mask="(00) 000000000" required="">
+                    <label class="form-control-placeholder" for="telefone">{{ 'Telefone de contato' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" name="email" class="form-control" required="">
+                    <label class="form-control-placeholder" for="email">{{ 'E-mail' | _ }}</label>
+                </div>
+                <div class="form-group">
+                    <input id="password-field" name="password" type="password" class="form-control" required="">
+                    <label class="form-control-placeholder" for="password">{{ 'Senha' | _ }}</label>
+                    <span toggle="#password-field" id="toggle-password" class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-cinza form-control btn btn-primary rounded submit px-3">{{ 'Continuar' | _ }}</button>
+                </div>
+                <div class="form-group text-center">
+                    <div class="w-100 text-left d-none">
+                        <label class="checkbox-wrap checkbox-primary mb-0">{{ 'Remember Me' | _ }}
+                            <input type="checkbox" checked="">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="w-100 text-center">
+                        <p class="h14">{{ 'Ao clicar em me cadastrar eu aceito os ' | _ }}<a href="#" class="text-black">{{ 'termos de serviço' | _ }}</a> e a <a href="#" class="text-black">política de privacidade.</a></p>
+                    </div>
+                </div>
+            {{ form_close() }}
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="pj" role="tabpanel" aria-labelledby="profile-pj">
+            {% if canRegister %}
+            {{ form_ajax('onRegister', {id: 'registerForm', 'data-toggle': 'validator', 'role': 'form'}) }}
+                {{ form_token() }}
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="name" required="">
+                    <label class="form-control-placeholder" for="nome_empresa">{{ 'Nome da Empresa' | _ }}</label>
+                </div>
+                <div class="form-group mt-3 bg-cinza2 rounded d-flex align-items-center justify-content-between p-3 px-4">
+                    <h4 class="h15 mb-0 ml-2">{{ 'Registrado fora do Brasil' | _ }}</h4>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" id="a005_cnpj" name="a005_cnpj" required="">
+                    <label class="form-control-placeholder" for="a005_cnpj">{{ 'CNPJ' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="a005_fone" required="">
+                    <label class="form-control-placeholder" for="telefone">{{ 'Telefone de contato' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="email" required="">
+                    <label class="form-control-placeholder" for="email">{{ 'E-mail' | _ }}</label>
+                </div>
+                <div class="form-group">
+                    <input id="password-field1" type="password" name="password" class="form-control" required="">
+                    <label class="form-control-placeholder" for="password">{{ 'Senha' | _ }}</label>
+                    <span toggle="#password-field1" id="toggle-password1" class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-cinza form-control btn btn-primary rounded submit px-3">{{ 'Continuar' | _ }}</button>
+                </div>
+                <div class="form-group text-center">
+                    <div class="w-100 text-left d-none">
+                        <label class="checkbox-wrap checkbox-primary mb-0">{{ 'Remember Me' | _ }}
+                            <input type="checkbox" checked="">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="w-100 text-center">
+                        <p class="h14">{{ 'Ao clicar em me cadastrar eu aceito os' | _ }} <a href="#" class="text-black">{{ 'termos de serviço' | _ }}</a> e a <a href="#" class="text-black">{{ 'política de privacidade.' | _ }}</a></p>
+                    </div>
+                </div>
+            {{ form_close() }}
+            {% endif %}
+        </div>
+    </div>
+</div>";s:5:"mtime";i:1689760851;s:6:"markup";s:7218:"<div id="form_fields">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item w-50 text-center">
+        <a class="nav-link active" id="home-pf" data-toggle="tab" href="#pf" role="tab" aria-controls="pf" aria-selected="true">{{ 'Pessoa Física' | _ }}</a>
+        </li>
+        <li class="nav-item w-50 text-center">
+        <a class="nav-link" id="profile-pj" data-toggle="tab" href="#pj" role="tab" aria-controls="pf" aria-selected="false">{{ 'Pessoa Jurídica' | _ }}</a>
+        </li>
+    </ul>
+    <div class="tab-content mt-3" id="myTabContent">
+        <div class="tab-pane fade show active" id="pf" role="tabpanel" aria-labelledby="home-pf">
+            {% if canRegister %}
+            {{ form_ajax('onRegister', {id: 'registerForm', 'data-toggle': 'validator', 'role': 'form'}) }}
+                {{ form_token() }}
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="name" required="">
+                    <label class="form-control-placeholder" for="nome">{{ 'Nome' | _ }}</label>
+                </div>
+                <div class="form-group mt-3 bg-cinza2 rounded d-flex align-items-center justify-content-between p-3 px-4">
+                    <h4 class="h15 mb-0 ml-2">{{ 'Não sou brasileiro' | _ }}</h4>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="a001_cpf" data-minlength="14" data-maxlength="14" data-mask="000.000.000-00" data-mask-reverse="true" required="">
+                    <label class="form-control-placeholder" for="cpf">{{ 'CPF' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" data-minlength="13" data-mask="(00) 000000000" required="">
+                    <label class="form-control-placeholder" for="telefone">{{ 'Telefone de contato' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" name="email" class="form-control" required="">
+                    <label class="form-control-placeholder" for="email">{{ 'E-mail' | _ }}</label>
+                </div>
+                <div class="form-group">
+                    <input id="password-field" name="password" type="password" class="form-control" required="">
+                    <label class="form-control-placeholder" for="password">{{ 'Senha' | _ }}</label>
+                    <span toggle="#password-field" id="toggle-password" class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-cinza form-control btn btn-primary rounded submit px-3">{{ 'Continuar' | _ }}</button>
+                </div>
+                <div class="form-group text-center">
+                    <div class="w-100 text-left d-none">
+                        <label class="checkbox-wrap checkbox-primary mb-0">{{ 'Remember Me' | _ }}
+                            <input type="checkbox" checked="">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="w-100 text-center">
+                        <p class="h14">{{ 'Ao clicar em me cadastrar eu aceito os ' | _ }}<a href="#" class="text-black">{{ 'termos de serviço' | _ }}</a> e a <a href="#" class="text-black">política de privacidade.</a></p>
+                    </div>
+                </div>
+            {{ form_close() }}
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="pj" role="tabpanel" aria-labelledby="profile-pj">
+            {% if canRegister %}
+            {{ form_ajax('onRegister', {id: 'registerForm', 'data-toggle': 'validator', 'role': 'form'}) }}
+                {{ form_token() }}
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="name" required="">
+                    <label class="form-control-placeholder" for="nome_empresa">{{ 'Nome da Empresa' | _ }}</label>
+                </div>
+                <div class="form-group mt-3 bg-cinza2 rounded d-flex align-items-center justify-content-between p-3 px-4">
+                    <h4 class="h15 mb-0 ml-2">{{ 'Registrado fora do Brasil' | _ }}</h4>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" id="a005_cnpj" name="a005_cnpj" required="">
+                    <label class="form-control-placeholder" for="a005_cnpj">{{ 'CNPJ' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="a005_fone" required="">
+                    <label class="form-control-placeholder" for="telefone">{{ 'Telefone de contato' | _ }}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="email" required="">
+                    <label class="form-control-placeholder" for="email">{{ 'E-mail' | _ }}</label>
+                </div>
+                <div class="form-group">
+                    <input id="password-field1" type="password" name="password" class="form-control" required="">
+                    <label class="form-control-placeholder" for="password">{{ 'Senha' | _ }}</label>
+                    <span toggle="#password-field1" id="toggle-password1" class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-cinza form-control btn btn-primary rounded submit px-3">{{ 'Continuar' | _ }}</button>
+                </div>
+                <div class="form-group text-center">
+                    <div class="w-100 text-left d-none">
+                        <label class="checkbox-wrap checkbox-primary mb-0">{{ 'Remember Me' | _ }}
+                            <input type="checkbox" checked="">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="w-100 text-center">
+                        <p class="h14">{{ 'Ao clicar em me cadastrar eu aceito os' | _ }} <a href="#" class="text-black">{{ 'termos de serviço' | _ }}</a> e a <a href="#" class="text-black">{{ 'política de privacidade.' | _ }}</a></p>
+                    </div>
+                </div>
+            {{ form_close() }}
+            {% endif %}
+        </div>
+    </div>
+</div>";s:4:"code";N;}}

@@ -1,0 +1,20 @@
+.copy{
+    height: 9.125rem;
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
+        height: auto;
+    }
+}
+
+.social i{
+    font-size: 1.063rem;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+}
+
+.footer .footer-logo{
+   width: 6.438rem; 
+}

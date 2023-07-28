@@ -1,0 +1,18 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+tabs:
+    fields:
+        seo_title:
+            tab : SEO
+            type: text
+            label: T&iacute;tulo da P&aacute;gina
+            required: true
+
+        seo_description:
+            tab : SEO
+            type: textarea
+            label: Descri&ccedil;&atilde;o
+            required: true
+            size : small

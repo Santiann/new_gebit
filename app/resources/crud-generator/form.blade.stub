@@ -1,0 +1,38 @@
+<div class="box-footer BotesFixoTopo">
+    <a href="{{ url('/%%routeGroup%%%%viewName%%')}}" class="btn btn-default">
+       <i class="fa fa-ban"></i> Cancelar
+    </a>
+    <button type="submit" class="btn btn-info pull-right">
+       <i class="fa fa-save"></i> {{ isset($submitButtonText) ? $submitButtonText : 'Salvar' }}
+    </button>
+</div>
+
+<div class="box-body">
+<div class="row">
+%%formFieldsHtml%%
+</div>
+    @if ($errors->any())
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="callout callout-danger">
+                    <ul class="">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endif
+</div>
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                language: 'pt-BR'
+            });
+        });
+	</script>
+@endpush
+
+

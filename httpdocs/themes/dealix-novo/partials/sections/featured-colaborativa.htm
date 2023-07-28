@@ -1,0 +1,26 @@
+<div class="container top">
+    <div class="row">
+        <div class="col-12 col-md-5">
+            <div class="swap">
+                <h1 class="fmedium h61">{{ dTitle | raw }}</span></h1>
+                <p class="h20">{{ dSubTitle | raw }}</p>
+                <div class="dialog">
+                    <h3 class="h15 fsemi-bold">{{ 'Simples, igual assistir um filme no streaming!' | _ }}</h3>
+                </div>
+                <div class="help d-flex align-items-center">
+                    <img src="{{ 'assets/img/help.svg'|theme }}" alt="Podemos te Ajudar?">
+                    <a href="{{ dLink }}" class="h16 fmedium text-extra ml-2">{{ 'Podemos te ajudar?' | _ }}</a>
+                </div>
+            </div>
+            <div class="destaque">
+                <span class="h22 text-uppercase">{{ fSpan }}</span>
+                <h1 class="fmedium h61">{{ fTitle | raw }}</span></h1>
+                <p class="h20">{{ fSubTitle | raw }}</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-7 pr-md-0">
+            <img class="top-image" src="{{ 'assets/img/teste.png'|theme }}" alt="Dealix">
+        </div>
+    </div>
+    <img class="after-top" src="{{ 'assets/img/after_funcionalidades.svg'|theme }}" alt="Dealix">
+</div>

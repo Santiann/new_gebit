@@ -1,0 +1,73 @@
+1690338693a:1:{s:11:"default.htm";a:8:{s:8:"fileName";s:11:"default.htm";s:7:"content";s:700:"description = "Default layout"
+[localePicker]
+
+[session loginButton]
+
+==
+
+<!DOCTYPE html>
+
+{% placeholder head default %}
+{% partial 'common/head' %}
+{% endplaceholder %}
+
+<body>
+
+    <!-- Start Preloader Area -->
+    <div class="preloader-area">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+
+    <!-- Content -->
+    {% page %}
+
+    <!-- Footer -->
+    {% placeholder footer default %}
+    {% partial 'common/footer' %}
+    {% endplaceholder %}
+
+    {% scripts %}
+
+</body>
+
+</html>
+";s:5:"mtime";i:1689760851;s:6:"markup";s:625:"<!DOCTYPE html>
+
+{% placeholder head default %}
+{% partial 'common/head' %}
+{% endplaceholder %}
+
+<body>
+
+    <!-- Start Preloader Area -->
+    <div class="preloader-area">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+
+    <!-- Content -->
+    {% page %}
+
+    <!-- Footer -->
+    {% placeholder footer default %}
+    {% partial 'common/footer' %}
+    {% endplaceholder %}
+
+    {% scripts %}
+
+</body>
+
+</html>";s:4:"code";N;s:11:"description";s:14:"Default layout";s:12:"localePicker";a:0:{}s:19:"session loginButton";a:0:{}}}

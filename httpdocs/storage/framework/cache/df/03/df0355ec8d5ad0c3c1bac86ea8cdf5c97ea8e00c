@@ -1,0 +1,26 @@
+1690349936a:1:{s:24:"funcionalidades/item.htm";a:5:{s:8:"fileName";s:24:"funcionalidades/item.htm";s:7:"content";s:731:"{% for func in funcionalidades %}
+    <div class="col-12 col-md-3 pr-2 pr-md-5 mb-5">
+        <div class="f-item pr-2 pr-md-5 {{ func.novo ? '' : 'pt-4' }}">
+            {% if func.novo %}
+                <div class="badge bg-extra3 text-uppercase mb-3 text-white">{{ 'Novo' |_}}</div></br>
+            {% endif %}
+            <img class="{{ func.novo ? '' : 'pt-4' }}" src="{{ func.image | media }}" alt="Dealix - Solicitações de Compras">
+            <h1 class="h24 fsemi-bold mt-4">{{ func.title | raw }}</h1>
+            <p class="h15 fmedium my-3">{{ func.description | raw }}</p>
+            <a href="#" class="p-0 h13 fsemi-bold btn btn-link text-uppercase">{{ 'Saiba Mais' |_}}</a>
+        </div>
+    </div>
+{% endfor %}
+";s:5:"mtime";i:1689760851;s:6:"markup";s:730:"{% for func in funcionalidades %}
+    <div class="col-12 col-md-3 pr-2 pr-md-5 mb-5">
+        <div class="f-item pr-2 pr-md-5 {{ func.novo ? '' : 'pt-4' }}">
+            {% if func.novo %}
+                <div class="badge bg-extra3 text-uppercase mb-3 text-white">{{ 'Novo' |_}}</div></br>
+            {% endif %}
+            <img class="{{ func.novo ? '' : 'pt-4' }}" src="{{ func.image | media }}" alt="Dealix - Solicitações de Compras">
+            <h1 class="h24 fsemi-bold mt-4">{{ func.title | raw }}</h1>
+            <p class="h15 fmedium my-3">{{ func.description | raw }}</p>
+            <a href="#" class="p-0 h13 fsemi-bold btn btn-link text-uppercase">{{ 'Saiba Mais' |_}}</a>
+        </div>
+    </div>
+{% endfor %}";s:4:"code";N;}}

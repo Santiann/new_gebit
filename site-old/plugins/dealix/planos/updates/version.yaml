@@ -1,0 +1,27 @@
+1.0.1:
+  - Primeira versao do Planos
+  - create_planos.php
+1.0.2:
+  - Lista de features de cada plano
+  - add_features_planos.php
+1.0.3:
+  - Coluna com id do plano no pagarme
+  - add_pagarme_id_column.php
+1.0.4:
+  - Remoção de colunas não utilizadas e adição de plano anual
+  - add_yearly_plans.php
+1.0.5:
+  - Coluna free_trial_days
+  - add_free_trial_column.php
+1.0.6:
+  - Criação tabela de assinaturas
+  - create_assinaturas_table.php
+1.0.7:
+  - Colunas de datas nullable
+  - change_date_columns_assinatura.php
+1.0.8:
+  - Coluna últimos digitos cartão
+  - add_card_last_digits.php
+1.0.9:
+  - Coluna de créditos que o plano oferece
+  - add_credits_planos.php

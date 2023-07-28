@@ -1,0 +1,18 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: dealix.faqs::lang.faq.title
+form: @/plugins/dealix/faqs/models/faqs/fields.yaml
+modelClass: Dealix\faqs\Models\faq
+defaultRedirect: dealix/faqs/faqs
+
+create:
+    title: dealix.faqs::lang.faqs.create_title
+    redirect: dealix/faqs/faqs/update/:id
+    redirectClose: dealix/faqs/faqs
+
+update:
+    title: dealix.faqs::lang.faqs.update_title
+    redirect: dealix/faqs/faqs/update/:id
+    redirectClose: dealix/faqs/faqs

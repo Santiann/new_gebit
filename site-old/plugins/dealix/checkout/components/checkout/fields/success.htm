@@ -1,0 +1,32 @@
+<div class="pb-5">
+    <div class="row justify-content-center">
+        <h3>{{ 'Assinatura realizada com sucesso!' |_ }}</h3>
+        <div class="col-md-12 col-12">
+            <div class="contact-features-list border-0">
+                <ul>
+                    {% set plan = subscription.plan %}
+                    <li><b>{{ 'Plano' |_ }}:</b> {{ plan.name }}</li>
+                    {% if plan.trial_days %}
+                    <li><b>{{ 'Dias gratuitos' |_ }}:</b> {{ plan.trial_days }}</li>
+                    {% endif %}
+                    <li><b>{{ 'Valor: R$' |_ }} {{ (plan.amount / 100) | number_format(2, ',', '.') }}</b></li>
+                    <li><b>{{ 'Próxima cobrança será em' |_ }}:</b> {{ subscription.current_period_end | date("d/m/Y") }}</li>
+
+                    {% set transaction = subscription.current_transaction %}
+                    {% if subscription.payment_method == 'boleto' %}
+                        <hr>
+                        <li class="text-center"><b><a target="_blank" href="{{ transaction.boleto_url }}">{{ 'Clique aqui para abrir o boleto' |_ }}</a></b></li>
+                        <hr>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-12 col-12 text-center">
+            <a class="default-btn px-4" href={{ "/login?reset=#{user.id}!#{user.reset_password_code}" }}>
+                {{ 'Clique aqui para definir sua senha e acessar o sistema' |_ }}
+            </a>
+        </div>
+    </div>
+</div>

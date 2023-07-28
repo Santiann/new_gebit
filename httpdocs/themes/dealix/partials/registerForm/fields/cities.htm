@@ -1,0 +1,5 @@
+<select id="{{ prefix }}_city" name="{{ prefix }}_id_cidade" class="custom-select form-control" required>
+    {% for city in cities %}
+    <option value="{{ city.a047_id_cidade }}">{{ city.a047_nome_cidade }}</option>
+    {% endfor %}
+</select>

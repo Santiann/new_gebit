@@ -1,0 +1,15 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    api_key :
+        label : Chave da API
+        type : text
+        required : true
+    postback_url :
+        label : URL de postback
+        type : text
+    encryption_key :
+        label : Chave para encriptação
+        type : text

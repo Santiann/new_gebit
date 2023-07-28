@@ -1,0 +1,20 @@
+subject = "Convite de cadastro ao Sistema Dealix"
+description = "User requests a password reset"
+==
+Olá, {{ name }}
+
+Você está sendo convidado por {{ user_host }} para fazer parte do sistema Dealix.
+
+Complete seu cadastro clicando no botão abaixo para poder prosseguir. 
+
+{% partial 'promotion' body %}
+{{ code }}
+{% endpartial %}
+
+{% partial 'button' url=link type='positive' body %}
+Completar cadastro
+{% endpartial %}
+
+{% partial 'subcopy' body %}
+    **Esta é uma mensagem automática, por favor não responda.**
+{% endpartial %}

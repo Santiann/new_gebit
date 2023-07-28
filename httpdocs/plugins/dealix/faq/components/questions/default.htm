@@ -1,0 +1,35 @@
+{% set questions = __SELF__.itens %}
+
+<!-- Start FAQ Area -->
+<section class="faq-area ptb-100">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-md-12">
+                <div class="faq-accordion">
+                    <h2>{{ 'Perguntas Frequentes' |_ }} <span>({{ 'FAQ\'s' |_ }})</span></h2>
+
+                    <ul class="accordion">
+                        {% for question in questions %}
+                            <li class="accordion-item">
+                                <a class="accordion-title" href="javascript:void(0)">
+                                    <i class="bx bx-plus"></i>
+                                    {{ question.title }}
+                                </a>
+                                <div class="accordion-content">
+                                    {{ question.body | raw }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12">
+                <div class="faq-image">
+                    <img src="{{ 'assets/img/faq-img1.png' | theme }}" alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End FAQ Area -->

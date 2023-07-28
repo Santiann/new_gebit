@@ -1,0 +1,10 @@
+<?php
+	// Rotas do item {{nameroute}}
+	Route::get('data/{{nameroute}}',['as'=>'{{nameroute}}.data','uses'=>'{{namerouteUpper}}Controller@datatable','middleware' => ['permission:{{nameroute}}-show|{{nameroute}}-create|{{nameroute}}-edit|{{nameroute}}-delete']]);
+	Route::get('{{nameroute}}',['as'=>'{{nameroute}}.index','uses'=>'{{namerouteUpper}}Controller@index','middleware' => ['permission:{{nameroute}}-show|{{nameroute}}-create|{{nameroute}}-edit|{{nameroute}}-delete']]);
+	Route::get('{{nameroute}}/create',['as'=>'{{nameroute}}.create','uses'=>'{{namerouteUpper}}Controller@create','middleware' => ['permission:{{nameroute}}-create']]);
+	Route::post('{{nameroute}}/create',['as'=>'{{nameroute}}.store','uses'=>'{{namerouteUpper}}Controller@store','middleware' => ['permission:{{nameroute}}-create']]);
+	Route::get('{{nameroute}}/{id}',['as'=>'{{nameroute}}.show','uses'=>'{{namerouteUpper}}Controller@show']);
+	Route::get('{{nameroute}}/{id}/edit',['as'=>'{{nameroute}}.edit','uses'=>'{{namerouteUpper}}Controller@edit','middleware' => ['permission:{{nameroute}}-edit']]);
+	Route::patch('{{nameroute}}/{id}',['as'=>'{{nameroute}}.update','uses'=>'{{namerouteUpper}}Controller@update','middleware' => ['permission:{{nameroute}}-edit']]);
+	Route::delete('{{nameroute}}/{id}',['as'=>'{{nameroute}}.destroy','uses'=>'{{namerouteUpper}}Controller@destroy','middleware' => ['permission:{{nameroute}}-delete']]);

@@ -1,0 +1,59 @@
+[prices]
+
+==
+
+<div class="container futuro">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="f-wraper destaque">
+                <span class="mb-2 text-uppercase h22">{{ span }}</span>
+                <h1 class="h61 fmedium">{{ title | raw }}</h1>
+                <p class="h22">{{ subtitle | raw }}</p>
+
+                <ul class="mt-5 mb-5 mb-md-0">
+                    {% for futuro in futuros %}
+                        <li class="d-flex align-items-center mb-3 h17">
+                            <img class="mr-3" src="{{ 'assets/img/f-checked.svg'|theme }}" alt="{{ 'Dealix - Controle de Contratos' | _ }}">
+                            {{ futuro.text }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="slide-price">
+                {% for plano in prices.plans|slice(0, 3) %}
+                    <div class="slide-item i{{ loop.index }}">
+                        <h1 class="h42 fsemi-bold">{{ plano.nome }}</h1>
+                        <div class="price my-2">
+                            <span>{{ 'R$' | _ }}</span>
+                            <h1>{{  plano.valor | number_format(2, ',', '.') }}
+                                {% if plano.valor == 0 %}
+                                <span></span>
+                                {% endif %}
+                            </h1>
+                            <span>{{ 'mês' | _ }}</span>
+                        </div>
+                        <ul class="my-3 text-center">
+                            {{ plano.description | raw }}
+
+                            {% for feature in plano.features %}
+                                <li class="my-2">
+                                    <i class="bx bxs-badge-check"></i>
+                                    {{ feature.description }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        {% set page_name = user ? 'checkout' : 'user/register' %}
+                        <a class="btn-slide h15 fmedium mt-2" href="{{ page_name | page({'plan_id': plano.pagarme_id}) }}">
+                            {{ 'Começe já' | _ }}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <a class="next" id="next-price">
+                <img src="{{ 'assets/img/chevron-right.svg'|theme }}" alt="Dealix - Próximo">
+            </a>
+        </div>
+    </div>
+</div>

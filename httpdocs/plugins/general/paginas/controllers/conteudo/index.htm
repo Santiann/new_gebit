@@ -1,0 +1,37 @@
+<?= Block::put('body') ?>
+
+<?php if (!$this->fatalError): ?>
+<div class="layout control-scrollpanel col-md-3" id="pages-side-panel">
+    <div class="layout-cell">
+        <div class="layout-relative fix-button-container">
+            <form class="layout" data-content-id="pages" data-object-type="page" data-type-icon="oc-icon-files-o" onsubmit="return false">
+                <?= $this->widget->pageList->render() ?>
+            </form>
+        </div>
+    </div>
+</div>
+<?php endif ?>
+
+    <div class="callout fade in callout-info no-icon no-subheader col-md-9">
+        <div class="header">
+            <h3>Dicas</h3>
+        </div>
+        <div class="content">
+            <ol>
+                <li>Clique no menu ao lado esquerdo para navegar entre as páginas do site.</li>
+
+                <li>Digite o titulo ou a url da página na barra "Buscar..." para procurar uma página, suas subpáginas e módulos </li>
+
+                <li>Clique na seta para baixo de uama página para expandir as subpáginas e módulos.</li>
+
+                <li>Existem 2 tipos de páginas :</li>
+
+                <ul>
+                    <li> <i class="icon-list"></i> representam "Módulos" que são grupos de informações cadastradas e que pertencem a uma página, como noticias ou eventos </li>
+                    <li> <i class="icon-file-o"></i> ou <i class="icon-files-o"></i> representam páginas do site, exibindo um formulário mostrando as áreas editáveis do site. </li>
+                </ul>
+            </ol>
+        </div>
+    </div>
+
+<?= Block::endPut() ?>

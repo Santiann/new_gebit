@@ -1,0 +1,190 @@
+1660050883a:1:{s:17:"common/footer.htm";a:5:{s:8:"fileName";s:17:"common/footer.htm";s:7:"content";s:4209:"{% placeholder footer %}
+
+<!-- Start Footer Area -->
+<footer class="footer-area">
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="logo">
+                        <a href="{{ 'home' | page }}"><img src="{{ 'assets/img/logo-dealix-white.png' | theme }}" alt="Dealix"></a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h3>{{ 'Empresa' |_ }}</h3>
+
+                    <ul class="services-list">
+                        <li><a href="{{ 'about' | page }}">{{ 'Sobre' |_ }}</a></li>
+                        <li><a href="{{ 'services' | page }}">{{ 'Serviços' |_ }}</a></li>
+                        <li><a href="{{ 'features' | page }}">{{ 'Características' |_ }}</a></li>
+                        <li><a href="{{ 'pricing' | page }}">{{ 'Preços' |_ }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h3>{{ 'Suporte' |_ }}</h3>
+
+                    <ul class="support-list">
+                        <li><a href="{{ 'faq' | page }}">{{ 'FAQ\'s' |_ }}</a></li>
+                        <li><a href="{{ 'privacy-policy' | page }}">{{ 'Política de Privacidade' |_ }}</a></li>
+                        <li><a href="{{ 'terms-of-use' | page }}">{{ 'Termos de Uso' |_ }}</a></li>
+                        <li><a href="{{ 'contact' | page }}">{{ 'Contato' |_ }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h3>{{ 'Contato' |_ }}</h3>
+
+                    <ul class="footer-contact-info">
+                        <li>{{ 'Endereço' |_ }}: <a href="https://goo.gl/maps/8yJ91bagf9J8URX2A" target="_blank">{{ 'Praça Zacarias, 58 cj.1202 - Curitiba, PR - 80020-080' | _ }}</a></li>
+                        <li>{{ 'E-mail' |_ }}: <a href="mailto:suporte@dealix.com.br">suporte@dealix.com.br</a></li>
+                        <li>{{ 'Telefone' |_ }}: (41) 98700-2332 | (41) 3014-6511</li>
+                    </ul>
+                    <ul class="social">
+                        <li><a href="#" target="_blank"><i class="bx bxl-facebook"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-area">
+            <p>Copyright @{{ 'now'| date('Y') }} Dealix.</p>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+
+<div class="go-top"><i class='bx bx-chevron-up'></i></div>
+
+<script src="{{ 'assets/js/jquery.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/popper.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/bootstrap.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/odometer.min.js' | theme }}"></script>
+
+<script src="{{ [
+    'assets/js/jquery.magnific-popup.min.js',
+    'assets/js/jquery.appear.min.js',
+    'assets/js/owl.carousel.min.js',
+    'assets/js/jquery.meanmenu.js',
+    'assets/js/wow.min.js',
+    'assets/js/conversation.js',
+    'assets/js/jquery.ajaxchimp.min.js',
+    'assets/js/particles.min.js',
+    'assets/js/coustom-particles.js',
+    'assets/js/form-validator.min.js',
+    'assets/js/jquery.mask.js',
+    'assets/js/main.js',
+] | theme }}"></script>
+
+<!-- JS Scripts -->
+{% framework extras %}
+
+{% scripts %}
+";s:5:"mtime";i:1623966623;s:6:"markup";s:4208:"{% placeholder footer %}
+
+<!-- Start Footer Area -->
+<footer class="footer-area">
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="logo">
+                        <a href="{{ 'home' | page }}"><img src="{{ 'assets/img/logo-dealix-white.png' | theme }}" alt="Dealix"></a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h3>{{ 'Empresa' |_ }}</h3>
+
+                    <ul class="services-list">
+                        <li><a href="{{ 'about' | page }}">{{ 'Sobre' |_ }}</a></li>
+                        <li><a href="{{ 'services' | page }}">{{ 'Serviços' |_ }}</a></li>
+                        <li><a href="{{ 'features' | page }}">{{ 'Características' |_ }}</a></li>
+                        <li><a href="{{ 'pricing' | page }}">{{ 'Preços' |_ }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h3>{{ 'Suporte' |_ }}</h3>
+
+                    <ul class="support-list">
+                        <li><a href="{{ 'faq' | page }}">{{ 'FAQ\'s' |_ }}</a></li>
+                        <li><a href="{{ 'privacy-policy' | page }}">{{ 'Política de Privacidade' |_ }}</a></li>
+                        <li><a href="{{ 'terms-of-use' | page }}">{{ 'Termos de Uso' |_ }}</a></li>
+                        <li><a href="{{ 'contact' | page }}">{{ 'Contato' |_ }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h3>{{ 'Contato' |_ }}</h3>
+
+                    <ul class="footer-contact-info">
+                        <li>{{ 'Endereço' |_ }}: <a href="https://goo.gl/maps/8yJ91bagf9J8URX2A" target="_blank">{{ 'Praça Zacarias, 58 cj.1202 - Curitiba, PR - 80020-080' | _ }}</a></li>
+                        <li>{{ 'E-mail' |_ }}: <a href="mailto:suporte@dealix.com.br">suporte@dealix.com.br</a></li>
+                        <li>{{ 'Telefone' |_ }}: (41) 98700-2332 | (41) 3014-6511</li>
+                    </ul>
+                    <ul class="social">
+                        <li><a href="#" target="_blank"><i class="bx bxl-facebook"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-area">
+            <p>Copyright @{{ 'now'| date('Y') }} Dealix.</p>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+
+<div class="go-top"><i class='bx bx-chevron-up'></i></div>
+
+<script src="{{ 'assets/js/jquery.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/popper.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/bootstrap.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/odometer.min.js' | theme }}"></script>
+
+<script src="{{ [
+    'assets/js/jquery.magnific-popup.min.js',
+    'assets/js/jquery.appear.min.js',
+    'assets/js/owl.carousel.min.js',
+    'assets/js/jquery.meanmenu.js',
+    'assets/js/wow.min.js',
+    'assets/js/conversation.js',
+    'assets/js/jquery.ajaxchimp.min.js',
+    'assets/js/particles.min.js',
+    'assets/js/coustom-particles.js',
+    'assets/js/form-validator.min.js',
+    'assets/js/jquery.mask.js',
+    'assets/js/main.js',
+] | theme }}"></script>
+
+<!-- JS Scripts -->
+{% framework extras %}
+
+{% scripts %}";s:4:"code";N;}}

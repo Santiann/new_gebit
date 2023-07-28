@@ -1,0 +1,19 @@
+@php
+    $page_title = "%%modelName%%";
+    $page_description = "Novo";
+@endphp
+
+@extends('layouts.app')
+
+@section('page-content')
+
+<div class="box">
+    
+    {!! Form::open(['url' => '/%%routeGroup%%%%viewName%%/create', 'class' => 'form form-%%viewName%% EspacoTopo', 'data-toggle' => 'validator', 'files' => true]) !!}
+
+    @include ('%%viewTemplateDir%%.form')
+
+    {!! Form::close() !!}
+</div>
+
+@endsection

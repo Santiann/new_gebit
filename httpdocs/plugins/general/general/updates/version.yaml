@@ -1,0 +1,28 @@
+1.0.1:
+  - Primeira versao do Eventos
+1.0.2:
+  - Adicionado tipo de campo MapPicker
+1.0.3: Bugfixes
+1.0.5: Bugfixes
+1.0.6: Bugfixes
+1.0.7: Bugfixes
+1.0.8:
+  - Novo Helper de Videos Adidicionado
+1.1.0:
+  - Adicionado trait de exclusão de multiplos itens
+1.2.0:
+  - Adicionado data-mask no backend
+1.2.1:
+  - Removido template emails antigos do Ademi
+1.2.2:
+  - bugfix mask trocado de event click para focus
+1.2.3:
+  - Force locate pt_BR in carbon and defined timezone to America/Sao_Paulo
+1.2.4:
+  - Update version yml
+1.2.5:
+  - Bugfix da máscara em formulários AJAX
+1.3.0:
+  - Adicionado componente generico de upload usando o nova-era
+1.4.0:
+  - Adicionado Tratis de delete de multiplos e itens e publish na home.

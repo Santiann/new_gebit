@@ -1,0 +1,17 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: dealix.planos::lang.plano.title
+list: plugins/dealix/planos/models/plano/columns.yaml
+modelClass: Dealix\Planos\Models\Plano
+recordUrl: dealix/planos/planos/update/:id
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+noRecordsMessage: backend::lang.list.no_records
+
+toolbar:
+    buttons: plugins/dealix/planos/controllers/planos/_list_toolbar.htm
+    search:
+        prompt: backend::lang.list.search_prompt

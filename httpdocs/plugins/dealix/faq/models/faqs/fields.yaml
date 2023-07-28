@@ -1,0 +1,33 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    pergunta :
+        label : Pergunta
+        type : text
+        required : true
+
+    publicado :
+        label : Publica&ccedil;&atilde;o
+        type : switch
+        tab : Conteudo
+        span : left
+        containerAttributes :
+            style : 'width: 20.5%'
+
+    published_at:
+            label: Data de Publica&ccedil;&atilde;o
+            type: datepicker
+            span : right
+            tab : Conteudo
+            containerAttributes :
+                style : 'width: 65.5%'
+            required : true
+
+    resposta :
+        label : Resposta
+        type : richeditor
+        size : big
+        required : true

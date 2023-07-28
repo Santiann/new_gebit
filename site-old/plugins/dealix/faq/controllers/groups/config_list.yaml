@@ -1,0 +1,36 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+# Model List Column configuration
+list: plugins/dealix/faq/models/group/columns.yaml
+
+# Model Class name
+modelClass: Dealix\Faq\Models\Group
+
+# List Title
+title: Gerenciar Grupos
+
+# Link URL for each record
+recordUrl: dealix/faq/groups/update/:id
+
+# Message to display if the list is empty
+noRecordsMessage: backend::lang.list.no_records
+
+# Records to display per page
+recordsPerPage: 20
+
+# Displays the list column set up button
+showSetup: true
+
+# Displays the sorting link on each column
+showSorting: true
+
+# Toolbar widget configuration
+toolbar:
+    # Partial for toolbar buttons
+    buttons: plugins/dealix/faq/controllers/groups/_list_toolbar.htm
+
+    # Search widget configuration
+    search:
+        prompt: backend::lang.list.search_prompt

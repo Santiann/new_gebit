@@ -1,0 +1,7 @@
+{% if user %}
+<a href="#" data-request="{{ __SELF__ }}::onLogout" class="nav-link text-uppercase">
+    {{ 'Sair' |_ }}
+</a>
+{% else %}
+<a class="nav-link text-uppercase" href="{{ 'user/login'| page }}">{{ 'Entrar' | _ }}</a>
+{% endif %}

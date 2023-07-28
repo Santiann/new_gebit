@@ -1,0 +1,23 @@
+<div class="container px-0">
+    <hr class="mb-0">
+</div>
+
+<div class="container">
+    <div class="copy d-flex align-items-center justify-content-between pb-5 pt-1">
+        <h4 class="text-uppercase text-center mt-4 mt-md-0 text-md-left h13 fmedium"><span class="text-extra">DEALIX</span> - {{ 'GESTÃO INTELIGENTE © 2021 - TODOS OS DIREITOS RESERVADOS | CPNJ 36.569.594/0001-01' | _ }}</h4>
+        <div class="social d-flex align-items-center">
+            <a href="#"><i class="fab fa-linkedin-in mr-3"></i></a>
+            <a href="#"><i class="fab fa-facebook-f mr-3"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="ml-3">
+                {{ form_open() }}
+                  <select class="form-control pr-3 text-uppercase" style="border: 0;" name="locale" data-request="onSwitchLocale" id="language-menu">
+                    {% for code, name in locales %}
+                        <option value="{{ code }}" {{ code == activeLocale ? 'selected' }}>{{ name }}</option>
+                    {% endfor %}
+                  </select>
+                {{ form_close() }}
+            </div>
+        </div>
+    </div>
+</div>

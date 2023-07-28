@@ -1,0 +1,63 @@
+.func .left{
+    display: flex;
+    flex-direction: column;
+}
+
+.func .left .um{
+    width: 19rem;
+}
+.func .left .dois{
+    width: 9.063rem;
+    margin-top: 4.063rem;
+    margin-left: auto;
+    margin-right: -4rem;
+}
+.func .left .tres{
+    width: 9.938rem;
+    margin-left: 3rem;
+}
+
+.func .right{
+    display: flex;
+    flex-direction: column;
+}
+
+.func .right .um{
+    width: 15.188rem;
+    margin-left: auto;
+}
+.func .right .dois{
+    width: 6.125rem;
+    margin-top: 4.063rem;
+}
+.func .right .tres{
+    width: 11.25rem;
+    margin-top: 8.375rem;
+    margin-left: auto;
+}
+
+.dest img{
+    width: 36.875rem;
+    margin-bottom: -6rem;
+}
+
+.services-extra{
+    margin-top: 5rem;
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.services-extra .service:nth-child(1n){
+    transform: skew(
+        1deg, 
+        14deg);
+}
+.services-extra .service:nth-child(2n){
+    margin-top: 15rem;
+    transform: skewY(8deg);
+    @include media-breakpoint-down(md) {
+        margin-top: 7rem;
+    }
+}

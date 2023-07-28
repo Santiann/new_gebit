@@ -1,0 +1,37 @@
+<div class="container pb-5">
+    <div class="contact-inner">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6">
+                <p class="lead">
+                    {{ 'Defina uma senha para acessar o sistema' |_ }}
+                </p>
+                <form
+                    data-request="{{ __SELF__ }}::onResetPassword"
+                    data-request-update="'{{ __SELF__ }}::complete': '#partialUserResetForm'">
+                    <input name="code" type="hidden" id="resetCode" value="{{ __SELF__.code }}">
+
+                    <div class="form-group">
+                        <label for="resetPassword">{{ 'Nova senha' |_ }}</label>
+                        <input name="password" type="password" class="form-control" id="resetPassword" placeholder="{{ 'Insira uma nova senha' |_ }}">
+                        <br>
+                        <p>
+                            Sua nova senha deve ter:<br>
+                            - Mais de 8 caracteres<br>
+                            - Maiúsculas e minúsculas<br>
+                            - Letras e números<br>
+                            - Caracteres especiais, por exemplo: $#!@<br>
+                        </p>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 col-md-12 text-center">
+                            <button type="submit" class="default-btn"><i class='bx bxs-paper-plane'></i>{{ 'Alterar senha' | _ }}<span></span></button>
+                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

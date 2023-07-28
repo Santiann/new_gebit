@@ -1,0 +1,16 @@
+title = "Logout"
+url = "/logout"
+layout = "default"
+
+[session]
+
+==
+
+function onStart()
+{
+    $component = new \RainLab\User\Components\Session();
+    $component->onLogout();
+    return Redirect::to('login');
+}
+
+==

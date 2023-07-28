@@ -1,0 +1,48 @@
+<!-- Start Pricing Area -->
+<section class="pricing-area pt-100 pb-70 bg-f4f5fe">
+    <div class="container">
+        <div class="section-title">
+            <h2>{{ 'Escolha o plano mais adequado' |_ }}</h2>
+        </div>
+
+        <div class="tab pricing-list-tab">
+            <ul class="tabs">
+                <li class="current">
+                    <a href="#">
+                        <i class="bx bxs-calendar-check"></i> {{ 'Mensal' |_ }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bx bxs-calendar-check"></i>{{ 'Anual' |_ }}
+                    </a>
+                </li>
+            </ul>
+
+            {% set plans = __SELF__.plans %}
+
+            <div class="tab_content">
+                <div class="tabs_item">
+                    <div class="row">
+                        {% for plan in plans %}
+                            {% if plan.is_monthly %}
+                                {% partial 'prices/plan-card' plan=plan type="Mês" %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="tabs_item">
+                    <div class="row">
+                        {% for plan in plans %}
+                            {% if not plan.is_monthly %}
+                                {% partial 'prices/plan-card' plan=plan type="Ano" %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Pricing Area -->

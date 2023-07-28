@@ -1,0 +1,79 @@
+<div id="<?= $this->getId() ?>"
+    class="field-fileupload style-image-multi is-multi"
+    data-control="jsonmediafinder"
+    data-template="#<?= $this->getId('template') ?>"
+    data-error-template="#<?= $this->getId('errorTemplate') ?>"
+    data-sort-handler="<?= $this->getEventHandler('onSortAttachments') ?>"
+    data-unique-id="<?= $this->getId() ?>">
+
+    <!-- Upload Button -->
+    <a href="javascript:;" class="upload-button find-button">
+        <table><tr><td class="icon-plus"></td></tr></table>
+    </a>
+
+    <!-- Existing files -->
+    <div data-sortable class="upload-files-container is-sortable">
+
+        <?php if(isset($fileList) and count($fileList) > 0) : foreach($fileList as $file) : ?>
+
+            <div class="upload-object is-success" data-path="<?=$file['location']?>">
+            <div class="icon-container image">
+                <img src="<?= asset('storage/app/media'.$file['value']) ?>">
+            </div>
+
+            <div class="info">
+                <h4 class="filename">
+                    <span data-dz-name><?=$file['name']?></span>
+                    <a aria-label="Remove"
+                       data-request="<?= $this->getEventHandler('onRemoveItem') ?>"
+                       data-request-data="'index': '<?=$file['value']?>'"
+                       data-request-success="$(this).closest('.upload-object').remove()"
+                       data-request-confirm="Voc&ecirc; tem certeza ?"
+                       href="javascript:;"
+                       class="upload-remove-button" >
+                        <i class="icon-times"></i>
+                    </a>
+                </h4>
+                <p class="size"></p>
+            </div>
+            <div class="meta">
+                <a href="javascript:;" class="drag-handle"><i class="icon-bars"></i></a>
+            </div>
+            <input type="hidden" name="<?= $field->getName() ?>[]" value="<?=$file['value']?>">
+        </div>
+        <?php endforeach; else : ?>
+            <div class="no-images no-drag">Nenhuma imagem selecionada</div>
+        <?php endif; ?>
+
+    </div>
+
+    <!-- Template for new files -->
+    <script type="text/template" class="template-new-item" id="<?= $this->getId('template') ?>">
+        <div class="upload-object is-success" data-path="[[file_location]]">
+            <div class="icon-container image">
+                [[file_thumb]]
+            </div>
+            <div class="info">
+                <h4 class="filename">
+                    <span >[[file_name]]</span>
+                    <a aria-label="Remove"
+                       data-request="<?= $this->getEventHandler('onRemoveItem') ?>"
+                       data-request-data="'index': '[[file_value]]'"
+                       data-request-success="$(this).closest('.upload-object').remove()"
+                       data-request-confirm="Voc&ecirc; tem certeza ?"
+                       href="javascript:;"
+                       class="upload-remove-button" >
+                        <i class="icon-times"></i>
+                    </a>
+
+                <p class="size"></p>
+            </div>
+            <div class="meta">
+                <a href="javascript:;" class="drag-handle"><i class="icon-bars"></i></a>
+            </div>
+            <input type="hidden" name="<?= $field->getName() ?>[]" value="[[file_value]]">
+
+        </div>
+    </script>
+
+</div>

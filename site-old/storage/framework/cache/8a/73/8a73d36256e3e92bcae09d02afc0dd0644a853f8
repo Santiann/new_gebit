@@ -1,0 +1,53 @@
+1690338692a:1:{s:12:"services.htm";a:11:{s:8:"fileName";s:12:"services.htm";s:7:"content";s:628:"title = "Serviços"
+url = "/services"
+layout = "default"
+
+[viewBag]
+activeMenu = "services"
+
+[prices]
+
+[newsSubscribe newsletterForm]
+category = 1
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Serviços' |_ }}</h2>
+            <!-- <p>Our Services</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+{% partial 'sections/features-area' %}
+
+{% component 'prices' %}
+
+{% partial 'sections/free-trial-area' %}
+
+{% component 'newsletterForm' %}
+";s:5:"mtime";i:1689760851;s:6:"markup";s:476:"{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Serviços' |_ }}</h2>
+            <!-- <p>Our Services</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+{% partial 'sections/features-area' %}
+
+{% component 'prices' %}
+
+{% partial 'sections/free-trial-area' %}
+
+{% component 'newsletterForm' %}";s:4:"code";N;s:5:"title";s:9:"Serviços";s:3:"url";s:9:"/services";s:6:"layout";s:7:"default";s:7:"viewBag";a:1:{s:10:"activeMenu";s:8:"services";}s:6:"prices";a:0:{}s:28:"newsSubscribe newsletterForm";a:1:{s:8:"category";s:1:"1";}}}

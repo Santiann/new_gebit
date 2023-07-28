@@ -1,0 +1,13 @@
+<div class="col-12 col-md-4 mb-5 mb-md-none">
+    <div class="item-comments p-5 mx-auto mx-md-none">
+        <h1 class="h29 fmedium text-black">{{ item.title | raw}}</h1>
+        <p class="h17">{{ item.description | raw }}</p>
+        <div class="d-flex align-items-start">
+            <img style="border-radius: 23px;" src="{{ item.image | media | resize(34, 34, { mode: 'crop' }) }}" alt="{{ item.nome }}">
+            <div class="ml-2">
+                <h3 class="h-18 fsemi-bold text-black">{{ item.nome }}</h3>
+                <h3 class="h-18 fsemi-bold text-gray">{{ item.company }}</h3>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: general.paginas::lang.controller.list.title
+list: @/plugins/general/paginas/models/pagina/columns.yaml
+modelClass: General\Paginas\Models\Pagina
+recordUrl: general/paginas/configuracoes/update/:id
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+#showTree : true
+
+toolbar:
+    buttons: @/plugins/general/paginas/controllers/configuracoes/_list_toolbar.htm
+    search:
+        prompt: backend::lang.list.search_prompt

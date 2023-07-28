@@ -1,0 +1,19 @@
+<label class="custom-switch">
+    <input
+            data-request="onStatusChange"
+            data-request-data="keyValue : {{ id }}, columnName : '{{ columnName }}', keyName : 'id'"
+            type="checkbox"
+            name="columnValue"
+            value="{{ (value == 1) ? 'off' : 'on' }}"
+            {{ (value == 1) ? 'checked' : '' }}
+            />
+    <span>
+        <span>
+            <i class="icon-eye"></i>
+        </span>
+        <span>
+            <i class="icon-eye-slash"></i>
+        </span>
+    </span>
+    <a class="slide-button"></a>
+</label>

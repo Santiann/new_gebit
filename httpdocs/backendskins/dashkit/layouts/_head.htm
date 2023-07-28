@@ -1,0 +1,95 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="app-timezone" content="<?= e(Config::get('app.timezone')) ?>">
+<meta name="backend-base-path" content="<?= Backend::baseUrl() ?>">
+<?php if(BackendAuth::getUser()): ?>
+<meta name="backend-timezone" content="<?= e(Backend\Models\Preference::get('timezone')) ?>">
+<meta name="backend-locale" content="<?= e(Backend\Models\Preference::get('locale')) ?>">
+<?php endif; ?>
+<meta name="csrf-token" content="<?= csrf_token() ?>">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<link rel="icon" type="image/png" href="<?= e(Backend\Models\BrandSetting::getFavicon()) ?>">
+
+<?php if($title = Block::placeholder('title')) : ?>
+    <?= $title ?>
+<?php else: ?>
+    <title data-title-template="<?= empty($this->pageTitleTemplate) ? '%s' : e($this->pageTitleTemplate) ?> | <?= e(Backend\Models\BrandSetting::get('app_name')) ?>">
+        <?= e(trans($this->pageTitle)) ?> | <?= e(Backend\Models\BrandSetting::get('app_name')) ?>
+    </title>
+<?php endif; ?>
+
+<?php
+    $coreBuild = System\Models\Parameter::get('system::core.build', 1);
+    $styles = [
+        Backend::skinAsset('assets/ui/storm.css'),
+        //Url::asset('modules/system/assets/ui/storm.css'),
+        Backend::skinAsset('assets/october/css/october.css'),
+        Backend::skinAsset('assets/dashkit/fonts/feather/feather.min.css'),
+        Backend::skinAsset('assets/dashkit/libs/highlight.js/styles/vs2015.css'),
+        Backend::skinAsset('assets/dashkit/libs/quill/dist/quill.core.css'),
+        Backend::skinAsset('assets/dashkit/libs/flatpickr/dist/flatpickr.min.css'),
+        Backend::skinAsset('assets/dashkit/css/theme.css'),
+        Backend::skinAsset('assets/custom/custom.css')
+    ];
+$scripts = [
+    Url::asset('modules/system/assets/ui/vendor/moment/moment.js'),
+    Url::asset('modules/backend/assets/js/vendor/jquery.min.js'),
+    Url::asset('modules/backend/assets/js/vendor/jquery-migrate.min.js'),
+    Backend::skinAsset('assets/dashkit/libs/bootstrap/dist/js/util.js'),
+    Backend::skinAsset('assets/dashkit/libs/bootstrap/dist/js/popper.min.js'),
+    Backend::skinAsset('assets/dashkit/libs/popover/popover.min.js'),
+    Url::asset('modules/system/assets/js/framework.js'),
+    //Backend::skinAsset('assets/ui/storm-min.js'),
+    Url::asset('modules/system/assets/ui/storm-min.js'),
+    //Backend::skinAsset('assets/js/october-min.js'),
+    Url::asset('modules/backend/assets/js/october-min.js'),
+    Backend::skinAsset('assets/dashkit/libs/bootstrap/dist/js/collapse.js'),
+    //Backend::skinAsset('assets/dashkit/libs/bootstrap/dist/js/bootstrap.js'),
+    Backend::skinAsset('assets/october/js/lang/lang.'.App::getLocale().'.js'),
+    Url::asset('modules/system/assets/ui/vendor/select2/js/i18n/pt-BR.js'),
+    Backend::skinAsset('assets/js/october.flyout.js'),
+    Backend::skinAsset('assets/js/october.tabformexpandcontrols.js'),
+    Backend::skinAsset('assets/dashkit/libs/chart.js/dist/Chart.min.js'),
+    Backend::skinAsset('assets/dashkit/libs/chart.js/Chart.extension.min.js'),
+    Backend::skinAsset('assets/dashkit/libs/quill/dist/quill.min.js'),
+    Backend::skinAsset('assets/custom/jquery.mask.min.js'),
+    Backend::skinAsset('assets/custom/custom.mask.js'),
+    Backend::skinAsset('assets/custom/jquery.maskemoney.min.js'),
+    Backend::skinAsset('assets/custom/custom.maskedmoney.js'),
+    Backend::skinAsset('assets/custom/custom.js')
+];
+?>
+
+<!-- October CSS -->
+<?php foreach ($styles as $style) : ?>
+<link href="<?= $style . '?v=' . $coreBuild; ?>" rel="stylesheet">
+<?php endforeach; ?>
+
+<!-- October JS -->
+<?php foreach ($scripts as $script) : ?>
+<script data-cfasync="false" src="<?= $script . '?v=' . $coreBuild; ?>"></script>
+<?php endforeach; ?>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        // window.addEventListener('load', () => {
+        //     navigator.serviceWorker.register(
+        //         '<?= url("backend/service-worker.js") ?>',
+        //         { scope : '<?= Backend::url("/")?>' });
+        // });
+    }
+</script>
+
+<script>
+    var colorScheme = ( localStorage.getItem('dashkitColorScheme') ) ? localStorage.getItem('dashkitColorScheme') : 'light';
+</script>
+
+<?= $this->makeAssets() ?>
+<?= Block::placeholder('head') ?>
+<?= $this->makeLayoutPartial('custom_styles') ?>

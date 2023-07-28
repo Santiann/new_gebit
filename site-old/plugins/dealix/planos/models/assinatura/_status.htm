@@ -1,0 +1,13 @@
+<?php if($value == 'paid'): ?>
+    <span style="color: green" ><strong>Pago</strong></span>
+<?php elseif($value == 'waiting_payment') : ?>
+    <span style="color: orange" ><strong>Aguardando pagamento</strong></span>
+<?php elseif($value == 'trialing') : ?>
+    <span style="color: blue" ><strong>Em período gratuito</strong></span>
+<?php elseif($value == 'canceled') : ?>
+    <span style="color: red" ><strong>Cancelado</strong></span>
+<?php elseif($value == 'ended') : ?>
+    <span style="color: red" ><strong>Finalizado</strong></span>
+<?php elseif($value == 'unpaid') : ?>
+    <span style="color: red" ><strong>Não pago</strong></span>
+<?php endif; ?>

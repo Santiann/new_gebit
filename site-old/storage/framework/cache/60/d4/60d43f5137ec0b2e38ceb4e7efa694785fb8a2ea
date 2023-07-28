@@ -1,0 +1,88 @@
+1660050883a:1:{s:26:"newsletterForm/default.htm";a:5:{s:8:"fileName";s:26:"newsletterForm/default.htm";s:7:"content";s:1985:"{% set subscription = __SELF__.subscription %}
+
+{% if subscription is null %}
+<!-- Start Subscribe Content -->
+<div class="subscribe-content border-radius-0" id="subscription-box">
+    <h2>{{ 'Assine e receba nossas novidades' |_ }}</h2>
+    
+    <form data-request="onSubscription" class="newsletter-form" data-request-success="alert('{{ text_messages }}');$('#subscriptionForm').trigger('reset');" id="subscriptionForm">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-8">
+                <input type="email" class="input-newsletter" placeholder="email@email.com" name="email" required="" autocomplete="off">
+            </div>
+
+            <div class="col-lg-4 col-md-4">
+                <button type="submit" class="disabled" style="pointer-events: all; cursor: pointer;"><i class="bx bxs-hot"></i> {{ 'Assinar' | _ }}</button>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div id="validator-newsletter" class="form-result"></div>
+            </div>
+        </div>
+
+        {% if failureMessage %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            {{ 'Ocorreu um erro ao assinar, tente novamente mais tarde.' |_ }}
+        </div>
+        {% endif %}
+        
+    {{ form_close()}}
+    
+    <div class="shape14"><img src="{{ 'assets/img/shape/13.png' | theme }}" alt="image"></div>
+    <div class="shape15"><img src="{{ 'assets/img/shape/14.png' | theme }}" alt="image"></div>
+    <div class="shape16"><img src="{{ 'assets/img/shape/15.png' | theme }}" alt="image"></div>
+    <div class="shape17"><img src="{{ 'assets/img/shape/16.png' | theme }}" alt="image"></div>
+    <div class="shape18"><img src="{{ 'assets/img/shape/17.png' | theme }}" alt="image"></div>
+</div>
+{% else %}
+
+<div class="subscribe-content success-message-white">
+    {{ 'Obrigado por assinar! Em breve entraremos em contato com mais novidades!' |_ }}
+</div>
+
+{% endif %}
+<!-- End Subscribe Content -->
+";s:5:"mtime";i:1623966623;s:6:"markup";s:1984:"{% set subscription = __SELF__.subscription %}
+
+{% if subscription is null %}
+<!-- Start Subscribe Content -->
+<div class="subscribe-content border-radius-0" id="subscription-box">
+    <h2>{{ 'Assine e receba nossas novidades' |_ }}</h2>
+    
+    <form data-request="onSubscription" class="newsletter-form" data-request-success="alert('{{ text_messages }}');$('#subscriptionForm').trigger('reset');" id="subscriptionForm">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-8">
+                <input type="email" class="input-newsletter" placeholder="email@email.com" name="email" required="" autocomplete="off">
+            </div>
+
+            <div class="col-lg-4 col-md-4">
+                <button type="submit" class="disabled" style="pointer-events: all; cursor: pointer;"><i class="bx bxs-hot"></i> {{ 'Assinar' | _ }}</button>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div id="validator-newsletter" class="form-result"></div>
+            </div>
+        </div>
+
+        {% if failureMessage %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            {{ 'Ocorreu um erro ao assinar, tente novamente mais tarde.' |_ }}
+        </div>
+        {% endif %}
+        
+    {{ form_close()}}
+    
+    <div class="shape14"><img src="{{ 'assets/img/shape/13.png' | theme }}" alt="image"></div>
+    <div class="shape15"><img src="{{ 'assets/img/shape/14.png' | theme }}" alt="image"></div>
+    <div class="shape16"><img src="{{ 'assets/img/shape/15.png' | theme }}" alt="image"></div>
+    <div class="shape17"><img src="{{ 'assets/img/shape/16.png' | theme }}" alt="image"></div>
+    <div class="shape18"><img src="{{ 'assets/img/shape/17.png' | theme }}" alt="image"></div>
+</div>
+{% else %}
+
+<div class="subscribe-content success-message-white">
+    {{ 'Obrigado por assinar! Em breve entraremos em contato com mais novidades!' |_ }}
+</div>
+
+{% endif %}
+<!-- End Subscribe Content -->";s:4:"code";N;}}

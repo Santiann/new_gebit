@@ -1,0 +1,18 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: general.paginas::lang.controller.form.title
+form: @/plugins/general/paginas/models/pagina/fields.yaml
+modelClass: General\Paginas\Models\Pagina
+defaultRedirect: general/paginas/paginas
+
+create:
+    title: general.paginas::lang.controller.form.create_title
+    redirect: general/paginas/configuracoes/update/:id
+    redirectClose: general/paginas/configuracoes
+
+update:
+    title: general.paginas::lang.controller.form.update_title
+    redirect: general/paginas/configuracoes/update/:id
+    redirectClose: general/paginas/configuracoes

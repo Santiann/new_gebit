@@ -1,0 +1,13 @@
+1690501636a:1:{s:23:"loginbutton/default.htm";a:5:{s:8:"fileName";s:23:"loginbutton/default.htm";s:7:"content";s:236:"{% if user %}
+<a href="#" data-request="{{ __SELF__ }}::onLogout" class="nav-link text-uppercase">
+    {{ 'Sair' |_ }}
+</a>
+{% else %}
+<a class="nav-link text-uppercase" href="{{ 'user/login'| page }}">{{ 'Entrar' | _ }}</a>
+{% endif %}";s:5:"mtime";i:1689760851;s:6:"markup";s:236:"{% if user %}
+<a href="#" data-request="{{ __SELF__ }}::onLogout" class="nav-link text-uppercase">
+    {{ 'Sair' |_ }}
+</a>
+{% else %}
+<a class="nav-link text-uppercase" href="{{ 'user/login'| page }}">{{ 'Entrar' | _ }}</a>
+{% endif %}";s:4:"code";N;}}

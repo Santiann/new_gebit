@@ -1,0 +1,18 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: dealix.planos::lang.plano.title
+form: plugins/dealix/planos/models/plano/fields.yaml
+modelClass: Dealix\Planos\Models\Plano
+defaultRedirect: dealix/planos/planos
+
+create:
+    title: dealix.planos::lang.plano.create_title
+    redirect: dealix/planos/planos/update/:id
+    redirectClose: dealix/planos/planos
+
+update:
+    title: dealix.planos::lang.plano.update_title
+    redirect: dealix/planos/planos/update/:id
+    redirectClose: dealix/planos/planos

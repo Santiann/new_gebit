@@ -1,0 +1,57 @@
+<div
+    id="<?= $this->getId() ?>"
+    class="field-recordfinder loading-indicator-container size-input-text multiple-finder"
+    data-control="recordfinder"
+    data-refresh-handler="<?= $this->getEventHandler('onRefresh') ?>"
+    data-data-locker="#<?= $field->getId() ?>"
+    data-sortable>
+
+    <?php if(count($value) > 0) : foreach($value as $item) : ?>
+
+        <div class="item-relacao">
+            <?php foreach($fieldsToShow as $c => $showField) : ?>
+
+                <?php if($c == 0 and (count($fieldsToShow) > 1)) :?>
+                    <span class="field-to-show" ><strong><?= $item->{$showField} ?></strong></span>
+                <?php else : ?>
+                    <span class="field-to-show" ><?= $item->{$showField} ?></span>
+                <?php endif; ?>
+
+            <?php endforeach; ?>
+            <a aria-label="Remove"
+                    data-request="<?= $this->getEventHandler('onRemoveItem') ?>"
+                    data-request-data="'index': '<?= $item->id ?>'"
+                    data-request-success="$(this).closest('.item-relacao').remove()"
+                    data-request-confirm="Deseja realmente desselecionar esse item ?"
+                    href="javascript:;" class="drag-handle remove">
+                <i class="icon-close"></i>
+            </a>
+            <a class="mover" aria-label="Mover" href="javascript:;" >
+                <i class="icon-bars"></i>
+            </a>
+            <input type="hidden" name="<?= $field->getName() ?>[]" value="<?= $item->{$chave} ?>">
+        </div>
+
+    <?php endforeach; else : ?>
+
+        <div class="text-muted"><?= $prompt ?></div>
+
+    <?php endif; ?>
+
+    <button
+            class="btn btn-default"
+            data-control="popup"
+            data-size="huge"
+            data-handler="<?= $this->getEventHandler('onFindRecord') ?>"
+            data-request-data="recordfinder_flag: 1"
+            type="button">
+        <i class="icon-search"></i>
+    </button>
+
+    <input
+        type="hidden"
+        name="<?= $field->getName() ?>[]"
+        id="<?= $field->getId() ?>"
+        value=""
+        />
+</div>

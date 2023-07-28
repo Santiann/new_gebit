@@ -1,0 +1,19 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    pergunta :
+        label : Pergunta
+        searchable : true
+
+    publicado:
+        label: Publicado
+        type : partial
+        path: ~/plugins/dealix/faqs/models/faqs/_switch.htm
+
+    created_at:
+        label: Data de Cadastro
+        type: datetime
+        format: d/m/Y H:i:s

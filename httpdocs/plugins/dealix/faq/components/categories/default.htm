@@ -1,0 +1,15 @@
+{% set grupos = __SELF__.grupos %}
+
+{% for grupo in grupos %}
+
+    <div>
+        {{grupo.title }}
+        {{grupo.description }}
+        {{grupo.url }}
+    </div>
+
+{% else %}
+
+    Não existem grupos cadastrados
+
+{% endif %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="<?= App::getLocale() ?>" class="no-js <?= $this->makeLayoutPartial('browser_detector') ?>" >
+
+<head>
+    <?= $this->makeLayoutPartial('head') ?>
+</head>
+
+<body>
+
+    <?= $this->makeLayoutPartial('mainmenu') ?>
+
+    <!-- MAIN CONTENT
+    ================================================== -->
+    <div class="main-content">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-12 col-xl-10">
+
+                    <?= Form::open(['class' => 'layout']) ?>
+
+                    <?php if($header = Block::placeholder('header')) : ?>
+                        <?= $header ?>
+                    <?php else: ?>
+                        <?= $this->makeLayoutPartial('header') ?>
+                    <?php endif; ?>
+
+                    <?= Block::placeholder('body') ?>
+
+                    <?= Form::close() ?>
+
+                </div>
+            </div> <!-- / .row -->
+        </div>
+
+    </div>
+    <!-- / .main-content -->
+
+    <?= $this->makeLayoutPartial('footer') ?>
+
+    <!-- Flash Messages -->
+    <div id="layout-flash-messages"><?= $this->makeLayoutPartial('flash_messages') ?></div>
+
+</body>
+
+</html>

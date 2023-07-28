@@ -1,0 +1,54 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    ordem:
+        label: Ordenacao
+        type: text
+        span : right
+
+    title:
+        label: Titulo
+        type: text
+        span : left
+
+    type :
+        label : Tipo do campo
+        type : dropdown
+        span : right
+
+    identifier:
+        label: Identificador
+        type: text
+        span : left
+        preset:
+            field: title
+            type: slug
+
+    extras :
+        type: repeater
+        label : Parametros
+        form:
+            fields:
+
+                prop :
+                    label : Propriedade
+                    type : text
+                    span : left
+
+                value:
+                    label: Valor
+                    type: text
+                    span : right
+
+    adicionais :
+        label : Outros Campos
+        type: codeeditor
+        size: small
+        language: yaml
+        trigger:
+            action: show
+            field: type
+            condition: value[\General\Paginas\FormWidgets\JsonRecordFinder]

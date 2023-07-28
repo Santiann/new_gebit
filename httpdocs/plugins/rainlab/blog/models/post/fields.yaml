@@ -1,0 +1,85 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    title:
+        label: rainlab.blog::lang.post.title
+        span: left
+        placeholder: rainlab.blog::lang.post.title_placeholder
+
+    slug:
+        label: rainlab.blog::lang.post.slug
+        span: right
+        placeholder: rainlab.blog::lang.post.slug_placeholder
+        preset:
+            field: title
+            type: slug
+
+    toolbar:
+        type: partial
+        path: post_toolbar
+        cssClass: collapse-visible
+
+secondaryTabs:
+    stretch: true
+    fields:
+        content_html:
+            tab: rainlab.blog::lang.post.tab_edit
+            type: richeditor
+            toolbarButtons: fullscreen|bold|italic|underline|strikeThrough|subscript|superscript|fontFamily|fontSize|color|emoticons|inlineStyle|paragraphStyle|paragraphFormat|align|formatOL|formatUL|outdent|indent|quote|insertHR|-|insertLink|insertImage|insertVideo|insertAudio|insertFile|insertTable|undo|redo|clearFormatting|selectAll|html
+            stretch: true
+            mode: split
+
+        categories:
+            tab: rainlab.blog::lang.post.tab_categories
+            type: relation
+            commentAbove: rainlab.blog::lang.post.categories_comment
+            placeholder: rainlab.blog::lang.post.categories_placeholder
+
+        published:
+            tab: rainlab.blog::lang.post.tab_manage
+            label: rainlab.blog::lang.post.published
+            span: left
+            type: checkbox
+
+        user:
+            tab: rainlab.blog::lang.post.tab_manage
+            label: rainlab.blog::lang.post.published_by
+            span: right
+            type: dropdown
+            emptyOption: rainlab.blog::lang.post.current_user
+
+        published_at:
+            tab: rainlab.blog::lang.post.tab_manage
+            label: rainlab.blog::lang.post.published_on
+            span: left
+            cssClass: checkbox-align
+            type: datepicker
+            mode: datetime
+            trigger:
+                action: enable
+                field: published
+                condition: checked
+
+        excerpt:
+            tab: rainlab.blog::lang.post.tab_manage
+            label: rainlab.blog::lang.post.excerpt
+            type: textarea
+            size: small
+
+        featured_images:
+            tab: rainlab.blog::lang.post.tab_manage
+            label: rainlab.blog::lang.post.featured_images
+            type: fileupload
+            mode: image
+            imageWidth: 200
+            imageHeight: 200
+
+        related:
+            tab: rainlab.blog::lang.post.tab_manage
+            label: Relacionados
+            type: partial
+            context:
+                - update
+                - preview

@@ -1,0 +1,10 @@
+1660050883a:1:{s:24:"localepicker/default.htm";a:5:{s:8:"fileName";s:24:"localepicker/default.htm";s:7:"content";s:270:"{% for code, name in locales %}
+    <a href="javascript:;" data-request="onSwitchLocale" data-request-data="'locale': '{{ code }}'">
+        <img src="{{ ('assets/img/flags-icons/' ~ code ~ '.png') | theme }}" style="width: 30px; height: 30px;" />
+    </a>
+{% endfor %}
+";s:5:"mtime";i:1623966623;s:6:"markup";s:269:"{% for code, name in locales %}
+    <a href="javascript:;" data-request="onSwitchLocale" data-request-data="'locale': '{{ code }}'">
+        <img src="{{ ('assets/img/flags-icons/' ~ code ~ '.png') | theme }}" style="width: 30px; height: 30px;" />
+    </a>
+{% endfor %}";s:4:"code";N;}}

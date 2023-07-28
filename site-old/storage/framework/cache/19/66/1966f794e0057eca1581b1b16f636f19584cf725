@@ -1,0 +1,26 @@
+1658924976a:1:{s:29:"resetPasswordForm/restore.htm";a:5:{s:8:"fileName";s:29:"resetPasswordForm/restore.htm";s:7:"content";s:512:"<p class="lead">
+    <strong>{{ 'Esqueceu sua senha?' |_ }}</strong> {{ 'Entre com seu e-mail para verificarmos sua conta.' |_ }}
+</p>
+
+<form
+    data-request="{{ __SELF__ }}::onRestorePassword">
+    <div class="form-group">
+        <label for="userRestoreEmail">E-mail</label>
+        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="{{ 'Insira seu e-mail' |_ }}">
+    </div>
+
+    <button type="submit" class="btn btn-success">{{ 'Restaurar senha' |_ }}</button>
+</form>
+";s:5:"mtime";i:1623966623;s:6:"markup";s:511:"<p class="lead">
+    <strong>{{ 'Esqueceu sua senha?' |_ }}</strong> {{ 'Entre com seu e-mail para verificarmos sua conta.' |_ }}
+</p>
+
+<form
+    data-request="{{ __SELF__ }}::onRestorePassword">
+    <div class="form-group">
+        <label for="userRestoreEmail">E-mail</label>
+        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="{{ 'Insira seu e-mail' |_ }}">
+    </div>
+
+    <button type="submit" class="btn btn-success">{{ 'Restaurar senha' |_ }}</button>
+</form>";s:4:"code";N;}}

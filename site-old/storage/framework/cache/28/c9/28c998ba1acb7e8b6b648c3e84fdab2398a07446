@@ -1,0 +1,17 @@
+1660050883a:1:{s:23:"loginButton/default.htm";a:5:{s:8:"fileName";s:23:"loginButton/default.htm";s:7:"content";s:298:"{% if user %}
+<a href="#" data-request="{{ __SELF__ }}::onLogout" class="optional-btn">
+    <i class="bx bx-log-in"></i>{{ 'Sair' |_ }}<span></span>
+</a>
+{% else %}
+<a href="{{ 'login' | page }}" class="optional-btn">
+    <i class="bx bx-log-in"></i>{{ 'Log In' | _ }}<span></span>
+</a>
+{% endif %}";s:5:"mtime";i:1623966623;s:6:"markup";s:298:"{% if user %}
+<a href="#" data-request="{{ __SELF__ }}::onLogout" class="optional-btn">
+    <i class="bx bx-log-in"></i>{{ 'Sair' |_ }}<span></span>
+</a>
+{% else %}
+<a href="{{ 'login' | page }}" class="optional-btn">
+    <i class="bx bx-log-in"></i>{{ 'Log In' | _ }}<span></span>
+</a>
+{% endif %}";s:4:"code";N;}}

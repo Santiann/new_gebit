@@ -1,0 +1,70 @@
+<div id="checkout-section" class="tab pricing-list-tab">
+    <ul class="tabs">
+        <li data-id-tab="boleto">
+            <a onclick="changePaymentMethod()" href="#">
+                <i class="bx bx-barcode"></i> {{ 'Boleto' |_ }}
+            </a>
+        </li>
+        <li data-id-tab="credit_card" class="current">
+            <a onclick="changePaymentMethod()" href="#">
+                <i class="bx bx-credit-card"></i>{{ 'Cartão' |_ }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab_content">
+        {{ form_ajax(__SELF__ ~ '::onSubmit', {id: 'checkoutForm', data: {'plan_id': this.param.plan_id}} ) }}
+            {{ form_token() }}
+            <input name="payment_method" type="hidden" value="credit_card" />
+            <!-- Início conteúdo para ambos -->
+            <div class="pt-3">
+                {% component 'selectedPlan' %}
+                <hr>
+            </div>
+            <!-- Fim conteúdo para ambos -->
+
+            <!-- Início conteúdo só para pessoa física -->
+            <div class="tabs_item">
+                {% partial '@fields/boleto' %}
+            </div>
+            <!-- Fim conteúdo só para pessoa física -->
+
+                <!-- Início conteúdo só para pessoa jurídica -->
+                <div class="tabs_item" style="display: block;">
+                    <h5>Dados do cartão</h5>
+                    <hr>
+                    <div credit-card-fields>
+                        {% partial '@fields/credit_card' %}
+                    </div>
+            </div>
+            <!-- Fim conteúdo só para pessoa jurídica -->
+                                    
+            <div class="row pt-3">
+                <div class="col-lg-12 col-md-12 text-center">
+                    <button type="submit" class="default-btn"><i class='bx bxs-paper-plane'></i>{{ 'Finalizar' | _ }}<span></span></button>
+                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div id="{{ __SELF__ }}_forms_flash"></div>
+        {{ form_close() }}
+    </div>
+
+</div>
+{% put scripts %}
+<script>
+    function changePaymentMethod()
+    {
+        setTimeout(function(){
+            let method = $('[data-id-tab]li.current').data('idTab');
+            $('[name="payment_method"]').val(method);
+
+            if (method === 'credit_card') {
+                $('[credit-card-fields] input').attr('required', true);
+            } else {
+                $('[credit-card-fields] input').attr('required', false);
+            }
+        }, 500)
+    }
+</script>
+{% endput %}

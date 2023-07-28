@@ -1,0 +1,25 @@
+@php
+    $page_title = "%%modelName%%";
+    $page_description = "Editar #". $%%crudNameSingular%%->%%primaryKey%%;
+@endphp
+
+@extends('layouts.app')
+
+@section('page-content')
+
+<div class="box">
+    
+    {!! Form::model($%%crudNameSingular%%, [
+        'method' => 'PATCH',
+        'url' => ['/%%routeGroup%%%%viewName%%', $%%crudNameSingular%%->%%primaryKey%%],
+        'class' => 'form form-%%viewName%% EspacoTopo',
+        'data-toggle' => 'validator',
+        'files' => true
+    ]) !!}
+
+    @include ('%%viewTemplateDir%%.form', ['submitButtonText' => 'Salvar'])
+
+    {!! Form::close() !!}
+</div>
+
+@endsection

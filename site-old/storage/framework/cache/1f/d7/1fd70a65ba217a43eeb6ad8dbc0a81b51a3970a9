@@ -1,0 +1,144 @@
+1660050883a:1:{s:17:"common/navbar.htm";a:5:{s:8:"fileName";s:17:"common/navbar.htm";s:7:"content";s:3380:"<!-- Start Navbar Area -->
+<div class="navbar-area {{ menuClass }}">
+    <div class="spacle-responsive-nav">
+        <div class="container">
+            <div class="spacle-responsive-menu">
+                <div class="logo">
+                    <a href="{{ 'home' | page }}">
+                        <img src="{{ 'assets/img/logo-dealix-horizontal.png' | theme }}" alt="Dealix" style="width: 150px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacle-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="{{ 'home' | page }}">
+                    <img src="{{ 'assets/img/logo-dealix-horizontal.png' | theme }}" alt="Dealix" style="width: 150px;">
+                </a>
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="{{ 'home' | page }}" class="nav-link {{ viewBag.activeMenu == 'home' ? 'active' }}">{{ 'Home' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'about' | page }}" class="nav-link {{ viewBag.activeMenu == 'about' ? 'active' }}">{{ 'Sobre' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'pricing' | page }}" class="nav-link {{ viewBag.activeMenu == 'pricing' ? 'active' }}">{{ 'Preços' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'services' | page }}" class="nav-link {{ viewBag.activeMenu == 'services' ? 'active' }}">{{ 'Serviços' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'features' | page }}" class="nav-link {{ viewBag.activeMenu == 'features' ? 'active' }}">{{ 'Características' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'contact' | page }}" class="nav-link {{ viewBag.activeMenu == 'contact' ? 'active' }}">{{ 'Contato' |_ }}</a>
+                        </li>
+                    </ul>
+
+                    {% if user %}
+                        <div class="others-options">
+                            {% set api_token = this.session.get('api_token') %}
+                            <a href={{ env('URL_SISTEMA') ~ "/login/#{user.email}/#{api_token}" }} target="_blank" class="default-btn">
+                                <i class="bx bx-laptop"></i>{{ 'Acessar sistema' | _ }}<span></span>
+                            </a>
+                            {% component 'loginButton' %}
+                        </div>
+                        <div class="others-options">
+                    {% else %}
+                        <div class="others-options">
+                            {% component 'loginButton' %}
+                        </div>
+                        <div class="others-options ml-3">
+                    {% endif %}
+                        {% component 'localePicker' %}
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- End Navbar Area -->
+";s:5:"mtime";i:1623966623;s:6:"markup";s:3379:"<!-- Start Navbar Area -->
+<div class="navbar-area {{ menuClass }}">
+    <div class="spacle-responsive-nav">
+        <div class="container">
+            <div class="spacle-responsive-menu">
+                <div class="logo">
+                    <a href="{{ 'home' | page }}">
+                        <img src="{{ 'assets/img/logo-dealix-horizontal.png' | theme }}" alt="Dealix" style="width: 150px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacle-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="{{ 'home' | page }}">
+                    <img src="{{ 'assets/img/logo-dealix-horizontal.png' | theme }}" alt="Dealix" style="width: 150px;">
+                </a>
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="{{ 'home' | page }}" class="nav-link {{ viewBag.activeMenu == 'home' ? 'active' }}">{{ 'Home' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'about' | page }}" class="nav-link {{ viewBag.activeMenu == 'about' ? 'active' }}">{{ 'Sobre' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'pricing' | page }}" class="nav-link {{ viewBag.activeMenu == 'pricing' ? 'active' }}">{{ 'Preços' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'services' | page }}" class="nav-link {{ viewBag.activeMenu == 'services' ? 'active' }}">{{ 'Serviços' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'features' | page }}" class="nav-link {{ viewBag.activeMenu == 'features' ? 'active' }}">{{ 'Características' |_ }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ 'contact' | page }}" class="nav-link {{ viewBag.activeMenu == 'contact' ? 'active' }}">{{ 'Contato' |_ }}</a>
+                        </li>
+                    </ul>
+
+                    {% if user %}
+                        <div class="others-options">
+                            {% set api_token = this.session.get('api_token') %}
+                            <a href={{ env('URL_SISTEMA') ~ "/login/#{user.email}/#{api_token}" }} target="_blank" class="default-btn">
+                                <i class="bx bx-laptop"></i>{{ 'Acessar sistema' | _ }}<span></span>
+                            </a>
+                            {% component 'loginButton' %}
+                        </div>
+                        <div class="others-options">
+                    {% else %}
+                        <div class="others-options">
+                            {% component 'loginButton' %}
+                        </div>
+                        <div class="others-options ml-3">
+                    {% endif %}
+                        {% component 'localePicker' %}
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- End Navbar Area -->";s:4:"code";N;}}

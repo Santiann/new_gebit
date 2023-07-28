@@ -1,0 +1,12 @@
+subject = "Confirme sua conta"
+description = "Ativar novo usuário"
+==
+Olá, {{ name }}
+
+Nós verificamos que este é o seu endereço de e-mail.
+
+Por favor, clique no link abaixo para confirmar sua conta.
+
+{% partial 'button' url=link type='positive' body %}
+Confirmar conta
+{% endpartial %}

@@ -1,0 +1,39 @@
+{% set plan = __SELF__.selected_plan %}
+
+<div class="row form-group text-center">
+    <div class="col-12 text-center">
+        <h4 class="h15 mb-0 ml-2">{{ 'Revisão do plano' |_ }}</h4>
+    </div>
+</div>
+<div class="form-group mt-3 bg-cinza2 rounded align-items-center justify-content-between p-3 px-4">
+    <div class="row">
+        <div class="col-12 form-check form-switch">
+            <div class="row my-2">
+                <div class="col-12 contact-features-list">
+                    <input hidden id="plan_id" value="{{ plan.id }}" />
+                    <input hidden id="plan_price" value="{{ plan.valor | number_format(2) | replace({'.' : ''}) }}" />
+                    <ul>
+                        <li><i class='bx bx-badge-check'></i> {{ 'Plano: ' |_ }} <span id="plan_name" class="font-weight-bold">{{ plan.nome }}</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-features-list mb-4">
+                        <ul>
+                            {% for feature in plan.features %}
+                                <li class="my-1">
+                                    <img class="mr-3" src="{{ 'assets/img/f-checked.svg'|theme }}" alt="{{ 'Dealix - Controle de Contratos' | _ }}">
+                                    {{ feature.description }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                {{ 'Valor: R$ ' |_ }} <span class="font-weight-bold">&nbsp;{{ plan.valor | number_format(2, ',', '.') }}</span> {{ '/mês' |_ }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

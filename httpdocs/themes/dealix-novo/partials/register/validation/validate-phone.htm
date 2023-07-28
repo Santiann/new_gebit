@@ -1,0 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="validatePhone" tabindex="-1" role="dialog" aria-labelledby="validatePhoneLabel" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <input id="phone_code" name="phone_code" type="text" class="form-control" autocomplete="off">
+                    <label class="form-control-placeholder" for="phone_code">{{ 'Insira o código enviado para o número' |_ }}</label>
+                </div>
+                <div class="col-md-12 text-center mt-4">
+                    <div class="form-group">
+                        <button type="button" onclick="verifyCodePhone()" class="btn-validate-phone btn-lg text-uppercase form-control btn rounded submit px-3">{{ 'Verificar' | _ }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

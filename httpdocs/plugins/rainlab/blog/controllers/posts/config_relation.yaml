@@ -1,0 +1,8 @@
+related:
+  label: Relacionado
+  view:
+    list: $/rainlab/blog/models/post/columns.yaml
+    toolbarButtons: link|unlink
+  manage:
+    form: $/rainlab/blog/models/post/fields.yaml
+    recordsPerPage: 10

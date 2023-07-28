@@ -1,0 +1,111 @@
+<div
+    id="<?= $this->getId() ?>"
+    class="field-fileupload style-image-multi is-sortable is-multi <?= count($fileList) ? 'is-populated' : '' ?>"
+    data-control="fileupload"
+    data-template="#<?= $this->getId('template') ?>"
+    data-error-template="#<?= $this->getId('errorTemplate') ?>"
+    data-sort-handler="<?= $this->getEventHandler('onSortAttachments') ?>"
+    data-unique-id="<?= $this->getId() ?>"
+    <?php if ($useCaption): ?>data-config-handler="<?= $this->getEventHandler('onLoadAttachmentConfig') ?>"<?php endif ?>
+    <?php if ($acceptedFileTypes): ?>data-file-types="<?= $acceptedFileTypes ?>"<?php endif ?>
+>
+
+    <!-- Upload Button -->
+    <a href="javascript:;" class="upload-button">
+        <table><tr><td class="oc-<?= $emptyIcon ?>"></td></tr></table>
+    </a>
+
+    <!-- Existing files -->
+
+    <div class="upload-files-container">
+            <div class="upload-object is-success" data-id="<?= $file->id ?>" data-path="<?= $file->path ?>">
+                <div class="icon-container image">
+                    <img src="<?= $file->thumb ?>" />
+                </div>
+                <div class="info">
+                    <h4 class="filename">
+                        <span data-dz-name></span>
+                        <a
+                            href="javascript:;"
+                            class="upload-remove-button"
+                            data-request="<?= $this->getEventHandler('onRemoveAttachment') ?>"
+                            data-request-confirm="Voc&ecirc; tem certeza?"
+                            data-request-data="file_id: <?= $file->id ?>"
+                            ><i class="icon-times"></i></a>
+                    </h4>
+                    <p class="size"><?= e($file->sizeToString()) ?></p>
+                </div>
+                <div class="meta">
+                    <a href="javascript:;" class="drag-handle"><i class="icon-bars"></i></a>
+                </div>
+            </div>
+            <div class="upload-object is-success" data-id="<?= $file->id ?>" data-path="<?= $file->path ?>">
+                <div class="icon-container image">
+                    <img src="<?= $file->thumb ?>" />
+                </div>
+                <div class="info">
+                    <h4 class="filename">
+                        <span data-dz-name></span>
+                        <a
+                            href="javascript:;"
+                            class="upload-remove-button"
+                            data-request="<?= $this->getEventHandler('onRemoveAttachment') ?>"
+                            data-request-confirm="Voc&ecirc; tem certeza?"
+                            data-request-data="file_id: <?= $file->id ?>"
+                            ><i class="icon-times"></i></a>
+                    </h4>
+                    <p class="size"><?= e($file->sizeToString()) ?></p>
+                </div>
+                <div class="meta">
+                    <a href="javascript:;" class="drag-handle"><i class="icon-bars"></i></a>
+                </div>
+            </div>
+            <div class="upload-object is-success" data-id="<?= $file->id ?>" data-path="<?= $file->path ?>">
+                <div class="icon-container image">
+                    <img src="<?= $file->thumb ?>" />
+                </div>
+                <div class="info">
+                    <h4 class="filename">
+                        <span data-dz-name></span>
+                        <a
+                            href="javascript:;"
+                            class="upload-remove-button"
+                            data-request="<?= $this->getEventHandler('onRemoveAttachment') ?>"
+                            data-request-confirm="Voc&ecirc; tem certeza?"
+                            data-request-data="file_id: <?= $file->id ?>"
+                            ><i class="icon-times"></i></a>
+                    </h4>
+                    <p class="size"><?= e($file->sizeToString()) ?></p>
+                </div>
+                <div class="meta">
+                    <a href="javascript:;" class="drag-handle"><i class="icon-bars"></i></a>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- Template for new files -->
+<script type="text/template" id="<?= $this->getId('template') ?>">
+    <div class="upload-object dz-preview dz-file-preview">
+        <div class="icon-container image">
+            <img data-dz-thumbnail />
+        </div>
+        <div class="info">
+            <h4 class="filename">
+                <span data-dz-name></span>
+                <a
+                    href="javascript:;"
+                    class="upload-remove-button"
+                    data-request="<?= $this->getEventHandler('onRemoveAttachment') ?>"
+                    data-request-confirm="Voc&ecirc; tem certeza?"
+                    ><i class="icon-times"></i></a>
+            </h4>
+            <p class="size" data-dz-size></p>
+        </div>
+        <div class="meta">
+            <a href="javascript:;" class="drag-handle"><i class="icon-bars"></i></a>
+            <div class="progress-bar"><span class="upload-progress" data-dz-uploadprogress></span></div>
+            <div class="error-message"><span data-dz-errormessage></span></div>
+        </div>
+    </div>
+</script>

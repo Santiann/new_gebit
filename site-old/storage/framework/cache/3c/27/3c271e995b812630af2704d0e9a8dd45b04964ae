@@ -1,0 +1,53 @@
+1690338692a:1:{s:11:"pricing.htm";a:11:{s:8:"fileName";s:11:"pricing.htm";s:7:"content";s:646:"title = "Preços"
+url = "/pricing"
+layout = "default"
+
+[viewBag]
+activeMenu = "pricing"
+
+[dealix_faq_questions]
+
+[prices]
+
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Preços transparentes' |_ }}</h2>
+            <!-- <p>Border-less account pricing</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+{% component 'prices' %}
+
+{% component 'dealix_faq_questions' %}
+
+{#{% partial 'sections/our-loving-clients' %}#}
+
+{% partial 'sections/free-trial-area' %}
+";s:5:"mtime";i:1689760851;s:6:"markup";s:518:"{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Preços transparentes' |_ }}</h2>
+            <!-- <p>Border-less account pricing</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+{% component 'prices' %}
+
+{% component 'dealix_faq_questions' %}
+
+{#{% partial 'sections/our-loving-clients' %}#}
+
+{% partial 'sections/free-trial-area' %}";s:4:"code";N;s:5:"title";s:7:"Preços";s:3:"url";s:8:"/pricing";s:6:"layout";s:7:"default";s:7:"viewBag";a:1:{s:10:"activeMenu";s:7:"pricing";}s:20:"dealix_faq_questions";a:0:{}s:6:"prices";a:0:{}}}

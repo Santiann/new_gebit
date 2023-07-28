@@ -1,0 +1,24 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: general.translate::lang.locale.name
+        span: auto
+
+    code:
+        label: general.translate::lang.locale.code
+        span: auto
+
+    is_enabled:
+        label: general.translate::lang.locale.is_enabled
+        type: checkbox
+        comment: general.translate::lang.locale.is_enabled_help
+        span: auto
+
+    is_default:
+        label: general.translate::lang.locale.is_default
+        type: checkbox
+        comment: general.translate::lang.locale.is_default_help
+        span: auto

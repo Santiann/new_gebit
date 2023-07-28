@@ -1,0 +1,51 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('dealix/planos/assinaturas') ?>">Assinaturas</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <?= Form::open(['class' => 'layout']) ?>
+
+        <p class="flash-message static br-a">
+            Algumas informações estão sincronizadas com o Pagar.me e podem levar alguns minutos para serem atualizadas.
+        </p>
+        <div class="layout-row">
+            <?= $this->formRender() ?>
+        </div>
+
+        <div class="form-buttons">
+            <div class="loading-indicator-container">
+                <button
+                    type="submit"
+                    data-request="onSaveSubscription"
+                    data-browser-validate
+                    data-request-data="redirect:0"
+                    data-hotkey="ctrl+s, cmd+s"
+                    data-request-flash
+                    data-load-indicator="Salvando assinatura..."
+                    class="btn btn-primary">
+                    <u>S</u>alvar
+                </button>       
+                <button
+                    type="button"
+                    class="oc-icon-trash-o btn-icon btn btn-danger danger pull-right"
+                    data-request="onCancelSubscription"
+                    data-load-indicator="Cancelando assinatura..."
+                    data-request-flash
+                    data-request-confirm="Cancelar assinatura?">
+                    Cancelar assinatura
+                </button>
+            </div>
+        </div>
+
+    <?= Form::close() ?>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('dealix/planos/assinaturas') ?>" class="btn btn-default">Return to assinaturas list</a></p>
+
+<?php endif ?>

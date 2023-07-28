@@ -1,0 +1,36 @@
+<?= Block::put('body') ?>
+
+<?php if (!$this->fatalError): ?>
+<div class="layout control-scrollpanel col-md-3" id="pages-side-panel">
+    <div class="layout-cell">
+        <div class="layout-relative fix-button-container">
+            <form class="layout" data-content-id="pages" data-object-type="page" data-type-icon="oc-icon-files-o" onsubmit="return false">
+                <?= $this->widget->pageList->render() ?>
+            </form>
+        </div>
+    </div>
+</div>
+<?php endif ?>
+
+    <div class="col-md-9">
+        <?= Form::open() ?>
+
+        <input type="hidden" value="<?= e($formWidget->alias) ?>" name="formWidgetAlias" />
+
+        <?= $formWidget->render() ?>
+
+        <div class="actions" style="padding: 0px 20px 0px 20px; margin-bottom:20px; overflow: hidden">
+
+            <button
+                class="btn btn-primary pull-right oc-icon-save"
+                data-request="onSave"
+                data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+                data-hotkey="ctrl+s, cmd+s">
+                Salvar Alterações
+            </button>
+
+        </div>
+
+        <?= Form::close() ?>
+    </div>
+<?= Block::endPut(); ?>

@@ -1,0 +1,45 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    settings[title]:
+        span: left
+        disabled: true
+        label: general.paginas::lang.editor.title
+        placeholder: general.paginas::lang.editor.new_title
+        attributes:
+            default-focus: 1
+
+    settings[url]:
+        span: right
+        placeholder: /
+        label: general.paginas::lang.editor.url
+        disabled: true
+        preset:
+            field: settings[title]
+            type: url
+            prefixInput: input[data-parent-url]
+
+tabs:
+    fields:
+        # settings[layout]:
+        #     tab: cms::lang.editor.settings
+        #     label: general.paginas::lang.page.layout
+        #     type: dropdown
+        #     options: getLayoutOptions
+
+        # settings[is_hidden]:
+        #     tab: cms::lang.editor.settings
+        #     span: left
+        #     label: general.paginas::lang.editor.hidden
+        #     type: checkbox
+        #     comment: general.paginas::lang.editor.hidden_comment
+
+        # settings[navigation_hidden]:
+        #     tab: cms::lang.editor.settings
+        #     span: right
+        #     label: general.paginas::lang.editor.navigation_hidden
+        #     type: checkbox
+        #     comment: general.paginas::lang.editor.navigation_hidden_comment

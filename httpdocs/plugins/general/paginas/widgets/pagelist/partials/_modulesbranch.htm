@@ -1,0 +1,22 @@
+<?php foreach ($items as $moduleIdentifer => $moduleConfig): ?>
+    <li
+        class="modules <?php if( $currentUrlId == $moduleConfig['urlId']) :  ?>active <?php endif; ?>"
+        data-group-id="<?= e($moduleIdentifer) ?>"
+        data-item-path="module::<?= e($moduleIdentifer) ?>"
+        data-id="<?= e($moduleIdentifer) ?>" >
+
+        <div class="inside-container" style="overflow: hidden">
+
+            <a style="width: 80%;float: left;">
+                <?= $moduleConfig['title'] ?>
+                <span class="comment"><?= $moduleConfig['description'] ?></span>
+            </a>
+
+            <div class="action-bar">
+                <a class="action-link oc-icon-table" href="<?= Backend::url($moduleConfig['url']) ?>"></a>
+            </div>
+
+        </div>
+
+    </li>
+<?php endforeach ?>

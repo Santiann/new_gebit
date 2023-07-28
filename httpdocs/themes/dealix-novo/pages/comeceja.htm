@@ -1,0 +1,76 @@
+title = "Comece Já"
+url = "/comeceja"
+layout = "default"
+==
+
+function onStart()
+{
+    $id_plano = \General\Paginas\Models\Conteudo::where('pagina', '/comeceja')
+                ->where('identificador','plano')->first();
+    $this['plano_selecionado'] = \Dealix\Planos\Models\Plano::where('pagarme_id',$id_plano ? $id_plano->valor : '')->first();
+}
+
+==
+
+{variable tab="Futuro" type="richeditor" name="fuTitle" label="Título" span="right"}{/variable}
+{variable tab="Futuro" type="textarea" name="fuSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="futuros" tab="Futuro" prompt="Adicionar Itens"}
+    {variable type="text" name="text" label="Texto" span="left"}{/variable}
+{/repeater}
+
+<div class="container comeceja">
+    <div class="d-flex align-items-center flex-column flex-md-row justify-content-between">
+        <div class="destaque">
+            <h1 class="h61 fmedium">{{ fuTitle | raw }}</h1>
+            <p class="h20">{{ fuSubTitle | raw }}</p>
+            <ul class="mt-4">
+                {% for futuro in futuros %}
+                    <li class="d-flex align-items-center mb-3 h17">
+                        <img class="mr-3" src="{{ 'assets/img/f-checked.svg'|theme }}" alt="{{ 'Dealix - Controle de Contratos' | _ }}">
+                        {{ futuro.text }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        {variable tab="Plano" type="dropdown" name="plano" options="\Dealix\Planos\Controllers\Planos::getPlanoOptions" label="Plano"}{/variable}
+        <div class="price bg-primary text-center">
+            <h1 class="h43 fmedium">{{ plano_selecionado.nome }}</h1>
+            <div class="my-5">
+                <h4 class="h29 mb-1">{{ 'R$' | _ }}</h4>
+                <h1 class="h108 flight">{{  plano_selecionado.valor | number_format(2, ',', '.') }}</h1>
+                <h4 class="h29 mt-1">{{ 'mês' | _ }}</h4>
+            </div>
+            {% set page_name = user ? 'checkout' : 'user/register' %}
+            <a href="{{ page_name | page({'plan_id': plano_selecionado.pagarme_id}) }}" class="btn-price mt-2 text-uppercase text-black">
+                {{ 'começar' | _ }}
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% partial 'common/especialista.htm' %}
+
+<div class="container depoimentos">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="">
+            {variable tab="Depoimentos" type="richeditor" name="dTitle" label="Título" span="right"}{/variable}
+            <h1 class="h40 fmedium">{{ dTitle | raw }}</h1>
+        </div>
+        <h4 class="h29"></h4>
+    </div>
+    {repeater name="despoimentos" tab="Depoimentos" prompt="Adicionar Item"}
+        {variable type="mediafinder" name="image" label="Icone" span="right"}{/variable}
+        {variable type="richeditor" name="title" label="Título" span="left"}{/variable}
+        {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+        {variable type="text" name="nome" label="nome" span="left"}{/variable}
+        {variable type="text" name="company" label="Empresa" span="left"}{/variable}
+    {/repeater}
+    <div class="comments row justify-content-between">
+        {% for depoimento in despoimentos %}
+            {% partial 'comments/comment.htm' item=depoimento %}
+        {% endfor %}
+    </div>
+</div>

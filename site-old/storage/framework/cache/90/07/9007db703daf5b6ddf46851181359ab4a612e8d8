@@ -1,0 +1,39 @@
+1660050883a:1:{s:8:"home.htm";a:12:{s:8:"fileName";s:8:"home.htm";s:7:"content";s:410:"title = "Página inicial"
+url = "/"
+layout = "default"
+
+[viewBag]
+activeMenu = "home"
+
+[dealix_faq_questions]
+
+[prices]
+
+[newsSubscribe newsletterForm]
+==
+
+{% partial 'common/header' %}
+
+{% partial 'sections/main-banner-area' %}
+
+{% partial 'sections/features-area' %}
+
+{% partial 'sections/features-area-2' %}
+
+{% component 'prices' %}
+
+{% component 'dealix_faq_questions' %}
+
+{% component 'newsletterForm' %}";s:5:"mtime";i:1623966623;s:6:"markup";s:254:"{% partial 'common/header' %}
+
+{% partial 'sections/main-banner-area' %}
+
+{% partial 'sections/features-area' %}
+
+{% partial 'sections/features-area-2' %}
+
+{% component 'prices' %}
+
+{% component 'dealix_faq_questions' %}
+
+{% component 'newsletterForm' %}";s:4:"code";N;s:5:"title";s:15:"Página inicial";s:3:"url";s:1:"/";s:6:"layout";s:7:"default";s:7:"viewBag";a:1:{s:10:"activeMenu";s:4:"home";}s:20:"dealix_faq_questions";a:0:{}s:6:"prices";a:0:{}s:28:"newsSubscribe newsletterForm";a:0:{}}}

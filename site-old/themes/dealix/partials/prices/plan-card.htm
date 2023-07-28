@@ -1,0 +1,37 @@
+<div class="col-lg-4 col-sm-6">
+    <div class="single-pricing-table left-align">
+        <div class="pricing-header">
+            <h3>{{ plan.nome }}</h3>
+        </div>
+
+        <div class="price">
+            <sup>{{ 'R$' |_ }}</sup> {{ plan.valor | number_format(2, ',', '.') }} <sub>/ {{ type |_ }}</sub>
+        </div>
+
+        <ul class="pricing-features">
+            {% for feature in plan.features %}
+                <li>
+                    <i class="bx bxs-badge-check"></i>
+                    {{ feature.description }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="btn-box">
+            {% if user %}
+            <a href="{{ 'checkout' | page({'plan_id': plan.pagarme_id}) }}" class="default-btn">
+            {% else %}
+            <a href="{{ 'register' | page({'plan_id': plan.pagarme_id}) }}" class="default-btn">
+            {% endif %}
+                <i class="bx bxs-hot"></i>
+                {% if plan.free_trial_days %}
+                    {{ 'Experimente por :days dias' |_({days: plan.free_trial_days}) }}
+                {% else %}
+                    {{ 'Contratar' |_ }}
+                {% endif %}
+
+                <span></span>
+            </a>
+        </div>
+    </div>
+</div>

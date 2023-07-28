@@ -1,0 +1,147 @@
+1690349936a:1:{s:8:"home.htm";a:9:{s:8:"fileName";s:8:"home.htm";s:7:"content";s:2795:"title = "Home"
+url = "/"
+layout = "default"
+
+[viewBag]
+activeMenu = "home"
+==
+
+<!-- Funcionalidades -->
+{variable tab="Destaque" type="richeditor" name="dTitle" label="Título" span="left"}{/variable}
+{variable tab="Destaque" type="textarea" name="dSubTitle" label="Sub Título" span="right"}{/variable}
+{variable tab="Destaque" type="text" name="dLink" label="Link" span="left"}{/variable}
+
+{variable tab="Funcionalidades" type="text" name="fSpan" label="Span" span="left"}{/variable}
+{variable tab="Funcionalidades" type="richeditor" name="fTitle" label="Título" span="right"}{/variable}
+{variable tab="Funcionalidades" type="textarea" name="fSubTitle" label="Sub Título" span="left"}{/variable}
+
+{%
+    partial 'sections/featured-colaborativa.htm'
+    dTitle=dTitle
+    dSubTitle=dSubTitle
+    dLink=dLink
+    fSpan=fSpan
+    fTitle=fTitle
+    fSubTitle=fSubTitle
+%}
+
+{repeater name="funcionalidades" tab="Funcionalidades" prompt="Adicionar Item"}
+    {variable type="mediafinder" name="image" label="Icone" span="right"}{/variable}
+    {variable type="richeditor" name="title" label="Título" span="left"}{/variable}
+    {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+    {variable type="text" name="span" label="Link" span="left"}{/variable}
+    {variable type="checkbox" name="novo" label="Novo ?" span="left"}{/variable}
+{/repeater}
+
+<div class="container funcionalidades">
+    <div class="row">
+        {% partial 'funcionalidades/item.htm' funcionalidades=funcionalidades %}
+    </div>
+</div>
+
+<!-- Plataforma -->
+
+{variable tab="Plataforma" type="richeditor" name="pTitle" label="Título Geral" span="left"}{/variable}
+
+{% partial 'sections/featured-plataforma.htm'pTitle=pTitle %}
+
+<!-- Possibilidades -->
+{variable tab="Possibilidades" type="richeditor" name="poTitle" label="Título" span="left"}{/variable}
+{variable tab="Possibilidades" type="textarea" name="poSubTitle" label="Sub Título" span="right"}{/variable}
+{variable tab="Possibilidades" type="text" name="poLink" label="Link" span="left"}{/variable}
+
+{%
+    partial 'sections/featured-possibilidades.htm'
+    title=poTitle
+    subtitle=poSubTitle
+    link=poLink
+%}
+
+<!-- Futuro -->
+{variable tab="Futuro" type="text" name="fuSpan" label="Span" span="left"}{/variable}
+{variable tab="Futuro" type="richeditor" name="fuTitle" label="Título" span="right"}{/variable}
+{variable tab="Futuro" type="textarea" name="fuSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="futuros" tab="Futuro" prompt="Adicionar Itens"}
+    {variable type="text" name="text" label="Texto" span="left"}{/variable}
+{/repeater}
+
+
+{%
+    partial 'sections/featured-futuro.htm'
+    span=fuSpan
+    title=fuTitle
+    subtitle=fuSubTitle
+    futuros=futuros
+    planos=futurosPlanos
+%}
+
+";s:5:"mtime";i:1689760851;s:6:"markup";s:2714:"<!-- Funcionalidades -->
+{variable tab="Destaque" type="richeditor" name="dTitle" label="Título" span="left"}{/variable}
+{variable tab="Destaque" type="textarea" name="dSubTitle" label="Sub Título" span="right"}{/variable}
+{variable tab="Destaque" type="text" name="dLink" label="Link" span="left"}{/variable}
+
+{variable tab="Funcionalidades" type="text" name="fSpan" label="Span" span="left"}{/variable}
+{variable tab="Funcionalidades" type="richeditor" name="fTitle" label="Título" span="right"}{/variable}
+{variable tab="Funcionalidades" type="textarea" name="fSubTitle" label="Sub Título" span="left"}{/variable}
+
+{%
+    partial 'sections/featured-colaborativa.htm'
+    dTitle=dTitle
+    dSubTitle=dSubTitle
+    dLink=dLink
+    fSpan=fSpan
+    fTitle=fTitle
+    fSubTitle=fSubTitle
+%}
+
+{repeater name="funcionalidades" tab="Funcionalidades" prompt="Adicionar Item"}
+    {variable type="mediafinder" name="image" label="Icone" span="right"}{/variable}
+    {variable type="richeditor" name="title" label="Título" span="left"}{/variable}
+    {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+    {variable type="text" name="span" label="Link" span="left"}{/variable}
+    {variable type="checkbox" name="novo" label="Novo ?" span="left"}{/variable}
+{/repeater}
+
+<div class="container funcionalidades">
+    <div class="row">
+        {% partial 'funcionalidades/item.htm' funcionalidades=funcionalidades %}
+    </div>
+</div>
+
+<!-- Plataforma -->
+
+{variable tab="Plataforma" type="richeditor" name="pTitle" label="Título Geral" span="left"}{/variable}
+
+{% partial 'sections/featured-plataforma.htm'pTitle=pTitle %}
+
+<!-- Possibilidades -->
+{variable tab="Possibilidades" type="richeditor" name="poTitle" label="Título" span="left"}{/variable}
+{variable tab="Possibilidades" type="textarea" name="poSubTitle" label="Sub Título" span="right"}{/variable}
+{variable tab="Possibilidades" type="text" name="poLink" label="Link" span="left"}{/variable}
+
+{%
+    partial 'sections/featured-possibilidades.htm'
+    title=poTitle
+    subtitle=poSubTitle
+    link=poLink
+%}
+
+<!-- Futuro -->
+{variable tab="Futuro" type="text" name="fuSpan" label="Span" span="left"}{/variable}
+{variable tab="Futuro" type="richeditor" name="fuTitle" label="Título" span="right"}{/variable}
+{variable tab="Futuro" type="textarea" name="fuSubTitle" label="Sub Título" span="left"}{/variable}
+
+{repeater name="futuros" tab="Futuro" prompt="Adicionar Itens"}
+    {variable type="text" name="text" label="Texto" span="left"}{/variable}
+{/repeater}
+
+
+{%
+    partial 'sections/featured-futuro.htm'
+    span=fuSpan
+    title=fuTitle
+    subtitle=fuSubTitle
+    futuros=futuros
+    planos=futurosPlanos
+%}";s:4:"code";N;s:5:"title";s:4:"Home";s:3:"url";s:1:"/";s:6:"layout";s:7:"default";s:7:"viewBag";a:1:{s:10:"activeMenu";s:4:"home";}}}

@@ -1,0 +1,35 @@
+.blog{
+    margin-top: 8.25rem;
+    margin-bottom: 10.563rem;
+}
+
+.blog .categorias >div a{
+    border: 2px solid $indigo;
+    color: $indigo;
+    border-radius: 30px;
+    padding: 0.75rem 2.063rem;
+    font-size: 0.938rem;
+    line-height: 1.438rem;
+    font-weight: 600;
+}
+
+.blog .categorias >div a.active{
+    background-color: $indigo;
+    color: $white;
+}
+
+.card{
+    -webkit-box-shadow: 0px 0px 19px -10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 19px -10px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 19px -10px rgba(0,0,0,0.5);
+    border: 0;
+}
+
+.card .author h4,
+.card .author-content h3{
+    font-size: 0.688rem;
+}
+
+.card .author-content h5{
+    font-size: 0.563rem;
+}

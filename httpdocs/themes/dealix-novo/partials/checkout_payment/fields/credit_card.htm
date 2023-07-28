@@ -1,0 +1,53 @@
+<div class="row mt-3">
+    <div class="col-lg-12 col-md-12">
+        <div class="form-group">
+            <input required type="number" name="card_number" id="card_number" data-mask="0000000000000000" class="form-control" data-error="{{ 'Número do cartão inválido.' |_ }}">
+            <label class="form-control-placeholder" for="card_number">{{ 'Número do cartão' |_ }}</label>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+{# <div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="form-group">
+            <select class="form-control" name="card_parcel" id="card_parcel" required data-error="{{ 'Parcelas' |_ }}">
+                <option>1x de 131</option>
+                <option>2x de 131</option>
+                <option>3x de 131</option>
+            </select>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div> #}
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="form-group">
+            <input required type="text" name="card_holder_name" id="card_holder_name" data-error="{{ 'Nome no cartão' |_ }}" class="form-control">
+            <label class="form-control-placeholder" for="card_holder_name">{{ 'Nome no cartão' |_ }}</label>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <input required type="text" name="card_expiration_month" id="card_expiration_month" data-mask="00" data-error="{{ 'Mês de vencimento' |_ }}" class="form-control">
+            <label class="form-control-placeholder" for="card_expiration_month">{{ 'Mês' |_ }}</label>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <input required type="text" name="card_expiration_year" id="card_expiration_year" data-mask="00" data-error="{{ 'Ano de vencimento' |_ }}" class="form-control">
+            <label class="form-control-placeholder" for="card_expiration_year">{{ 'Ano' |_ }}</label>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <input required type="text" name="card_cvv" id="card_cvv" data-mask="0000" data-error="{{ 'Código de segurança' |_ }}" class="form-control">
+            <label class="form-control-placeholder" for="card_cvv">{{ 'CVV' |_ }}</label>
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,166 @@
+.login-page .card .login-card-body .link-esquecisenha, .login-page .card .register-card-body .link-esquecisenha {
+    margin-top: 5px;
+}
+
+/*.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef !important;
+    opacity: 1;
+}*/
+
+select[readonly] {
+    background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+    pointer-events: none;
+    touch-action: none;
+    border-radius: 10px;
+}
+input[readonly] {
+    background: #eee !important;
+    pointer-events: none;
+    touch-action: none;
+    border-radius: 10px;
+}
+input[disabled] {
+    background: #eee !important;
+    pointer-events: none;
+    touch-action: none;
+    border-radius: 10px;
+}
+
+select[readonly].select2 + .select2-container {
+    pointer-events: none;
+    touch-action: none;
+    background: #eee;
+    border-radius: 10px;
+}
+
+input[type="checkbox"][readonly] {
+    pointer-events: none;
+    touch-action: none;
+    background: #ff0000;
+}
+
+#ordemDigitado{
+    box-shadow: inset 0 0 0 transparent;
+    border: 0px solid red;
+    width: 44px;
+    position: absolute;
+    top: 22px;
+    left: 8px;
+    background-color: transparent;
+    font-family: arial;
+    font-weight: bold;
+    float: left;
+}
+
+.col-sm-offset-3 {
+    margin-left: 0%;
+}
+
+
+
+
+/*documento enviado por skype */
+.main-sidebar .sidebar .nav-sidebar .nav-item .nav-treeview > .nav-item > .nav-link {
+    padding-left: 60px;
+}
+.main-sidebar .sidebar .nav-sidebar .nav-item > .nav-link .icon {
+    font-size: 1.8em;
+}
+.main-sidebar .sidebar .nav-sidebar .nav-item .nav-treeview > .nav-item > .nav-link .icon {
+    font-size: 1.5em;
+}
+.main-sidebar .sidebar .nav-sidebar .nav-item > .nav-link .base-icon {
+    padding-top: 3px;
+}
+.main-sidebar .sidebar .nav-sidebar .nav-item > .nav-link .txt-link {
+    margin-left: -1px;
+}
+.main-sidebar .sidebar .nav-sidebar .nav-item .nav-treeview > .nav-item > .nav-link .base-icon {
+    padding-top: 4px;
+}
+
+.FormSubtitulo {
+    border-bottom: 0px solid #E50019;
+}
+
+.dataTables_filter input {
+    height: 32px;
+    font-size: 1em;
+    -webkit-box-shadow: 0 0 0 #FFFFFF;
+    box-shadow: 0 0 0 #FFFFFF;
+    border: 1px solid #ccc;
+    background: transparent;
+    border-radius: 10px;
+    padding: 0px 13px;
+}
+/*documento enviado por skype */
+
+
+.dataTables_wrapper {
+    width: 100%;
+}
+
+textarea
+{
+    height: auto !important;
+    resize: none;
+}
+
+
+.content-wrapper .form-group .form-control, .content-wrapper .form-group .select2-selection {
+    -webkit-box-shadow: 0 0 0 #FFF;
+    box-shadow: 0 0 0 #FFF;
+}
+
+
+.small-box .icon > i.fa, .small-box .icon > i.fab, .small-box .icon > i.far, .small-box .icon > i.fas, .small-box .icon > i.glyphicon, .small-box .icon > i.ion {
+    font-size: 60px;
+    top: 14px;
+}
+
+
+.bg-orange, .bg-orange>span {
+    color: #fff!important;
+}
+.bg-warning, .bg-warning>span {
+    color: #fff !important;
+}
+
+.bg-orange, .bg-orange>a {
+    color: #fff!important;
+}
+.bg-warning, .bg-warning>a {
+    color: #fff !important;
+}
+
+.register-page {
+    background: url(/img/fundo-login.png) no-repeat center;
+    background-attachment: scroll;
+    background-attachment: fixed;
+}
+
+
+.register-page .login-logo a {
+    display: inline-block;
+    width: 210px;
+    height: 170px;
+    margin: 0 auto;
+    background: url(/img/logo-login.png) no-repeat 0 0;
+    background-size: auto;
+    background-size: auto;
+    background-size: 100%;
+
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.form-group .select2-selection {
+    border-radius: 10px;
+}
+
+.content-wrapper .form-group .select2-selection {
+    height: auto;
+    min-height: 34px;
+}

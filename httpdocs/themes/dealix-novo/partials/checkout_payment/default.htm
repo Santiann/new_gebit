@@ -1,0 +1,70 @@
+    <ul class="nav nav-tabs tabs" id="myTab" role="tablist">
+        <li data-id-tab="credit_card" class="nav-item w-50 text-center current">
+            <a onclick="changePaymentMethod()" class="nav-link active" data-toggle="tab" href="#cartao" role="tab" aria-controls="cartao" aria-selected="true">
+                <i class="bx bx-credit-card"></i> {{ 'Cartão' | _ }}
+            </a>
+        </li>
+        <li data-id-tab="boleto" class="nav-item w-50 text-center">
+            <a onclick="changePaymentMethod()" class="nav-link" data-toggle="tab" href="#boleto" role="tab" aria-controls="boleto" aria-selected="false">
+                <i class="bx bx-barcode"></i> {{ 'Boleto' | _ }}
+            </a>
+        </li>
+    </ul>
+    {{ form_ajax(__SELF__ ~ '::onSubmit', {id: 'checkoutForm', data: {'plan_id': this.param.plan_id}} ) }}
+        <div class="tab-content mt-3" id="myTabContent">
+            {{ form_token() }}
+            <input name="payment_method" type="hidden" value="credit_card" />
+            <!-- Início conteúdo para ambos -->
+            <div class="pt-3">
+                {% component 'checkout_payment/selectedPlan' %}
+                <hr>
+            </div>
+            <!-- Fim conteúdo para ambos -->
+
+            <!-- Início conteúdo cartao -->
+            <div class="tab-pane  fade show active" id="cartao" role="tabpanel" aria-labelledby="cartao">
+                <div class="row form-group text-center">
+                    <div class="col-12 text-center">
+                        <h4 class="h15 mb-0 ml-2">Dados do cartão</h4>
+                    </div>
+                </div>
+                <div credit-card-fields>
+                {% partial '@fields/credit_card' %}
+                </div>
+            </div>
+            <!-- Fim conteúdo cartao -->
+
+            <!-- Início conteúdo boleto -->
+            <div class="tab-pane fade " id="boleto" role="tabpanel" aria-labelledby="boleto">
+                {% partial '@fields/boleto' %}
+            </div>
+            <!-- Fim conteúdo boleto -->
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn-cinza form-control btn btn-primary rounded submit px-3">{{ 'Finalizar' | _ }}</button>
+                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div id="{{ __SELF__ }}_forms_flash"></div>
+        </div>
+        {{ form_close() }}
+
+{% put scripts %}
+<script>
+    function changePaymentMethod()
+    {
+        setTimeout(function(){
+            let method = $('.nav-link.active').parent().data('idTab')
+
+            $('[name="payment_method"]').val(method);
+
+            if (method === 'credit_card') {
+                $('[credit-card-fields] input').attr('required', true);
+            } else {
+                $('[credit-card-fields] input').attr('required', false);
+            }
+        }, 500)
+    }
+</script>
+{% endput %}

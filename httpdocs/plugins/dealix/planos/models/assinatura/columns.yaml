@@ -1,0 +1,23 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    status:
+        label: Status
+        type : partial
+        path: ~/plugins/dealix/planos/models/assinatura/_status.htm
+        align: center
+        searchable: true
+    payment_method:
+        label: 'Método de pagamento'
+        type : partial
+        path: ~/plugins/dealix/planos/models/assinatura/_payment_method.htm
+        align: center
+        searchable: true
+    date_updated:
+        label: 'Última atualização'
+        searchable: true

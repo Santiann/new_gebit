@@ -1,0 +1,17 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+conteudo:
+    label: Conteudo
+    view:
+        list: $/general/paginas/models/conteudo/columns.yaml
+        showSorting : false
+        defaultSort:
+            column: ordem
+            direction: asc
+        toolbarButtons: create|delete
+    manage:
+        form: $/general/paginas/models/conteudo/fields.yaml
+        recordsPerPage: 10
+    emptyMessage : "N&atilde;o existem campos relacionados"

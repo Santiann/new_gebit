@@ -1,0 +1,33 @@
+.main-sidebar, .brand-link,
+.nav-tabs li a.active,
+.nav-tabs li a:hover {
+    background: #2D3468 !important;
+}
+
+.main-sidebar .sidebar .nav-sidebar .nav-item .nav-link, 
+.main-sidebar li,
+.main-sidebar .sidebar .nav-sidebar,
+.main-sidebar .nav .nav-treeview {
+    color: white !important;
+    border-color: #2D3468 !important;
+    background: #2D3468;
+}
+
+.main-sidebar .sidebar .nav-sidebar .nav-item>.nav-link .icon {
+    color: white;
+}
+
+.main-sidebar .nav-link.active,
+.main-sidebar .nav-link:hover {
+    background: #00E6B5 !important;
+}
+
+.main-header,
+body {
+    background-image: none !important;
+}
+
+.badge-success,
+.main-header .nav-item.notifications-menu .nav-link .label {
+    background-color: #2036DC !important;
+}

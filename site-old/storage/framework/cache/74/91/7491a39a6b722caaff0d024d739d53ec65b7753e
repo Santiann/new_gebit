@@ -1,0 +1,22 @@
+1660050883a:1:{s:17:"common/header.htm";a:5:{s:8:"fileName";s:17:"common/header.htm";s:7:"content";s:222:"<!-- Header -->
+{% flash %}
+    <p
+        data-control="flash-message"
+        class="flash-message fade {{ type }}"
+        data-interval="5">
+        {{ message }}
+    </p>
+{% endflash %}
+
+{% partial 'common/navbar' %}
+";s:5:"mtime";i:1623966623;s:6:"markup";s:221:"<!-- Header -->
+{% flash %}
+    <p
+        data-control="flash-message"
+        class="flash-message fade {{ type }}"
+        data-interval="5">
+        {{ message }}
+    </p>
+{% endflash %}
+
+{% partial 'common/navbar' %}";s:4:"code";N;}}

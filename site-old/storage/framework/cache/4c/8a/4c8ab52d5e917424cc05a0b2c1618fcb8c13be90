@@ -1,0 +1,9 @@
+1659615336a:1:{s:30:"registerForm/fields/cities.htm";a:5:{s:8:"fileName";s:30:"registerForm/fields/cities.htm";s:7:"content";s:244:"<select id="{{ prefix }}_city" name="{{ prefix }}_id_cidade" class="custom-select form-control" required>
+    {% for city in cities %}
+    <option value="{{ city.a047_id_cidade }}">{{ city.a047_nome_cidade }}</option>
+    {% endfor %}
+</select>";s:5:"mtime";i:1623966623;s:6:"markup";s:244:"<select id="{{ prefix }}_city" name="{{ prefix }}_id_cidade" class="custom-select form-control" required>
+    {% for city in cities %}
+    <option value="{{ city.a047_id_cidade }}">{{ city.a047_nome_cidade }}</option>
+    {% endfor %}
+</select>";s:4:"code";N;}}

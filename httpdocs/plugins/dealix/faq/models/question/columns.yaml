@@ -1,0 +1,15 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    title:
+        label : Título
+
+    description:
+        label : Descrição
+
+    publicado :
+        label : Publicação
+        type : partial

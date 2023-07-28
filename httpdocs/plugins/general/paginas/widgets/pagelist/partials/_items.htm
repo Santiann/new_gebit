@@ -1,0 +1,7 @@
+<?php if ($items): ?>
+    <ol>
+        <?= $this->makePartial('treebranch', ['items' => $items, 'currentUrlId' => $currentUrlId]) ?>
+    </ol>
+<?php else: ?>
+    <p class="no-data"><?= trans($this->noRecordsMessage) ?></p>
+<?php endif ?>

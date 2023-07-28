@@ -1,0 +1,73 @@
+<?php if (!$this->fatalError): ?>
+
+    <div id="loader" style="display: block;">
+    </div>
+
+    <div id="content" class="layout-row" style="display: none;">
+
+        <div id="Form-primaryTabs"
+             class="control-tabs primary-tabs layout "
+             data-control="tab"
+             data-slidable>
+            <div class="layout-row min-size">
+                <ul class="nav nav-tabs" style="<?php if( (is_array($relatedModules) > 0) and (count($relatedModules) > 0)) :?>margin: 0px 0px 0px 0px;<?php endif; ?>">
+                    <li class="active">
+                        <a href="#content-tab"><i class="icon-file-o"></i> Conteudo
+                        </a>
+                    </li>
+                    <?php if(is_array($relatedModules)) : foreach($relatedModules as $identifier => $module) :?>
+                        <li class="">
+                            <a href="#module-tab-<?=$identifier?>">
+                                <i class="icon-list"></i> <?= $module['name'] ?>
+                            </a>
+                        </li>
+                    <?php endforeach; endif; ?>
+                </ul>
+            </div>
+
+            <div class="tab-content layout-row">
+
+                <div <?php if( (is_array($relatedModules) > 0) and (count($relatedModules) > 0)) :?>style="padding: 20px;" <?php endif; ?> class="tab-pane active layout-cell" id="content-tab">
+
+                    <?= Form::open(['class'=>'layout']) ?>
+
+                    <?= $this->formRenderOutsideFields() ?>
+
+                    <div class="form-buttons">
+                        <div class="loading-indicator-container">
+                            <button
+                                    type="submit"
+                                    data-request="onSave"
+                                    data-request-data="redirect:0"
+                                    data-hotkey="ctrl+s, cmd+s"
+                                    data-load-indicator="<?= e(trans('backend::lang.form.creating')) ?>"
+                                    class="btn btn-primary">
+                                Salvar Alterações
+                            </button>
+
+                        </div>
+                    </div>
+                    <?= Form::close() ?>
+
+                </div>
+
+                <?php if(is_array($relatedModules)) : foreach($relatedModules as $identifier => $module) :?>
+                <div data-module='<?= json_encode($module) ?>'
+                     data-moduleidentifier="<?= $identifier ?>"
+                     data-pageidentifier="<?= $pageIdentifier ?>"
+                     class="tab-pane layout-cell module-tab-<?=$identifier?> module" id="module-tab-<?=$identifier?>">
+                    <?= $this->listRender($identifier) ?>
+                </div>
+                <?php endforeach; endif; ?>
+            </div>
+        </div>
+    </div>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('general/paginas/conteudo') ?>" class="btn btn-default">Return to conteudo list</a></p>
+
+<?php endif ?>
+
+<?=$appendCode?>

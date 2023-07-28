@@ -1,0 +1,100 @@
+#pages-side-panel{
+    border-right: 2px solid white;
+}
+
+.inside-container:hover {
+    cursor: pointer;
+}
+
+.inside-container:hover > .action-bar > .action-link
+{
+    display: block;
+}
+
+.action-link:hover {
+    background-color: #1991d1 !important;
+    text-decoration: none;
+}
+
+
+.page-item > div
+{
+    overflow: hidden;
+}
+
+.page-item > div > a
+{
+    width: 80%;
+    float: left;
+}
+
+.inside-container > a > .comment{
+    font-size:9px !important;
+}
+
+.control-treeview ol > li > div > a
+{
+    padding: 10px 0 10px 45px; !important;
+}
+
+.control-treeview ol > li.has-subitems > div::before {
+    left: 13px !important;
+    top: 18px !important;
+    background-position: 0px 0px;
+}
+
+.control-treeview ol > li > div::before {
+    left: 13px !important;
+    top: 20px !important;
+    background-position: 0px -28px;
+}
+
+.control-treeview ol > li.active > div::after {
+    background: none;
+}
+
+.control-treeview ol.subitens > li > div{
+    background-color: #f9f9f9;
+}
+
+.control-treeview ol.subitens > li.active > div{
+    background-color: #dddddd;
+}
+
+/*.control-treeview ol > li.has-subitems > div:hover::before, .control-treeview ol > li.has-subitems > div.popover-highlight::before {*/
+    /*background-position: 0px -52px;*/
+/*}*/
+
+/*.control-treeview ol > li > div:hover::before {*/
+    /*background-position: 0px -0px;*/
+/*}*/
+
+.action-bar
+{
+    float: right;
+}
+
+.action-bar > .action-link
+{
+    font-size: 35px;
+    display: none;
+    float: right;
+    padding: 7px 7px 7px 17px;
+    color: white;
+}
+
+.control-treeview ol > li > ol {
+    padding-left: 20px;
+    padding-right: 0px;
+    border-left: 8px solid black;
+}
+
+.control-treeview ol > li > ol > li > div > a {
+    margin-left: -80px;
+    padding-left: 71px;
+}
+
+.subitens > li > div
+{
+    width: 342px;
+}

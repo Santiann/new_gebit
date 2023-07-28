@@ -1,0 +1,22 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: conteudo
+
+# Model Form Field configuration
+# Todos os campos sao gerados dinamicamente
+form:
+
+# Model Class name
+modelClass: General\Paginas\Models\Pagina
+
+# Default redirect location
+defaultRedirect: general/paginas/conteudo
+
+# Update page
+update:
+    title: Editar conteudo
+    redirect: general/paginas/conteudo
+    redirectClose: general/paginas/conteudo

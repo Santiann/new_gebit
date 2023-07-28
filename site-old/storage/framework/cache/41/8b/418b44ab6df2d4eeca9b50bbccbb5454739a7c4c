@@ -1,0 +1,146 @@
+1660050883a:1:{s:11:"contact.htm";a:10:{s:8:"fileName";s:11:"contact.htm";s:7:"content";s:3123:"title = "Contato"
+url = "/contact"
+layout = "default"
+
+[viewBag]
+activeMenu = "contact"
+
+[emptyForm contactForm]
+rules[name] = "required"
+rules[email] = "required|email"
+rules[phone_number] = "required"
+rules[msg_subject] = "required"
+rules[message] = "required"
+messages_success = "Sua mensagem foi enviada com sucesso."
+group = "Contato"
+
+==
+
+{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Contato' |_ }}</h2>
+            <!-- <p>The Strax Story</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+ <!-- Start Contact Area -->
+ <section class="contact-area ptb-100">
+    <div class="container">
+        <div class="contact-inner">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact-features-list">
+                        <h3>{{ 'Algumas outras ótimas razões para nos escolher' |_ }}</h3>
+                        <p>{{ 'Somos altamente dedicados e profissionais. Te ajudaremos a ganhar tempo e maior controle nos detalhes de seu negócio.' |_ }}</p>
+
+                        <ul>
+                            <li><i class='bx bx-badge-check'></i> {{ 'Suporte totalmente nacional' |_ }}</li>
+                            <li><i class='bx bx-badge-check'></i> {{ 'Possibilidade de Customizações' |_ }}</li>
+                            <li><i class='bx bx-badge-check'></i> {{ 'Redução de custos com operações de conformidade e auditorias' |_ }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact-form">
+                        <h3>{{ 'Entre em contato conosco' | _ }}</h3>
+
+                        {% component 'contactForm' %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-info-content">
+                    <h3>{{ 'Contate-nos pelo WhatsApp ou e-mail' |_ }}</h3>
+                    <h2>
+                        <a href="https://wa.me/5541987002332">(41) 98700-2332</a>
+                        <span>{{ 'OU' | _ }}</span>
+                        <a href="mailto:suporte@dealix.com.br">suporte@dealix.com.br</a>
+                    </h2>
+
+                    <ul class="social">
+                        <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-youtube"></i></a></li>
+                        <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact Area -->
+
+{#{% partial 'sections/our-loving-clients' %}#}
+";s:5:"mtime";i:1623966623;s:6:"markup";s:2777:"{% partial 'common/header' menuClass="navbar-style-two" %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{ 'Contato' |_ }}</h2>
+            <!-- <p>The Strax Story</p> -->
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+ <!-- Start Contact Area -->
+ <section class="contact-area ptb-100">
+    <div class="container">
+        <div class="contact-inner">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact-features-list">
+                        <h3>{{ 'Algumas outras ótimas razões para nos escolher' |_ }}</h3>
+                        <p>{{ 'Somos altamente dedicados e profissionais. Te ajudaremos a ganhar tempo e maior controle nos detalhes de seu negócio.' |_ }}</p>
+
+                        <ul>
+                            <li><i class='bx bx-badge-check'></i> {{ 'Suporte totalmente nacional' |_ }}</li>
+                            <li><i class='bx bx-badge-check'></i> {{ 'Possibilidade de Customizações' |_ }}</li>
+                            <li><i class='bx bx-badge-check'></i> {{ 'Redução de custos com operações de conformidade e auditorias' |_ }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact-form">
+                        <h3>{{ 'Entre em contato conosco' | _ }}</h3>
+
+                        {% component 'contactForm' %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-info-content">
+                    <h3>{{ 'Contate-nos pelo WhatsApp ou e-mail' |_ }}</h3>
+                    <h2>
+                        <a href="https://wa.me/5541987002332">(41) 98700-2332</a>
+                        <span>{{ 'OU' | _ }}</span>
+                        <a href="mailto:suporte@dealix.com.br">suporte@dealix.com.br</a>
+                    </h2>
+
+                    <ul class="social">
+                        <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-youtube"></i></a></li>
+                        <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact Area -->
+
+{#{% partial 'sections/our-loving-clients' %}#}";s:4:"code";N;s:5:"title";s:7:"Contato";s:3:"url";s:8:"/contact";s:6:"layout";s:7:"default";s:7:"viewBag";a:1:{s:10:"activeMenu";s:7:"contact";}s:21:"emptyForm contactForm";a:3:{s:5:"rules";a:5:{s:4:"name";s:8:"required";s:5:"email";s:14:"required|email";s:12:"phone_number";s:8:"required";s:11:"msg_subject";s:8:"required";s:7:"message";s:8:"required";}s:16:"messages_success";s:37:"Sua mensagem foi enviada com sucesso.";s:5:"group";s:7:"Contato";}}}

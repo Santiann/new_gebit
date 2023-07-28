@@ -1,0 +1,77 @@
+<!-- Start Login Area -->
+<section class="register-area">
+<div class="container">
+    <div class="contact-inner">
+        <div class="row justify-content-center">
+            <div class="logo">
+                <a href="{{ 'home' | page }}"><img src="{{ 'assets/img/logo-dealix-vertical.png' | theme }}" alt="Dealix"></a>
+            </div>
+        </div>
+        <div class="row justify-content-center ptb-100">
+            <div class="tab pricing-list-tab">
+                <ul class="tabs">
+                    <li data-id-tab="person" class="current">
+                        <a href="#">
+                            <i class="bx bx-group"></i> {{ 'Pessoa física' |_ }}
+                        </a>
+                    </li>
+                    <li data-id-tab="company">
+                        <a href="#">
+                            <i class="bx bx-building "></i>{{ 'Pessoa jurídica' |_ }}
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab_content">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            {% if canRegister %}
+                            {{ form_ajax(__SELF__ ~ '::onRegister', {id: 'registerForm', 'data-toggle': 'validator', 'role': 'form'}) }}
+                                {{ form_token() }}
+                                <!-- Início conteúdo só para pessoa física -->
+                                <div class="tabs_item" style="display: block;">
+                                </div>
+                                <!-- Fim conteúdo só para pessoa física -->
+
+                                 <!-- Início conteúdo só para pessoa jurídica -->
+                                 <div class="tabs_item">
+                                     <h5>{{ 'Dados da empresa' |_ }}</h5>
+                                     <hr>
+                                     {% partial '@fields/company' %}
+                                </div>
+                                <!-- Fim conteúdo só para pessoa jurídica -->
+                                    
+                                <!-- Início conteúdo para ambos -->
+                                <div class="pt-3">
+                                    <h5><span class="mr-3">{{ 'Dados do usuário' |_ }}</span>
+                                    <button onclick="copyCompanyData()" type="button" style="display: none;" class="btn btn-primary btn-sm" data-id-tab="company"><i class="bx bx-building "></i> {{ 'Repetir dados da empresa' | _ }}</button>
+                                    </h5>
+                                    <hr>
+                                </div>
+                                {% partial '@fields/common' %}
+                                <!-- Fim conteúdo para ambos -->
+                                
+                                <div class="row pt-3">
+                                    <div class="col-lg-12 col-md-12 text-center">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary default-btn"><i class='bx bxs-paper-plane'></i>{{ 'Enviar' | _ }}<span></span></button>
+                                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                                <div id="{{ __SELF__ }}_forms_flash"></div>
+                            {{ form_close() }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>
+</section>
+
+<!-- End Login Area -->

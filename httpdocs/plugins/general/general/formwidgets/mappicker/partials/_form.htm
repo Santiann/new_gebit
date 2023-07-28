@@ -1,0 +1,75 @@
+<!-- Outros Campos -->
+<div class="form-group">
+    <div class="row">
+
+        <?php if($this->hasField('street')) : ?>
+        <div class="col-md-10">
+            <label for="<?= $this->getId() ?>-street" class="col-md-12">Rua</label>
+            <input value="<?= $this->getValue('street') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> type="text" name="<?= $name ?>[street]" class="form-control street" id="<?= $this->getId() ?>-street">
+        </div>
+        <?php endif; ?>
+
+        <?php if($this->hasField('number')) : ?>
+        <div class="col-md-2">
+            <label for="<?= $this->getId() ?>-number" class="col-md-12">Numero</label>
+            <input value="<?= $this->getValue('number') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> type="text" name="<?= $name ?>[number]" class="form-control number" id="<?= $this->getId() ?>-number">
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="row">
+
+        <?php if($this->hasField('district')) : ?>
+        <div class="col-md-5">
+            <label for="<?= $this->getId() ?>-district" class="col-md-12">Bairro</label>
+            <input value="<?= $this->getValue('district') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> type="text" name="<?= $name ?>[district]" class="form-control district" id="<?= $this->getId() ?>-district">
+        </div>
+        <?php endif; ?>
+
+        <?php if($this->hasField('city')) : ?>
+        <div class="col-md-7">
+            <label for="<?= $this->getId() ?>-city" class="col-md-12">Cidade</label>
+            <input value="<?= $this->getValue('city') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> type="text" name="<?= $name ?>[city]" class="form-control city" id="<?= $this->getId() ?>-city">
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<?php if($this->hasField('state')) : ?>
+<div class="form-group">
+    <label for="<?= $this->getId() ?>-state" class="col-md-12">Estado</label>
+    <input value="<?= $this->getValue('state') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> type="text" name="<?= $name ?>[state]" class="form-control state" id="<?= $this->getId() ?>-state">
+</div>
+<?php endif; ?>
+
+<?php if($this->hasField('zip')) : ?>
+<div class="form-group">
+    <label for="<?= $this->getId() ?>-zip" class="col-md-12">C&oacute;digo Postal</label>
+    <input value="<?= $this->getValue('zip') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> type="text" name="<?= $name ?>[zip]" class="form-control zip" id="<?= $this->getId() ?>-zip">
+</div>
+<?php endif; ?>
+
+<?php if($this->hasField('country')) : ?>
+<div class="form-group">
+    <label for="<?= $this->getId() ?>-country" class="col-md-12">Pa&iacute;s</label>
+    <input value="<?= $this->getValue('country') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> type="text" name="<?= $name ?>[country]" class="form-control country" id="<?= $this->getId() ?>-country">
+</div>
+<?php endif; ?>
+
+<?php if($this->hasField('coordinades')) : ?>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="<?= $this->getId() ?>-latitude" class="">Latitude</label>
+            <input value="<?= $this->getValue('latitude') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> name="<?= $name ?>[latitude]" class="form-control latitude" type="text" id="<?= $this->getId() ?>-latitude"/>
+        </div>
+        <div class="col-md-6">
+            <label for="<?= $this->getId() ?>-longitude" class="">Logitude</label>
+            <input value="<?= $this->getValue('longitude') ?>" <?php if($readOnly): ?>readonly="readonly"<?php endif; ?> name="<?= $name ?>[longitude]" class="form-control longitude" type="text" id="<?= $this->getId() ?>-longitude"/>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,12 @@
+<div id="formSignupNewsletter">
+    <form
+        data-request="{{ __SELF__ }}::onSubmitSignup"
+        data-request-update="'{{ __SELF__ }}::complete': '#formSignupNewsletter'">
+        <div class="form-group">
+            <label for="signUpEmail">Email</label>
+            <input name="email" type="email" class="form-control" id="signUpEmail" placeholder="Enter your email">
+        </div>
+
+        <button type="submit" class="btn btn-default">Enviar</button>
+    </form>
+</div>

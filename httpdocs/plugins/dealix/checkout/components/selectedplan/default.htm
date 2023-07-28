@@ -1,0 +1,31 @@
+{% set plan = __SELF__.selected_plan %}
+
+<div class="row justify-content-center">
+    <div class="col-12 text-center">
+        <h4>{{ 'Revisão do plano' |_ }}</h4>
+    </div>
+    <div class="col-12">
+        <div class="contact-features-list">
+            <input hidden id="plan_id" value="{{ plan.id }}" />
+            <input hidden id="plan_price" value="{{ plan.valor | number_format(2) | replace({'.' : ''}) }}" />
+            <ul>
+                <li><i class='bx bx-badge-check'></i> {{ 'Plano selecionado: ' |_ }} <span id="plan_name" class="font-weight-bold">{{ plan.nome }}</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="contact-features-list">
+            <ul>
+                {% for feature in plan.features %}
+                    <li>
+                        <i class="bx bxs-badge-check"></i>
+                        {{ feature.description }}
+                    </li>
+                {% endfor %}
+                <li><i class='bx bx-badge-check'></i> {{ 'Valor: R$' |_ }} <span class="font-weight-bold">{{ plan.valor | number_format(2, ',', '.') }}</span> {{ '/mês' |_ }}</b></li>
+            </ul>
+        </div>
+    </div>
+</div>

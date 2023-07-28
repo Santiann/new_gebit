@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="<?= App::getLocale() ?>" class="no-js <?= $this->makeLayoutPartial('browser_detector') ?>">
+
+	<head>
+	    <?= $this->makeLayoutPartial('head') ?>
+	</head>
+	
+	<body class="<?= $this->bodyClass ?>">
+	
+		<div id="layout-canvas">
+		    <div class="layout">
+		
+		        <!-- Main Menu -->
+		        <div class="layout-row min-size">
+		            <?= $this->makeLayoutPartial('mainmenu') ?>
+		        </div>
+		
+				<!-- Main Layout -->
+		        <div class="layout-row">
+		
+					<?= $this->makeLayoutPartial('flyout',[ 
+							'flyoutContent' => Block::placeholder('sidepanel-flyout') 
+					]) ?>
+		
+		            <?= $this->makeLayoutPartial('sidenav') ?>
+		
+		            <?= $this->makeLayoutPartial('pagelist') ?>
+		
+					<?php $sideBar = Block::placeholder('form-sidebar') ?>
+		
+		            <!-- Content Body -->
+		            <div class="layout-cell layout-container" id="layout-body">
+		                <div class="layout-relative">
+		                    <div class="layout">
+		                    	<?= Form::open(['class'=>'layout stretch']) ?>
+		
+		                        <!-- Breadcrumb -->
+		                        <?= $this->makeLayoutPartial('breadcrumb') ?>
+									
+								<?php if($sideBar) :  ?>
+									<div class="row">
+								<?php endif ?>
+								
+		                        	<!-- Content -->
+			                        <div class="layout-row <?= $sideBar == null ? '' : 'col-md-9'?>">
+			                            <?= Block::placeholder('body') ?>
+			                        </div>
+									
+									<!-- Sidebar -->
+									<?= $this->makeLayoutPartial('sidebar',['sidebar' => $sideBar]) ?>
+								
+								<?php if($sideBar) :  ?>
+									</div>
+								<?php endif ?>
+
+								<?= Form::close() ?>
+		                    </div>
+		                </div>
+		            </div>
+		
+		        </div>
+		    </div>
+		
+		</div>
+		
+		<!-- Flash Messages -->
+		<div id="layout-flash-messages"><?= $this->makeLayoutPartial('flash_messages') ?></div>
+		
+	</body>
+</html>

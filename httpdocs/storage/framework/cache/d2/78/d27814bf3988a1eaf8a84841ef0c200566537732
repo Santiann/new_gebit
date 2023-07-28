@@ -1,0 +1,343 @@
+1690349936a:1:{s:19:"funcionalidades.htm";a:8:{s:8:"fileName";s:19:"funcionalidades.htm";s:7:"content";s:9057:"title = "Funcionalidades"
+url = "/funcionalidades"
+layout = "default"
+==
+
+<div class="container func container func mt-2 pt-2 pt-md-5 mt-md-5">
+    <div class="row">
+        <div class="col-12 col-md-3 left">
+            <img class="um" src="{{ 'assets/img/l-foto1.png'|theme }}" alt="Dealix">
+            <img class="dois" src="{{ 'assets/img/l-foto2.png'|theme }}" alt="Dealix">
+            <img class="tres" src="{{ 'assets/img/l-foto3.png'|theme }}" alt="Dealix">
+        </div>
+        <div class="col-12 col-md-6 text-center dest">
+            {variable tab="Topo" type="text" name="topSpan" label="Span" span="left"}{/variable}
+            {variable tab="Topo" type="richeditor" name="topTitle" label="Título" span="right"}{/variable}
+            {variable tab="Topo" type="textarea" name="topSubTitle" label="Sub Título" span="left"}{/variable}
+
+            <span class="h18 text-uppercase text-color-100">{{ topSpan }}</span>
+            <h1 class="h52 fmedium">{{ topTitle | raw }}</h1>
+            <p class="h029">{{ topSubTitle | raw }}</p>
+            <img src="{{ 'assets/img/f-imagecenter.png'|theme }}" alt="Dealix">
+        </div>
+        <div class="col-12 col-md-3 right">
+            <img class="um" src="{{ 'assets/img/r-foto1.png'|theme }}" alt="Dealix">
+            <img class="dois" src="{{ 'assets/img/r-foto2.png'|theme }}" alt="Dealix">
+            <img class="tres" src="{{ 'assets/img/r-foto3.png'|theme }}" alt="Dealix">
+        </div>
+    </div>
+</div>
+
+{repeater name="destaques" tab="Destaques Top" prompt="Adicionar item"}
+    {variable type="text" name="title" label="Título" span="left"}{/variable}
+    {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+{/repeater}
+
+<div class="container pb-4 pt-5 px-5 mb-5">
+    <div class="row text-white px-5 pb-4 pt-5 bg-primary rounded">
+        {% for destaque in destaques %}
+            <div class="col-12 col-md-4 pb-4 pt-5">
+                <h1 class="h31 fmedium">{{ destaque.title }}</h1>
+                <p class="h17">{{ destaque.description | raw }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container px-4 contratos mt-5 pt-5">
+    <div class="row pt-5 align-items-center">
+
+        {variable tab="Contratos" type="richeditor" name="conTitle" label="Título" span="right"}{/variable}
+        {variable tab="Contratos" type="textarea" name="conSubTitle" label="Sub Título" span="left"}{/variable}
+
+        <div class="col-12 col-md-5">
+            <h1 class="h61 f-medium">{{ conTitle | raw }}</h1>
+            <p class="h22">{{ conSubTitle | raw }}</p>
+        </div>
+        <div class="col-12 col-md-7">
+            <div class="d-flex services-extra">
+                <div class="service px-4 d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="icom rounded-circle bg-primary d-flex align-items-center justify-content-center">
+                        <img src="{{ 'assets/img/service-icon.svg'|theme }}" alt="Icone Serviço">
+                    </div>
+                    <span class="text-primary h16 fmedium mb-2 mt-5">{{ 'Ativo' | _ }}</span>
+                    <h1 class="h31 fsemi-bold">{{ 'Serviços de Comunicação' | _ }}</h1>
+                    <p class="h14">{{ 'Prestação de Serviço' | _ }}</p>
+                    <div class="s-body d-flex align-items-center justify-content-between my-2">
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Contrato' | _ }}</h5>
+                            <h3 class="h17 text-black">3820212873</h3>
+                        </div>
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Finaliza em' | _ }}</h5>
+                            <h3 class="h17 text-black">{{ '24 Fev 2021' | _ }}</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary btn-lg f-semi-bold">{{ 'Gerenciar Contrato' | _ }}</a>
+                </div>
+                <div class="service ml-0 ml-md-5 pendente px-4 d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="icom rounded-circle bg-extra3 d-flex align-items-center justify-content-center">
+                        <img src="{{ 'assets/img/service-icon.svg'|theme }}" alt="Icone Serviço">
+                    </div>
+                    <span class="text-extra3 h16 fmedium mb-2 mt-5">{{ 'Pendente' | _ }}</span>
+                    <h1 class="h31 fsemi-bold">{{ 'Serviços de Comunicação' | _ }}</h1>
+                    <p class="h14">{{ 'Serviços de Serviço' | _ }}</p>
+                    <div class="s-body d-flex align-items-center justify-content-between my-2">
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Contrato' | _ }}</h5>
+                            <h3 class="h17 text-black">3820212873</h3>
+                        </div>
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Finaliza em' | _ }}</h5>
+                            <h3 class="h17 text-black">{{ '24 Fev 2021' | _ }}</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn bg-extra3 btn-lg f-semi-bold text-white">{{ 'Resolver Contrato' | _ }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{repeater name="funcionalidades" tab="Funcionalidades" prompt="Adicionar Item"}
+    {variable type="mediafinder" name="image" label="Icone" span="right"}{/variable}
+    {variable type="richeditor" name="title" label="Título" span="left"}{/variable}
+    {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+    {variable type="text" name="span" label="Link" span="left"}{/variable}
+    {variable type="checkbox" name="novo" label="Novo ?" span="left"}{/variable}
+{/repeater}
+
+<div class="container funcionalidades">
+    <div class="row">
+        {% partial 'funcionalidades/item.htm' funcionalidades=funcionalidades %}
+    </div>
+</div>
+
+<div class="container vendas my-5 px-5">
+    <div class="row align-items-end">
+        <div class="col-12 col-md-5 text-left mb-5">
+            <span class="h32 text-uppercase fmedium">{{ 'Vendas' | _ }}</span>
+            <h1 class="h52 text-extra2 fmedium">{{ 'Encontre ou
+                seja encontrado
+                por clientes e
+                fornecedores' | _ }}</h1>
+        </div>
+        <div class="col-12 col-md-7 mb-5 text-right">
+            <p class="h24">{{ 'No modulo de vendas, voce que é fornecedor, recebe as
+                requisições e faz sua melhor oferta, já controlando por aqui seu
+                futuro contrato e também pagamentos que serão gerados desta
+                negociação. o detalhe é que o teu cliente poderá acompanhar
+                isso tudo dentro do mesmo painel no Dealix. Ambos saberão o
+                que tem pra pagar e receber. Acabou a confusão, agora está
+                claro o que precisa ser pago e o que está pendente.' | _ }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container px-5">
+    <div class="bg-extra rounded-lg text-center mt-5 mb-3">
+        <h1 class="h34 text-white p-5">{{ 'oportunidade de negócios para todos' | _ }}</h1>
+    </div>
+</div>
+
+<div class="container compras my-5 px-5">
+    <div class="row align-items-end py-5">
+        <div class="col-12 col-md-6 my-4">
+            <p class="h24">
+                {{ 'No modulo de compras Dealix, voce pode fazer a
+                requisição, o orçamento, a aprovação e o pedido de
+                compra, pode pedir orçamento para mais de um
+                fornecedor ao mesmo tempo. Pode inclusive convidar
+                outras empresas (seja do seu grupo ou não) para
+                participarem da cotação e com isso reduzir o custo' | _ }}
+                </p>
+        </div>
+        <div class="col-12 col-md-6 text-right my-4 pb-4">
+            <span class="h32 text-uppercase fmedium">{{ 'Compras' | _ }}</span>
+            <h1 class="h52 text-right fmedium text-primary">{{ 'Faça cotações e' | _ }}</br>
+                {{ 'encontre' | _ }}</br>
+                {{ 'fornecedores' | _ }}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row align-items-center justify-content-between bg-primary rounded-lg p-5">
+        <div class="col-12 col-md-6 text-white">
+            <h1 class="h47">{{ 'Diga olá para o futuro' | _ }}</h1>
+            <p class="h23">{{ 'Saia do tradicional e invista em inteligencia e tecnologia para gerir sua empresa.' | _ }}</p>
+        </div>
+        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+            <a href="#" class="fsemi-bold btn btn-white text-primary d-flex align-items-center justify-content-center">{{ 'Comece hoje mesmo, Grátis' | _ }}</a>
+        </div>
+    </div>
+</div>
+";s:5:"mtime";i:1689760851;s:6:"markup";s:8982:"<div class="container func container func mt-2 pt-2 pt-md-5 mt-md-5">
+    <div class="row">
+        <div class="col-12 col-md-3 left">
+            <img class="um" src="{{ 'assets/img/l-foto1.png'|theme }}" alt="Dealix">
+            <img class="dois" src="{{ 'assets/img/l-foto2.png'|theme }}" alt="Dealix">
+            <img class="tres" src="{{ 'assets/img/l-foto3.png'|theme }}" alt="Dealix">
+        </div>
+        <div class="col-12 col-md-6 text-center dest">
+            {variable tab="Topo" type="text" name="topSpan" label="Span" span="left"}{/variable}
+            {variable tab="Topo" type="richeditor" name="topTitle" label="Título" span="right"}{/variable}
+            {variable tab="Topo" type="textarea" name="topSubTitle" label="Sub Título" span="left"}{/variable}
+
+            <span class="h18 text-uppercase text-color-100">{{ topSpan }}</span>
+            <h1 class="h52 fmedium">{{ topTitle | raw }}</h1>
+            <p class="h029">{{ topSubTitle | raw }}</p>
+            <img src="{{ 'assets/img/f-imagecenter.png'|theme }}" alt="Dealix">
+        </div>
+        <div class="col-12 col-md-3 right">
+            <img class="um" src="{{ 'assets/img/r-foto1.png'|theme }}" alt="Dealix">
+            <img class="dois" src="{{ 'assets/img/r-foto2.png'|theme }}" alt="Dealix">
+            <img class="tres" src="{{ 'assets/img/r-foto3.png'|theme }}" alt="Dealix">
+        </div>
+    </div>
+</div>
+
+{repeater name="destaques" tab="Destaques Top" prompt="Adicionar item"}
+    {variable type="text" name="title" label="Título" span="left"}{/variable}
+    {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+{/repeater}
+
+<div class="container pb-4 pt-5 px-5 mb-5">
+    <div class="row text-white px-5 pb-4 pt-5 bg-primary rounded">
+        {% for destaque in destaques %}
+            <div class="col-12 col-md-4 pb-4 pt-5">
+                <h1 class="h31 fmedium">{{ destaque.title }}</h1>
+                <p class="h17">{{ destaque.description | raw }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container px-4 contratos mt-5 pt-5">
+    <div class="row pt-5 align-items-center">
+
+        {variable tab="Contratos" type="richeditor" name="conTitle" label="Título" span="right"}{/variable}
+        {variable tab="Contratos" type="textarea" name="conSubTitle" label="Sub Título" span="left"}{/variable}
+
+        <div class="col-12 col-md-5">
+            <h1 class="h61 f-medium">{{ conTitle | raw }}</h1>
+            <p class="h22">{{ conSubTitle | raw }}</p>
+        </div>
+        <div class="col-12 col-md-7">
+            <div class="d-flex services-extra">
+                <div class="service px-4 d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="icom rounded-circle bg-primary d-flex align-items-center justify-content-center">
+                        <img src="{{ 'assets/img/service-icon.svg'|theme }}" alt="Icone Serviço">
+                    </div>
+                    <span class="text-primary h16 fmedium mb-2 mt-5">{{ 'Ativo' | _ }}</span>
+                    <h1 class="h31 fsemi-bold">{{ 'Serviços de Comunicação' | _ }}</h1>
+                    <p class="h14">{{ 'Prestação de Serviço' | _ }}</p>
+                    <div class="s-body d-flex align-items-center justify-content-between my-2">
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Contrato' | _ }}</h5>
+                            <h3 class="h17 text-black">3820212873</h3>
+                        </div>
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Finaliza em' | _ }}</h5>
+                            <h3 class="h17 text-black">{{ '24 Fev 2021' | _ }}</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary btn-lg f-semi-bold">{{ 'Gerenciar Contrato' | _ }}</a>
+                </div>
+                <div class="service ml-0 ml-md-5 pendente px-4 d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="icom rounded-circle bg-extra3 d-flex align-items-center justify-content-center">
+                        <img src="{{ 'assets/img/service-icon.svg'|theme }}" alt="Icone Serviço">
+                    </div>
+                    <span class="text-extra3 h16 fmedium mb-2 mt-5">{{ 'Pendente' | _ }}</span>
+                    <h1 class="h31 fsemi-bold">{{ 'Serviços de Comunicação' | _ }}</h1>
+                    <p class="h14">{{ 'Serviços de Serviço' | _ }}</p>
+                    <div class="s-body d-flex align-items-center justify-content-between my-2">
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Contrato' | _ }}</h5>
+                            <h3 class="h17 text-black">3820212873</h3>
+                        </div>
+                        <div class="text-center">
+                            <h5 class="h14 fmedium mb-0">{{ 'Finaliza em' | _ }}</h5>
+                            <h3 class="h17 text-black">{{ '24 Fev 2021' | _ }}</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn bg-extra3 btn-lg f-semi-bold text-white">{{ 'Resolver Contrato' | _ }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{repeater name="funcionalidades" tab="Funcionalidades" prompt="Adicionar Item"}
+    {variable type="mediafinder" name="image" label="Icone" span="right"}{/variable}
+    {variable type="richeditor" name="title" label="Título" span="left"}{/variable}
+    {variable type="textarea" name="description" label="Descrição" span="right"}{/variable}
+    {variable type="text" name="span" label="Link" span="left"}{/variable}
+    {variable type="checkbox" name="novo" label="Novo ?" span="left"}{/variable}
+{/repeater}
+
+<div class="container funcionalidades">
+    <div class="row">
+        {% partial 'funcionalidades/item.htm' funcionalidades=funcionalidades %}
+    </div>
+</div>
+
+<div class="container vendas my-5 px-5">
+    <div class="row align-items-end">
+        <div class="col-12 col-md-5 text-left mb-5">
+            <span class="h32 text-uppercase fmedium">{{ 'Vendas' | _ }}</span>
+            <h1 class="h52 text-extra2 fmedium">{{ 'Encontre ou
+                seja encontrado
+                por clientes e
+                fornecedores' | _ }}</h1>
+        </div>
+        <div class="col-12 col-md-7 mb-5 text-right">
+            <p class="h24">{{ 'No modulo de vendas, voce que é fornecedor, recebe as
+                requisições e faz sua melhor oferta, já controlando por aqui seu
+                futuro contrato e também pagamentos que serão gerados desta
+                negociação. o detalhe é que o teu cliente poderá acompanhar
+                isso tudo dentro do mesmo painel no Dealix. Ambos saberão o
+                que tem pra pagar e receber. Acabou a confusão, agora está
+                claro o que precisa ser pago e o que está pendente.' | _ }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container px-5">
+    <div class="bg-extra rounded-lg text-center mt-5 mb-3">
+        <h1 class="h34 text-white p-5">{{ 'oportunidade de negócios para todos' | _ }}</h1>
+    </div>
+</div>
+
+<div class="container compras my-5 px-5">
+    <div class="row align-items-end py-5">
+        <div class="col-12 col-md-6 my-4">
+            <p class="h24">
+                {{ 'No modulo de compras Dealix, voce pode fazer a
+                requisição, o orçamento, a aprovação e o pedido de
+                compra, pode pedir orçamento para mais de um
+                fornecedor ao mesmo tempo. Pode inclusive convidar
+                outras empresas (seja do seu grupo ou não) para
+                participarem da cotação e com isso reduzir o custo' | _ }}
+                </p>
+        </div>
+        <div class="col-12 col-md-6 text-right my-4 pb-4">
+            <span class="h32 text-uppercase fmedium">{{ 'Compras' | _ }}</span>
+            <h1 class="h52 text-right fmedium text-primary">{{ 'Faça cotações e' | _ }}</br>
+                {{ 'encontre' | _ }}</br>
+                {{ 'fornecedores' | _ }}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row align-items-center justify-content-between bg-primary rounded-lg p-5">
+        <div class="col-12 col-md-6 text-white">
+            <h1 class="h47">{{ 'Diga olá para o futuro' | _ }}</h1>
+            <p class="h23">{{ 'Saia do tradicional e invista em inteligencia e tecnologia para gerir sua empresa.' | _ }}</p>
+        </div>
+        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+            <a href="#" class="fsemi-bold btn btn-white text-primary d-flex align-items-center justify-content-center">{{ 'Comece hoje mesmo, Grátis' | _ }}</a>
+        </div>
+    </div>
+</div>";s:4:"code";N;s:5:"title";s:15:"Funcionalidades";s:3:"url";s:16:"/funcionalidades";s:6:"layout";s:7:"default";}}

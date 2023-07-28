@@ -1,0 +1,163 @@
+.o-que-fazemos{
+    margin-bottom: 8.938rem;
+    margin-top: 4.125rem;
+}
+
+.service{
+    width: 22.75rem;
+    height: 27.188rem;
+    border-radius: 6px;
+    -webkit-box-shadow: 0px 0px 34px -14px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 34px -14px rgba(0,0,0,0.7);
+    position: relative;
+}
+
+.service .icom{
+    width: 6.75rem;
+    height: 6.75rem;
+    position: absolute;
+    top: -3.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.service span{
+    background-color: #BBC2F5;
+    border-radius: 3px;
+    height: 1.875rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service.pendente span{
+    background-color: #f79b9b;
+}
+
+.service .icom img{
+    width: 2.813rem;
+}
+.service .btn{
+    width: 17.938rem;
+    height: 3.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.service .s-body {
+    width: 80%;
+}
+
+.services .service:nth-child(1n){
+    z-index: 1;
+    background-color: $white;
+}
+
+.services .service:nth-child(2n){
+    z-index: -1;
+    bottom: -25px;
+    position: absolute;
+    transform: scale(0.9);
+}
+.services .service:nth-child(3n){
+    z-index: -2;
+    bottom: -50px;
+    position: absolute;
+    transform: scale(0.8);
+}
+
+.services{
+    position: relative;
+    height: 27.188rem;
+}
+
+.controle-seu-negocio{
+    margin-top: 6.688rem;
+    margin-bottom: 12.563rem;
+}
+
+.numeros{
+    padding-top: 9.938rem;
+    padding-bottom: 9.938rem;
+    margin-bottom: 8.063rem;
+}
+
+.jobs img{
+    opacity: 0.57;
+    filter: grayscale(1);
+    transition: all 0.2s;
+}
+
+.jobs img:hover{
+    filter: none;
+    opacity: 1;
+}
+
+.especialista{
+    background-color: $black;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 11.375rem;
+    margin-bottom: 6.938rem;
+
+    @include media-breakpoint-down(md) {
+        height: auto;
+        width: 95%;
+    }
+}
+
+.especialista img{
+    width: 11.313rem;
+}
+
+.depoimentos{
+    margin-top: 6.938rem;
+    margin-bottom: 41.375rem;
+}
+
+.depoimentos .comments{
+    margin-top: 7.875rem;
+}
+
+.depoimentos .comments img{
+    width: 2.813rem;
+}
+
+.depoimentos .comments .item-comments{
+    position: absolute;
+    background-color: #ECECEC;
+    border-radius: 11px;
+    width: 100%;
+    max-width: 26.063rem;
+
+    @include media-breakpoint-down(md) {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .depoimentos .comments .item-comments{
+        position: unset;
+    }
+}
+
+.depoimentos .comments .item-comments:after{
+    content: '';
+    background-color: #ECECEC;
+    position: absolute;
+    bottom: -17px;
+    height:  3rem;
+    width: 4rem;
+    border-radius: 9px;
+    transform: skew(
+4deg,
+324deg);
+}

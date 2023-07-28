@@ -1,0 +1,14 @@
+2.0.0: 
+    - Segunda versão do Paginas
+    - create_conteudo_table.php
+2.0.1:
+    - Adicionadas as tabelas de páginas para guardar valores como metatitle e description
+    - create_pagina_table.php
+2.0.2:
+    - Adicionada integração mais forte com o syntaxParser e counter no loop do repeater
+2.1.0:
+    - Sem alteções, adicionada nova branch para seguir a regra semver.org
+2.2.0:
+    - Adicionada a capacidade de carregar os valores default, diretamente da prévia.
+2.2.1:
+    - Adicionado suporte a sobreescrita do seo_title e seo_description, pelo banco e pelo codigo
