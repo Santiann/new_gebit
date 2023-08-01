@@ -232,7 +232,7 @@ class Manager implements \Illuminate\Contracts\Auth\StatefulGuard
 
         $user = $query->first();
         if (!$this->validateUserModel($user)) {
-            throw new AuthException('A user was not found with the given credentials.');
+            throw new AuthException('Usuário não encontrado.');
         }
 
         /*
@@ -243,13 +243,13 @@ class Manager implements \Illuminate\Contracts\Auth\StatefulGuard
                 // Incorrect password
                 if ($credential === 'password') {
                     throw new AuthException(sprintf(
-                        'A user was found to match all plain text credentials however hashed credential "%s" did not match.',
+                        'Sua senha está incorreta!',
                         $credential
                     ));
                 }
 
                 // User not found
-                throw new AuthException('A user was not found with the given credentials.');
+                throw new AuthException('Usuário não encontrado.');
             }
         }
 
@@ -610,7 +610,7 @@ class Manager implements \Illuminate\Contracts\Auth\StatefulGuard
         if ($this->requireActivation && !$user->is_activated) {
             $login = $user->getLogin();
             throw new AuthException(sprintf(
-                'Cannot login user "%s" as they are not activated.',
+                'Não foi possível realizar o login com o usuário "%s" porque ele não está ativado.',
                 $login
             ));
         }

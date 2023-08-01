@@ -15,26 +15,43 @@ activationPage = "user/email-confirmado"
         <div class="image" style="background-image: url({{ 'assets/img/user.svg'|theme }})"></div>
     </div>
     <div class="top">
-        <div class="container h-100 py-5 d-flex flex-column justify-content-between">
+        <div style="padding-right: 0;" class="container vh-100 py-5 d-flex flex-column justify-content-between">
             <header class="d-flex align-items-center justify-content-between">
-                <img class="footer-logo" src="{{ 'assets/img/logo-white.svg'|theme }}" alt="Dealix">
-                <a href="{{ 'user/login'| page }}" class="btn btn-primary btn-lg text-uppercase h13 fmedium">{{ 'QUERO ENTRAR' | _ }}</a>
+                <a class="navbar-brand" href="{{ 'home'| page }}">
+                    <img class="img-fluid" src="{{ 'assets/img/logo-white.svg'|theme }}" alt="Dealix">
+                </a>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <a style="margin-right: 7px;" href="{{ 'user/login'| page }}"
+                        class="btn btn-primary btn-lg text-uppercase h13 fmedium">{{
+                        'QUERO ENTRAR' | _ }}</a>
+                    <a href="{{ 'home'| page }}" class="btn btn-primary btn-lg text-uppercase h13 fmedium">{{ 'VOLTAR
+                        PARA HOME' }}</a>
+
+                </div>
             </header>
-            <div class="mh-vh-50 content d-flex align-items-center justify-content-between flex-column flex-md-row px-0 px-md-5 mt-5">
+            <div
+                class="mh-vh-50 content d-flex align-items-center justify-content-between flex-column flex-md-row px-0 px-md-5 mt-5">
                 <div class="text">
-                    <h1 class="h61 fmedium text-white">{{ 'Comece agora' | _ }}</br> {{ 'mesmo, é rápido' | _ }}</br> {{ 'e gratuito.' | _ }}</h1>
-                    <p class="h20 text-white mt-3">{{ 'Experimente todos os nossos recursos e' | _ }}</br> {{ 'conheça a melhor plataforma para' | _ }}</br> {{ 'gerenciar e colaborar seus contratos.' | _ }}</p>
+                    <h1 class="h61 fmedium text-white">{{ 'Comece agora' | _ }}</br> {{ 'mesmo, é rápido' | _ }}</br> {{
+                        'e gratuito.' | _ }}</h1>
+                    <p class="h20 text-white mt-3">{{ 'Experimente todos os nossos recursos e' | _ }}</br> {{ 'conheça a
+                        melhor plataforma para' | _ }}</br> {{ 'gerenciar e colaborar seus contratos.' | _ }}</p>
                 </div>
                 <div class="acess-card rounde-lg py-5">
-                
+
                     {# {% partial 'register/validation/phone' %} #}
-                    
+
                     {% partial 'register/fields' %}
                 </div>
             </div>
-            <footer class="text-center mt-5">
-                <h4 class="h12 text-white text-uppercase">{{ 'DEALIX - GESTÃO INTELIGENTE © ' ~ 'now' | date('Y') ~ ' - TODOS OS DIREITOS RESERVADOS | CPNJ 36.569.594/0001-01' | _ }}</h4>
+            <footer>
+                <h4 class="h12 text-white text-uppercase">{{ 'DEALIX - GESTÃO INTELIGENTE © ' ~ 'now' | date('Y') ~ ' -
+                    TODOS OS DIREITOS RESERVADOS | CPNJ 36.569.594/0001-01' | _ }}</h4>
             </footer>
+            <!-- <footer class="text-center mt-5">
+                <h4 class="h12 text-white text-uppercase">{{ 'DEALIX - GESTÃO INTELIGENTE © ' ~ 'now' | date('Y') ~ ' -
+                    TODOS OS DIREITOS RESERVADOS | CPNJ 36.569.594/0001-01' | _ }}</h4>
+            </footer> -->
         </div>
     </div>
 </div>

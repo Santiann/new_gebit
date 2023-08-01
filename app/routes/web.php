@@ -56,7 +56,7 @@ Route::get('/logout', function () {
     //Session::flush();
     
     $client = new GuzzleHttp\Client(['base_uri' => env('URL_SITE')]);
-    $client->request('GET', '/logout');
+    $client->request('GET', '/onlogout');
     
     return Redirect::to(env('URL_SITE').'/logout');
 });

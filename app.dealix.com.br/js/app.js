@@ -619,7 +619,7 @@ function validaCampoUnicoExistente(thiis, submit= false)
     }
 
     $.ajax({
-        url: '/validaUnicoExistente',
+        url: '/app.dealix.com.br/validaUnicoExistente',
         type: 'GET',
         data: {
             valorDigitado: valorDigitado,
@@ -631,6 +631,7 @@ function validaCampoUnicoExistente(thiis, submit= false)
         }
     })
         .success(function (response) {
+            console.log(response)
 
             if (response == 1) {
                 $(form_group).addClass('has-error has-danger');
