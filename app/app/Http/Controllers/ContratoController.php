@@ -246,37 +246,42 @@ class ContratoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'a005_id_empresa_select' => 'required',
-			'a005_id_empresa_cli_for' => 'required',
-			// 'a008_id_cat_contrato' => 'required',
-			// 'a010_id_tipo_contrato' => 'required',
-			// 'a011_id_area' => 'required',
-			'a013_numero_contrato' => 'required',
-			// 'a013_classificacao' => 'required',
-			'a013_finalidade' => 'required|max:1024',
-			'a013_prazo_contrato' => 'required',
-			'a013_data_inicio' => 'required',
-            'a013_data_fim' => 'required',
-            'a013_obs_contrato' => 'max:500',
-		]);
-               
+            'a013_moeda'                  => 'required',
+            'a013_status'                 => 'required',
+            'a013_data_fim'               => 'required',
+            'a013_finalidade'             => 'required',
+            'a013_data_inicio'            => 'required',
+            'a013_valor_extra'            => 'required',
+            'a013_obs_contrato'           => 'max:500',
+            'a013_valor_fracao'           => 'required',
+            'a013_classificacao'          => 'required',
+            'a013_prazo_contrato'         => 'required',
+            'a013_numero_contrato'        => 'required',
+            'a008_id_cat_contrato'        => 'required',
+            'a013_dias_vencimento'        => 'required',
+            'a005_id_empresa_select'      => 'required',
+            'a005_id_empresa_cli_for'     => 'required',
+            'a013_empresa_contratante'    => 'required',
+            'a013_valor_total_contrato'   => 'required',
+            'a013_valor_extra_referencia' => 'required'
+        ]);
+
         $requestData = $request->except('a008_id_cat_contrato');
         $requestData['a005_id_empresa'] = $requestData['a005_id_empresa_select'];
         $requestData['a013_empresa_contratante'] = $requestData['a013_empresa_contratante'] == 1 ? $requestData['a005_id_empresa'] : $requestData['a005_id_empresa_cli_for'];
-        
-        if (!$this->validaCreditos($requestData['a005_id_empresa'], $requestData['a005_id_empresa_cli_for']))
-        {
+
+        if (!$this->validaCreditos($requestData['a005_id_empresa'], $requestData['a005_id_empresa_cli_for'])) {
             Session::flash('flash_message', 'Quantidade de contratos gratuitos atingida. É necessário efeturar uma assinatura.');;
             return redirect('contrato');
         }
-        
+
         $requestData['a013_data_renovacao'] = null;
         $requestData['created_at_user'] = Auth::user()->id;
         $requestData['updated_at_user'] = Auth::user()->id;
 
-        $requestData['a013_status'] = $requestData['a013_status']??'C';
-        $requestData['a013_data_inicio'] = Carbon::createFromFormat('d/m/Y',$requestData['a013_data_inicio'])->format('Y-m-d');
-        $requestData['a013_data_fim'] = Carbon::createFromFormat('d/m/Y',$requestData['a013_data_fim'])->format('Y-m-d');
+        $requestData['a013_status'] = $requestData['a013_status'] ?? 'C';
+        $requestData['a013_data_inicio'] = Carbon::createFromFormat('d/m/Y', $requestData['a013_data_inicio'])->format('Y-m-d');
+        $requestData['a013_data_fim'] = Carbon::createFromFormat('d/m/Y', $requestData['a013_data_fim'])->format('Y-m-d');
 
         $requestData['a013_valor_total_contrato'] = $requestData['a013_valor_total_contrato'] ? $this->converteDecimalDB($requestData['a013_valor_total_contrato']) : '0.00';
         $requestData['a013_valor_fracao'] = $requestData['a013_valor_fracao'] ? $this->converteDecimalDB($requestData['a013_valor_fracao']) : '0.00';
@@ -288,9 +293,8 @@ class ContratoController extends Controller
 
         DB::beginTransaction();
         try {
-
             //upload de arquivos da aba comercial
-            if($request->hasFile('a013_assinatura')) {
+            if ($request->hasFile('a013_assinatura')) {
 
                 $arquivo = $request->file('a013_assinatura');
                 $fileName = str_random(12) . '.' . $arquivo->getClientOriginalExtension();
@@ -302,26 +306,26 @@ class ContratoController extends Controller
 
             // salvar categorias para cada usuario
             $id_empresas = $this->getEmpresasUsuarioContrato($contrato);
-            
+
             foreach ($request->a008_id_cat_contrato as $key => $value) {
-                $categorias[$value] = ['a005_id_empresa'=> $id_empresas[0]];
+                $categorias[$value] = ['a005_id_empresa' => $id_empresas[0]];
             }
             $contrato->Categoria_contrato_belongsTo()->attach($categorias);
             // $contrato->Categoria_contrato_belongsTo()->attach($request->a008_id_cat_contrato, ['t024_relacao_categorias_contrato'=> $requestData['a005_id_empresa_select'] ]);
 
 
             // desconto de créditos
-            $users_empresa = $contrato->Empresa_belongsTo->Empresa_usuario_hasMany->map(function($user) {
+            $users_empresa = $contrato->Empresa_belongsTo->Empresa_usuario_hasMany->map(function ($user) {
                 return $user->Usuario_belongsTo;
             });
-            $users_cli_for = $contrato->Empresa_CliFor_belongsTo->Empresa_usuario_hasMany->map(function($user) {
+            $users_cli_for = $contrato->Empresa_CliFor_belongsTo->Empresa_usuario_hasMany->map(function ($user) {
                 return $user->Usuario_belongsTo;
             });
             $usuarios = $users_empresa->merge($users_cli_for);
-            $usuarios->map(function($usuario){
+            $usuarios->map(function ($usuario) {
                 $id_empresas = $usuario->empresas->pluck('a005_id_empresa')->toArray();
                 $contratos = Contrato::query()->whereIn('a005_id_empresa', $id_empresas)->orWhereIn('a005_id_empresa_cli_for', $id_empresas)->get();
-                
+
                 if ($contratos->count() > env('CONTRATOS_GRATUITOS')) {
                     $user = $usuario->User_belongsTo;
                     $user->creditos--;
@@ -344,8 +348,7 @@ class ContratoController extends Controller
             Session::flash('flash_message', 'Contrato adicionado!');
             DB::commit();
 
-            return redirect('contrato');
-
+            return '1';
         } catch (\Exception $e) {
             DB::rollBack();
 

@@ -15,7 +15,7 @@
 
 <div class="box">
 
-    {!! Form::open(['url' => '/contrato/create', 'class' => 'form form-contrato EspacoTopo', 'files' => true]) !!}
+    {!! Form::open(['url' => '/new_gebit/app.dealix.com.br/contrato/create', 'class' => 'form form-contrato EspacoTopo', 'files' => true]) !!}
 
     @include ('sistema.contrato.form')
 

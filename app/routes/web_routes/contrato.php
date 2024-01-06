@@ -3,7 +3,8 @@
 	Route::get('data/contrato',['as'=>'contrato.data','uses'=>'ContratoController@datatable','middleware' => ['permission:contrato-show|contrato-create|contrato-edit|contrato-delete']]);
 	Route::get('contrato',['as'=>'contrato.index','uses'=>'ContratoController@index','middleware' => ['permission:contrato-show|contrato-create|contrato-edit|contrato-delete']]);
 	Route::get('contrato/create',['as'=>'contrato.create','uses'=>'ContratoController@create','middleware' => ['permission:contrato-create']]);
-	Route::post('contrato/create',['as'=>'contrato.store','uses'=>'ContratoController@store','middleware' => ['permission:contrato-create']]);
+	// Route::post('contrato/create',['as'=>'contrato.store','uses'=>'ContratoController@store','middleware' => ['permission:contrato-create']]);
+	Route::get('contrato/createcontrato',['as'=>'contrato.store','uses'=>'ContratoController@store','middleware' => ['permission:contrato-create']]);
 	Route::get('contrato/{id}',['as'=>'contrato.show','uses'=>'ContratoController@show']);
 	Route::get('contrato/{id}/edit',['as'=>'contrato.edit','uses'=>'ContratoController@edit','middleware' => ['permission:contrato-edit']]);
 	Route::get('contrato/{id}/showFornecedor',['as'=>'contrato.showFornecedor','uses'=>'ContratoController@showFornecedor','middleware' => ['permission:contrato-edit']]);

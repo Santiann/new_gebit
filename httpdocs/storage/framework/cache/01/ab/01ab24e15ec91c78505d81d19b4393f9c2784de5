@@ -1,0 +1,20 @@
+1704495081a:1:{s:15:"meta/styles.htm";a:5:{s:8:"fileName";s:15:"meta/styles.htm";s:7:"content";s:354:"<!-- Styles -->
+<link rel="stylesheet" href="{{ [
+    'assets/scss/main.scss',
+    'assets/vendor/fontawesome-free/css/all.min.css',
+    'assets/vendor/owl.carousel/assets/owl.carousel.min.css',
+] | theme }}"></link>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+{% styles %}
+{% placeholder head %}
+";s:5:"mtime";i:1703114532;s:6:"markup";s:352:"<!-- Styles -->
+<link rel="stylesheet" href="{{ [
+    'assets/scss/main.scss',
+    'assets/vendor/fontawesome-free/css/all.min.css',
+    'assets/vendor/owl.carousel/assets/owl.carousel.min.css',
+] | theme }}"></link>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+{% styles %}
+{% placeholder head %}";s:4:"code";N;}}

@@ -1,0 +1,13 @@
+1704495081a:1:{s:7:"404.htm";a:8:{s:8:"fileName";s:7:"404.htm";s:7:"content";s:204:"title = "Page not found (404)"
+url = "/404"
+layout = "default"
+==
+
+<div class="container text-center p-5">
+    <h1 style="font-size: 140px;">404</h1>
+    <h2>Página não encontrada.</h2>
+</div>
+";s:5:"mtime";i:1703114532;s:6:"markup";s:130:"<div class="container text-center p-5">
+    <h1 style="font-size: 140px;">404</h1>
+    <h2>Página não encontrada.</h2>
+</div>";s:4:"code";N;s:5:"title";s:20:"Page not found (404)";s:3:"url";s:4:"/404";s:6:"layout";s:7:"default";}}

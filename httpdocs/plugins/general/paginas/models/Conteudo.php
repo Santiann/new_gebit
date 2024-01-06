@@ -63,7 +63,7 @@ class Conteudo extends Model
      * @param $content array
      * @param $page Page
      */
-    public static function updatePage($content = [], $page)
+    public static function updatePage($content = [], $page = '')
     {
         $ids = [];
 

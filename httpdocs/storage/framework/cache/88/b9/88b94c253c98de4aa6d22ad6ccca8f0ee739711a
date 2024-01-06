@@ -1,0 +1,86 @@
+1704495081a:1:{s:32:"sections/featured-plataforma.htm";a:5:{s:8:"fileName";s:32:"sections/featured-plataforma.htm";s:7:"content";s:2172:"<div class="container-fluid plataforma">
+    <img class="after-plataforma" src="{{ 'assets/img/after_plataforma.svg'|theme }}" alt="Dealix">
+    <div class="row">
+        <div class="col-12 col-md-7">
+            <img class="img-p" src="{{ 'assets/img/plataforma.png'|theme }}" alt="Dealix - Muito mais que uma plataforma">
+        </div>
+        <div class="col-12 col-md-5">
+            <h1 class="h47 fmedium">{{ pTitle | raw }}</span></h1>
+            <div class="p-item d-flex align-items-start">
+                <div class="message">
+                    <img src="{{ 'assets/img/p-1.png'|theme }}" alt="">
+                    <span></span>
+                </div>
+                <div class="ml-3 pt-2">
+                    <h3 class="h22 fsemi-bold">{{ 'Rafael Santos' | _ }}</h3>
+                    <p class="h18">{{ 'Adicionou um contrato em colaboracão com você.' | _ }}</p>
+                </div>
+            </div>
+            <div class="p-item d-flex align-items-start">
+                <div class="message">
+                    <img src="{{ 'assets/img/p-2.png'|theme }}" alt="">
+                    <span></span>
+                </div>
+                <div class="ml-3 pt-2">
+                    <h3 class="h22 fsemi-bold">{{ 'Camila Lima' | _ }}</h3>
+                    <p class="h18">{{ 'Aceitou o contrato e adicionou uma notificacao.' | _ }}</p>
+                </div>
+            </div>
+            <div class="p-item d-flex align-items-start">
+                <div class="message">
+                    <div class="sucess bg-extra3">
+                        <img src="{{ 'assets/img/check.svg'|theme }}" alt="{{ 'Tudo certo!' | _ }}">
+                    </div>
+                </div>
+                <div class="ml-3 pt-2">
+                    <h3 class="h22 fsemi-bold">{{ 'Tudo certo!' | _ }}</h3>
+                    <p class="h18">{{ 'Agora e so acompanhar pela plataforma.' | _ }}</p>
+                </div>
+            </div>
+            <img class="img-fluid mt-5" src="{{ 'assets/img/repet.svg'|theme }}" alt="Dealix -{{ ' Muito mais que uma plataforma' | _ }}">
+        </div>
+    </div>
+</div>
+";s:5:"mtime";i:1703114532;s:6:"markup";s:2170:"<div class="container-fluid plataforma">
+    <img class="after-plataforma" src="{{ 'assets/img/after_plataforma.svg'|theme }}" alt="Dealix">
+    <div class="row">
+        <div class="col-12 col-md-7">
+            <img class="img-p" src="{{ 'assets/img/plataforma.png'|theme }}" alt="Dealix - Muito mais que uma plataforma">
+        </div>
+        <div class="col-12 col-md-5">
+            <h1 class="h47 fmedium">{{ pTitle | raw }}</span></h1>
+            <div class="p-item d-flex align-items-start">
+                <div class="message">
+                    <img src="{{ 'assets/img/p-1.png'|theme }}" alt="">
+                    <span></span>
+                </div>
+                <div class="ml-3 pt-2">
+                    <h3 class="h22 fsemi-bold">{{ 'Rafael Santos' | _ }}</h3>
+                    <p class="h18">{{ 'Adicionou um contrato em colaboracão com você.' | _ }}</p>
+                </div>
+            </div>
+            <div class="p-item d-flex align-items-start">
+                <div class="message">
+                    <img src="{{ 'assets/img/p-2.png'|theme }}" alt="">
+                    <span></span>
+                </div>
+                <div class="ml-3 pt-2">
+                    <h3 class="h22 fsemi-bold">{{ 'Camila Lima' | _ }}</h3>
+                    <p class="h18">{{ 'Aceitou o contrato e adicionou uma notificacao.' | _ }}</p>
+                </div>
+            </div>
+            <div class="p-item d-flex align-items-start">
+                <div class="message">
+                    <div class="sucess bg-extra3">
+                        <img src="{{ 'assets/img/check.svg'|theme }}" alt="{{ 'Tudo certo!' | _ }}">
+                    </div>
+                </div>
+                <div class="ml-3 pt-2">
+                    <h3 class="h22 fsemi-bold">{{ 'Tudo certo!' | _ }}</h3>
+                    <p class="h18">{{ 'Agora e so acompanhar pela plataforma.' | _ }}</p>
+                </div>
+            </div>
+            <img class="img-fluid mt-5" src="{{ 'assets/img/repet.svg'|theme }}" alt="Dealix -{{ ' Muito mais que uma plataforma' | _ }}">
+        </div>
+    </div>
+</div>";s:4:"code";N;}}

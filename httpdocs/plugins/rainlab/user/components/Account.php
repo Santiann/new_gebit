@@ -277,15 +277,9 @@ class Account extends ComponentBase
 
     private function checkOldUser($user)
     {
-        // caso o usuario seja antigo e não tenha cadastro no site
-        if (!Auth::findUserByLogin($user->email)) {
-            $this->generateApiToken($user);
-            $redirect = env('URL_SISTEMA') . "/login/" . $user->email . "/" . $user->api_token;
-
-            return $redirect;
-        }
-
-        return false;
+        $this->generateApiToken($user);
+        $redirect = env('URL_SISTEMA') . "/login/" . $user->email . "/" . $user->api_token;
+        return $redirect;
     }
 
     private function generateApiToken($user)

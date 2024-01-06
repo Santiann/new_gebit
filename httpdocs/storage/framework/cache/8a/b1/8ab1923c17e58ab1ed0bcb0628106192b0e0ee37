@@ -1,0 +1,100 @@
+1704495082a:1:{s:17:"common/navbar.htm";a:5:{s:8:"fileName";s:17:"common/navbar.htm";s:7:"content";s:2717:"<nav class="navbar navbar-expand-md navbar-light">
+    <div class="container px-md-0">
+      <a class="navbar-brand" href="{{ 'home'| page }}">
+        <img class="img-fluid" src="{{ 'assets/img/logo.svg'|theme }}" alt="Dealix">
+      </a>
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0 align-items-center">
+              <li class="nav-item active">
+                  <a class="nav-link text-uppercase" href="{{ 'home'| page }}">{{ 'Ínicio' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="{{ 'comeceja'| page }}">{{ 'Como Funciona' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="{{ 'funcionalidades'| page }}">{{ 'Planos' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{{ 'about'| page }}">{{ 'Sobre' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="{{ 'blog/list'| page }}">{{ 'Blog' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                {% component 'loginButton' %}
+              </li>
+              <li class="nav-item">
+                  {% if user %}
+                    {% set api_token = this.session.get('api_token') %}
+                    <a class="btn btn-primary text-uppercase" href={{ env('URL_SISTEMA') ~ "/login/#{user.email}/#{api_token}" }}>{{ 'Acessar sistema' | _ }}</a>
+                  {% else %}
+                      <a class="btn btn-primary text-uppercase" href="{{ 'comeceja'| page }}">{{ 'Começar Grátis' | _ }}</a>
+                  {% endif %}
+              </li>
+              <li class="nav-item">
+                {{ form_open() }}
+                  <select class="form-control pr-3 text-uppercase" style="border: 0;" name="locale" data-request="onSwitchLocale" id="language-menu">
+                    {% for code, name in locales %}
+                        <option value="{{ code }}" {{ code == activeLocale ? 'selected' }}>{{ name }}</option>
+                    {% endfor %}
+                  </select>
+                  {{ form_close() }}
+              </li>
+          </ul>
+      </div>
+    </div>
+</nav>
+";s:5:"mtime";i:1703114532;s:6:"markup";s:2715:"<nav class="navbar navbar-expand-md navbar-light">
+    <div class="container px-md-0">
+      <a class="navbar-brand" href="{{ 'home'| page }}">
+        <img class="img-fluid" src="{{ 'assets/img/logo.svg'|theme }}" alt="Dealix">
+      </a>
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0 align-items-center">
+              <li class="nav-item active">
+                  <a class="nav-link text-uppercase" href="{{ 'home'| page }}">{{ 'Ínicio' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="{{ 'comeceja'| page }}">{{ 'Como Funciona' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="{{ 'funcionalidades'| page }}">{{ 'Planos' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{{ 'about'| page }}">{{ 'Sobre' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-uppercase" href="{{ 'blog/list'| page }}">{{ 'Blog' | _ }}</a>
+              </li>
+              <li class="nav-item">
+                {% component 'loginButton' %}
+              </li>
+              <li class="nav-item">
+                  {% if user %}
+                    {% set api_token = this.session.get('api_token') %}
+                    <a class="btn btn-primary text-uppercase" href={{ env('URL_SISTEMA') ~ "/login/#{user.email}/#{api_token}" }}>{{ 'Acessar sistema' | _ }}</a>
+                  {% else %}
+                      <a class="btn btn-primary text-uppercase" href="{{ 'comeceja'| page }}">{{ 'Começar Grátis' | _ }}</a>
+                  {% endif %}
+              </li>
+              <li class="nav-item">
+                {{ form_open() }}
+                  <select class="form-control pr-3 text-uppercase" style="border: 0;" name="locale" data-request="onSwitchLocale" id="language-menu">
+                    {% for code, name in locales %}
+                        <option value="{{ code }}" {{ code == activeLocale ? 'selected' }}>{{ name }}</option>
+                    {% endfor %}
+                  </select>
+                  {{ form_close() }}
+              </li>
+          </ul>
+      </div>
+    </div>
+</nav>";s:4:"code";N;}}

@@ -73,7 +73,7 @@ class Message extends Model
      * @param string $message
      * @return void
      */
-    public function toLocale($locale = null, $message)
+    public function toLocale($locale = null, $message = '')
     {
         if ($locale === null) {
             return;

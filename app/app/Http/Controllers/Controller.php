@@ -44,21 +44,21 @@ class Controller extends BaseController
 
     public function retiraCaracter($valor)
     {
-        $valor =  str_replace(',','',$valor);
-        $valor =  str_replace('.','',$valor);
-        $valor =  str_replace('-','',$valor);
-        $valor =  str_replace('/','',$valor);
-        $valor =  str_replace('(','',$valor);
-        $valor =  str_replace(')','',$valor);
-        $valor =  str_replace(' ','',$valor);
+        $valor =  str_replace(',', '', $valor);
+        $valor =  str_replace('.', '', $valor);
+        $valor =  str_replace('-', '', $valor);
+        $valor =  str_replace('/', '', $valor);
+        $valor =  str_replace('(', '', $valor);
+        $valor =  str_replace(')', '', $valor);
+        $valor =  str_replace(' ', '', $valor);
         $valor =  preg_replace("/[^0-9]/", "", $valor);
         return $valor;
     }
 
     public function converteDecimalDB($valor)
     {
-        $valor =  str_replace('.','',$valor);
-        $valor =  str_replace(',','.',$valor);
+        $valor =  str_replace('.', '', $valor);
+        $valor =  str_replace(',', '.', $valor);
         return $valor;
     }
 
@@ -70,9 +70,9 @@ class Controller extends BaseController
 
     public function enviaEmailPadraoView($view, $parametrosView, $deNome, $deEmail, $paraNome, $paraEmail, $assuntoEmail)
     {
-        $view = $view??'sistema.email.aviso';
-        $deNome = $deNome??'Dealix';
-        $deEmail = $deEmail??'naoresponda@dealix.com.br';
+        $view = $view ?? 'sistema.email.aviso';
+        $deNome = $deNome ?? 'Dealix';
+        $deEmail = $deEmail ?? 'naoresponda@dealix.com.br';
 
         //Salvando na tabela de log de e-mail
         $requestData                    = array();
@@ -83,26 +83,25 @@ class Controller extends BaseController
         $requestData['a997_assunto']    = $assuntoEmail;
         $requestData['a997_conteudo']   = $parametrosView['mensagem'];
         $cadastroEmail                  = Email::create($requestData);
-        $parametrosView['a997_id_email']= $cadastroEmail->a997_id_email;
+        $parametrosView['a997_id_email'] = $cadastroEmail->a997_id_email;
 
-        try{
-            Mail::send($view,$parametrosView, function ($message) use($paraEmail, $assuntoEmail)
-            {
+        try {
+            Mail::send($view, $parametrosView, function ($message) use ($paraEmail, $assuntoEmail) {
                 $message->to($paraEmail);
                 $message->subject($assuntoEmail);
             });
 
             if (Mail::failures()) {
-                $cadastroEmail->delete();            
+                $cadastroEmail->delete();
             }
-         }catch(\Swift_TransportException $transportExp){
-            $cadastroEmail->delete(); 
-         }
+        } catch (\Swift_TransportException $transportExp) {
+            $cadastroEmail->delete();
+        }
     }
 
-    public function notificacaoPadrao($idNotificacao=0, $idUsuario, $assunto, $conteudo, $lido, $namePagina='')
+    public function notificacaoPadrao($idNotificacao = 0, $idUsuario = '', $assunto = '', $conteudo = '', $lido = '', $namePagina = '')
     {
-        $permissao = Permission::query()->where('name',$namePagina)->first();
+        $permissao = Permission::query()->where('name', $namePagina)->first();
 
         $icone = $permissao->icone;
 
@@ -110,30 +109,24 @@ class Controller extends BaseController
         $notificacao->a001_id_usuario = $idUsuario;
         $notificacao->a996_assunto = $assunto;
         $notificacao->a996_conteudo = $conteudo;
-        $notificacao->a996_ind_lido = $lido??0;
+        $notificacao->a996_ind_lido = $lido ?? 0;
         $notificacao->a996_nome_icone = $icone;
-        if($idNotificacao<=0)
-            $notificacao->created_at_user = Auth::user()->id??0;
-        $notificacao->updated_at_user = Auth::user()->id??0;
+        if ($idNotificacao <= 0)
+            $notificacao->created_at_user = Auth::user()->id ?? 0;
+        $notificacao->updated_at_user = Auth::user()->id ?? 0;
         $notificacao->save();
     }
 
-    public function validaUnicoExistente (Request $request )
+    public function validaUnicoExistente(Request $request)
     {
         /// valida se é email
-        if(strpos($request->nameColunaValidar,'email'))
-        {
-
-        }
-        elseif(strpos($request->nameColunaValidar,'cpf') || strpos($request->nameColunaValidar,'cnpj'))
-        {
-            $request->valorDigitado = str_replace([",",'.','-','/'],"",$request->valorDigitado);
-        }
-        else{
+        if (strpos($request->nameColunaValidar, 'email')) {
+        } elseif (strpos($request->nameColunaValidar, 'cpf') || strpos($request->nameColunaValidar, 'cnpj')) {
+            $request->valorDigitado = str_replace([",", '.', '-', '/'], "", $request->valorDigitado);
+        } else {
             //quando cpf ou cnpj ou email entao nao precisa validar por empresa
             //retorna 2 pra json do ajax mostrar msg de necessario seleionar empresa
-            if($request->idEmpresa == null)
-            {
+            if ($request->idEmpresa == null) {
                 return 2;
             }
         }
@@ -147,17 +140,14 @@ class Controller extends BaseController
         $valida = 1;
         $valida = DB::table($request->nametabela)
             ->where($request->nameColunaValidar, '=', '' . $request->valorDigitado . '')
-            ->where(function($where) use($request){
-                if($request->idEdit != '0')
-                    $where->where($request->nameColunaPK,'!=',$request->idEdit);
+            ->where(function ($where) use ($request) {
+                if ($request->idEdit != '0')
+                    $where->where($request->nameColunaPK, '!=', $request->idEdit);
             })
-            ->where(function($where) use($request)
-            {
-                if(strpos($request->nameColunaValidar,'cpf') || strpos($request->nameColunaValidar,'cnpj') || strpos($request->nameColunaValidar,'email'))
-                {
+            ->where(function ($where) use ($request) {
+                if (strpos($request->nameColunaValidar, 'cpf') || strpos($request->nameColunaValidar, 'cnpj') || strpos($request->nameColunaValidar, 'email')) {
                     //quando cpf ou cnpj ou email entao nao precisa validar por empresa
-                }
-                else {
+                } else {
                     $where->where('a005_id_empresa', $request->idEmpresa);
                 }
             })
@@ -174,17 +164,16 @@ class Controller extends BaseController
         return $retorno;
     }
 
-    public function validaAcessoEdit($idEmpresa, $ligacaoid, $idFornecedor=0)
+    public function validaAcessoEdit($idEmpresa, $ligacaoid, $idFornecedor = 0)
     {
         /// deixar mais generico por causa de saber de onde vem pra saber o que deve validar
         /// pois abaixo esta validando a eidção de usuario
 
         /// valida se nao é um ind_super_admin
         /// se nao é super adm tem que validar para nao editar de outras empresas cadastradas
-        if (Auth::user()->ind_super_adm<=0) {
+        if (Auth::user()->ind_super_adm <= 0) {
 
-            switch  ($ligacaoid)
-            {
+            switch ($ligacaoid) {
                 case "uruario":
                     ///busca todos os ids das empresas que o usuario logado tem relação
                     $idsEmpresaUsuarioLogado = Empresa_usuario::query()
@@ -198,7 +187,7 @@ class Controller extends BaseController
                     /// verifica se o id que esta sendo editado tem no array dos ids $idsUsuarioDasEmpresas
                     /// isto é se o cadastro feito foi pela empresa que o usuario cadastrou
                     /// validar tb se a empresa é fornecedor do cadastro
-                    if ((!in_array($idEmpresa, $idsUsuarioDasEmpresas))&&(!in_array($idFornecedor, $idsUsuarioDasEmpresas))) {
+                    if ((!in_array($idEmpresa, $idsUsuarioDasEmpresas)) && (!in_array($idFornecedor, $idsUsuarioDasEmpresas))) {
 
                         abort(401);
                     }
@@ -214,7 +203,7 @@ class Controller extends BaseController
 
 
                     ///verifica se o id que esta sendo editado tem no array dos ids $idsEmpresaUsuarioLogado
-                    if ((!in_array($idEmpresa, $idsEmpresaUsuarioLogado))&&(!in_array($idFornecedor, $idsEmpresaUsuarioLogado))) {
+                    if ((!in_array($idEmpresa, $idsEmpresaUsuarioLogado)) && (!in_array($idFornecedor, $idsEmpresaUsuarioLogado))) {
 
                         abort(401);
                     }
@@ -230,15 +219,12 @@ class Controller extends BaseController
 
 
                     ///verifica se o id que esta sendo editado tem no array dos ids $idsEmpresaUsuarioLogado
-                    if ((!in_array($idEmpresa, $idsEmpresaUsuarioLogado))&&(!in_array($idFornecedor, $idsEmpresaUsuarioLogado))) {
+                    if ((!in_array($idEmpresa, $idsEmpresaUsuarioLogado)) && (!in_array($idFornecedor, $idsEmpresaUsuarioLogado))) {
 
                         abort(401);
                     }
                     break;
-
-
             }
-
         }
         return true;
     }
@@ -265,20 +251,19 @@ class Controller extends BaseController
         $usuario->a048_id_estado = $idEstado;
 
         $Empresa_usuario = Empresa_usuario::query()
-            ->where('a001_id_usuario',$usuario->a001_id_usuario)
+            ->where('a001_id_usuario', $usuario->a001_id_usuario)
             ->pluck('a005_id_empresa')->toArray();
 
-        $user = (User::query()->where('email',$usuario->a001_email)->select('id')??[])->pluck('id');
+        $user = (User::query()->where('email', $usuario->a001_email)->select('id') ?? [])->pluck('id');
 
         $Role_user = Role_user::query()
-            ->wherein('user_id',$user)
-            ->pluck('role_id')->toArray()
-        ;
+            ->wherein('user_id', $user)
+            ->pluck('role_id')->toArray();
 
         $usuario->a005_id_empresa = $Empresa_usuario;
         $usuario->role_id = $Role_user;
 
-        return view('sistema.usuario.meusDados', compact('usuario','comboCidade','comboEstado', 'role','empresa'));
+        return view('sistema.usuario.meusDados', compact('usuario', 'comboCidade', 'comboEstado', 'role', 'empresa'));
     }
 
     public function idsEmpresaDonoCadastro()

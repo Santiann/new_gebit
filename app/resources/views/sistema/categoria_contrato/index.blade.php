@@ -23,7 +23,7 @@
         <div class="box-header">
             <div class="box-tools">
                 @permission('categoria_contrato-create')
-                    <a href="{{ url('/categoria_contrato/create') }}" class="btn btn-sm bg-olive"> <i class="fa fa-plus"></i> Adicionar {{ $page_title ?? "Page Title" }}</a>
+                    <a href="{{ url('/new_gebit/app.dealix.com.br/categoria_contrato/create') }}" class="btn btn-sm bg-olive"> <i class="fa fa-plus"></i> Adicionar {{ $page_title ?? "Page Title" }}</a>
                 @endpermission
             </div>
         </div>

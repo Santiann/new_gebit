@@ -1,17 +1,17 @@
 <div class="box-footer BotesFixoTopo">
-    <a href="{{ url('/contrato')}}" class="btn btn-default">
+    <a href="{{ url('/contrato') }}" class="btn btn-default">
         <i class="fa fa-ban"></i> Cancelar
     </a>
 
-    @if(($showFornecedor??0) == 1)
-        <span class="btn btn-default  pull-right" >Não é possível alterar o Contrato</span>
+    @if (($showFornecedor ?? 0) == 1)
+        <span class="btn btn-default  pull-right">Não é possível alterar o Contrato</span>
     @else
-        @if (($contrato->a013_status??'A') != 'C')
+        @if (($contrato->a013_status ?? 'A') != 'C')
             <button type="submit" class="btn bg-olive pull-right">
                 <i class="fa fa-save"></i> {{ isset($submitButtonText) ? $submitButtonText : 'Salvar' }}
             </button>
         @else
-            <span class="btn btn-default  pull-right" >Contrato Cancelado, não é possível alterar</span>
+            <span class="btn btn-default  pull-right">Contrato Cancelado, não é possível alterar</span>
         @endif
     @endif
 
@@ -25,14 +25,14 @@
             <!-- <li class="form_vencimento"><a href="#form_vencimento" data-toggle="tab">Vencimentos</a></li> -->
             <li class="form_documento"><a href="#form_documento" data-toggle="tab">Documentos</a></li>
             @isset($contrato)
-            <li class="form_usuarios"><a href="#form_usuarios" data-toggle="tab">Usuários</a></li>
+                <li class="form_usuarios"><a href="#form_usuarios" data-toggle="tab">Usuários</a></li>
             @endisset
-            @if(($showFornecedor??0) != 1)
+            @if (($showFornecedor ?? 0) != 1)
                 @isset($contrato)
-                <li class="form_contatos"><a href="#form_contatos" data-toggle="tab">Contatos</a></li>
-                <li class="form_renovacao"><a href="#form_renovacao" data-toggle="tab">Anotações de Negociações</a></li>
-                <li class="form_pendencias"><a href="#form_pendencias" data-toggle="tab">Pendências</a></li>
-                <li class="form_financeiro"><a href="#form_financeiro" data-toggle="tab">Financeiro</a></li>
+                    <li class="form_contatos"><a href="#form_contatos" data-toggle="tab">Contatos</a></li>
+                    <li class="form_renovacao"><a href="#form_renovacao" data-toggle="tab">Anotações de Negociações</a></li>
+                    <li class="form_pendencias"><a href="#form_pendencias" data-toggle="tab">Pendências</a></li>
+                    <li class="form_financeiro"><a href="#form_financeiro" data-toggle="tab">Financeiro</a></li>
                 @endisset
                 <li class="form_alteracao"><a href="#form_alteracao" data-toggle="tab">Histórico Alterações</a></li>
             @endif
@@ -45,177 +45,181 @@
             @include ('sistema.contrato.modals.add_parcela')
             @include ('sistema.contrato.modals.email_parcela')
         @endif
-        
+
         <div class="active tab-pane" id="form_geral">@include ('sistema.contrato.formGeral')</div>
         <!-- <div class="tab-pane" id="form_vencimento">@include ('sistema.contrato.formVencimento')</div> -->
         <div class="tab-pane" id="form_documento">@include ('sistema.contrato.formDocumento')</div>
         @isset($contrato)
-        <div class="tab-pane" id="form_usuarios">@include ('sistema.contrato.formUsuarios')</div>
-        <div class="tab-pane" id="form_contatos">@include ('sistema.contrato.formContato')</div>
-        <div class="tab-pane" id="form_renovacao">@include ('sistema.contrato.formRenovacao')</div>
+            <div class="tab-pane" id="form_usuarios">@include ('sistema.contrato.formUsuarios')</div>
+            <div class="tab-pane" id="form_contatos">@include ('sistema.contrato.formContato')</div>
+            <div class="tab-pane" id="form_renovacao">@include ('sistema.contrato.formRenovacao')</div>
 
-         <!-- ================== FORM FINANCEIRO ================= -->
-         <div class="tab-pane" id="form_financeiro">
-            <div class="row mb-4">
-                <div class="FormSubtitulo">
-                    @if (isset($isFornecedorOrAdmin) && $isFornecedorOrAdmin)
-                    <button type="button" data-toggle="modal" data-target="#addParcela" class="button-modal nova-parcela btn bg-info">
-                        <i class="fa fa-money"></i> Nova parcela
-                    </button>
+            <!-- ================== FORM FINANCEIRO ================= -->
+            <div class="tab-pane" id="form_financeiro">
+                <div class="row mb-4">
+                    <div class="FormSubtitulo">
+                        @if (isset($isFornecedorOrAdmin) && $isFornecedorOrAdmin)
+                            <button type="button" data-toggle="modal" data-target="#addParcela"
+                                class="button-modal nova-parcela btn bg-info">
+                                <i class="fa fa-money"></i> Nova parcela
+                            </button>
 
-                    <button type="button" class="button-modal btn btn-sm bg-olive ml-2" data-toggle="modal" data-target="#parcelaEmail">
-                        <i class="fa fa-envelope-o"></i> Parcela via e-mail
-                    </button>
+                            <button type="button" class="button-modal btn btn-sm bg-olive ml-2" data-toggle="modal"
+                                data-target="#parcelaEmail">
+                                <i class="fa fa-envelope-o"></i> Parcela via e-mail
+                            </button>
+                        @endif
+                    </div>
+                </div>
+                <div class="box-body">
+                    @if ($financeiro ?? '' != '')
+                        <table class="display responsive nowrap" style="width:100%" id="tableFinanceiro">
+                            <thead>
+                                <th></th>
+                                <th>Data</th>
+                                <th>Para a empresa</th>
+                                <th>Valor do período</th>
+                                <!-- <th>Recorrência</th> -->
+                                <th>Comissão</th>
+                                <th>Extra</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Doc</th>
+                                <th class="text-center">Alterar</th>
+                                <th class="text-center">Visualizado</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($financeiro as $key => $value)
+                                    <tr class="data-tr" data-id-financeiro="{{ $value->a028_id_contrato_financeiro }}"
+                                        data-justificativa-financeiro="{{ $value->a028_justificativa }}"
+                                        data-status-financeiro="{{ $value->a028_status }}">
+                                        <td class="details-control"></td>
+                                        @php
+                                            $nome_empresa = $value->Empresa_belongsTo->a005_nome_fantasia ?? ($value->Empresa_belongsTo->a005_razao_social ?? $value->Empresa_belongsTo->a005_nome_completo);
+                                        @endphp
+                                        <td>{{ \Carbon\Carbon::parse($value->a028_data_cobranca)->format('d/m/Y') }}</td>
+                                        <td>{{ $nome_empresa }}</td>
+                                        <td>{{ $value->a028_valor_fracao }}</td>
+                                        <!-- <td>{{ $value->a028_recorrencia }}</td> -->
+                                        <td>{{ $value->a028_valor_comissao }}</td>
+                                        <td>{{ $value->a028_valor_extra }}</td>
+                                        <td class="text-center">
+                                            @if (isset($value->a028_status))
+                                                @if ($value->a028_status == 0)
+                                                    <span class="badge badge-danger">Atrasado</span>
+                                                @elseif ($value->a028_status == 1)
+                                                    <span class="badge badge-success">Pago</span>
+                                                @elseif ($value->a028_status == 2)
+                                                    <span class="badge badge-warning">Aguardando</span>
+                                                @elseif ($value->a028_status == 3)
+                                                    <span class="badge badge-dark">Rejeitado</span>
+                                                @endif
+                                            @else
+                                                <span class="badge badge-secondary">Pendente</span>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if ($value->a028_documento)
+                                                <a href="/{{ $value->a028_documento }}" target="_blank">Baixar arquivo</a>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if (!$value->da_minha_empresa && $value->a028_status < 2)
+                                                <button type="button" onclick="confirmChangeStatusFinanceiro(1, this)"
+                                                    class="btn btn-success">Pago</button>
+                                                <button type="button" onclick="confirmChangeStatusFinanceiro(0, this)"
+                                                    class="btn btn-danger">Atrasado</button>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            <span data-toggle="tooltip" data-placement="top"
+                                                title="{{ $value->visualizadores_email }}"
+                                                class="glyphicon glyphicon-eye-open"></span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     @endif
                 </div>
-            </div>
-            <div class="box-body">
-                @if($financeiro??"" != "")
-                    <table class="display responsive nowrap" style="width:100%" id="tableFinanceiro">
-                        <thead>
-                            <th></th>
-                            <th>Data</th>
-                            <th>Para a empresa</th>
-                            <th>Valor do período</th>
-                            <!-- <th>Recorrência</th> -->
-                            <th>Comissão</th>
-                            <th>Extra</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Doc</th>
-                            <th class="text-center">Alterar</th>
-                            <th class="text-center">Visualizado</th>
-                        </thead>
-                        <tbody>
-                            @foreach($financeiro as $key=>$value)
-                            <tr class="data-tr" data-id-financeiro="{{ $value->a028_id_contrato_financeiro }}"
-                                data-justificativa-financeiro="{{ $value->a028_justificativa }}"
-                                data-status-financeiro="{{ $value->a028_status }}">
-                                <td class="details-control"></td>
-                                @php 
-                                    $nome_empresa = $value->Empresa_belongsTo->a005_nome_fantasia ??
-                                                    $value->Empresa_belongsTo->a005_razao_social ??
-                                                    $value->Empresa_belongsTo->a005_nome_completo;
-                                @endphp
-                                <td>{{ \Carbon\Carbon::parse($value->a028_data_cobranca)->format('d/m/Y') }}</td>
-                                <td>{{$nome_empresa}}</td>
-                                <td>{{$value->a028_valor_fracao}}</td>
-                                <!-- <td>{{$value->a028_recorrencia}}</td> -->
-                                <td>{{$value->a028_valor_comissao}}</td>
-                                <td>{{$value->a028_valor_extra}}</td>
-                                <td class="text-center">
-                                @if (isset($value->a028_status))
-                                    @if ($value->a028_status == 0)
-                                    <span class="badge badge-danger">Atrasado</span>
-                                    @elseif ($value->a028_status == 1)
-                                    <span class="badge badge-success">Pago</span>
-                                    @elseif ($value->a028_status == 2)
-                                    <span class="badge badge-warning">Aguardando</span>
-                                    @elseif ($value->a028_status == 3)
-                                    <span class="badge badge-dark">Rejeitado</span>
-                                    @endif
-                                @else
-                                    <span class="badge badge-secondary">Pendente</span>
-                                @endif
-                                </td>
-                                <td class="text-center">
-                                    @if ($value->a028_documento)
-                                    <a href="/{{ $value->a028_documento }}" target="_blank">Baixar arquivo</a>
-                                    @endif
-                                </td>
-                                <td class="text-center">
-                                    @if (!$value->da_minha_empresa && $value->a028_status < 2)
-                                    <button type="button" onclick="confirmChangeStatusFinanceiro(1, this)" class="btn btn-success">Pago</button>
-                                    <button type="button" onclick="confirmChangeStatusFinanceiro(0, this)" class="btn btn-danger">Atrasado</button>
-                                    @endif
-                                </td>
-                                <td class="text-center">
-                                    <span data-toggle="tooltip" data-placement="top" title="{{ $value->visualizadores_email }}" class="glyphicon glyphicon-eye-open"></span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @endif
-            </div>
-        
-        </div>
-        <!-- ========================= END FORM FINANCEIRO ================= -->
 
-        
-        <!-- ================== FORM PENDENCIAS ================= -->
-        <div class="tab-pane" id="form_pendencias">
-        
-            <div class="row">
-                <div class="FormSubtitulo">
-                </div>
             </div>
-            <div class="box-body">
+            <!-- ========================= END FORM FINANCEIRO ================= -->
+
+
+            <!-- ================== FORM PENDENCIAS ================= -->
+            <div class="tab-pane" id="form_pendencias">
+
                 <div class="row">
-                    <div class="col-md-4">
-                        {!! Form::label('nova_pendencia', 'Pendência:', ['class' => 'control-label']) !!}
-                        {!! Form::text('nova_pendencia', null, ['class' => 'form-control','autocomplete' => 'off']) !!}
-                    </div>
-                    <div class="col-md-2 mt-5">
-                        Para a empresa 
-                        @php $emp =  isset($isFornecedorOrAdmin) && $isFornecedorOrAdmin ? $contrato->Empresa_belongsTo : $cli_for @endphp
-                        <b>{{ $emp->a005_razao_social ?? $emp->a005_nome_fantasia ?? $emp->a005_nome_completo }}</b>
-                    </div>
-                    <div class="col-md-4 mt-2">
-                        <br>
-                        <button type="button" class="ml-2 button-modal btn bg-info" onclick="addPendencia()">
-                            <i class="fa fa-pencil"></i> Adicionar pendência
-                        </button>
+                    <div class="FormSubtitulo">
                     </div>
                 </div>
-                <br>
-                <br>
-                @if($pendencias??"" != "")
-                    <table class="display responsive nowrap" style="width:100%" id="tablePendencias">
-                        <thead>
-                            <th>Para a empresa</th>
-                            <th>Pendência</th>
-                            <th>Data</th>
-                            <th>Status</th>
-                            <th>Alterar status</th>
-                        </thead>
-                        <tbody>
-                            @foreach($pendencias as $key=>$value)
-                            <tr class="data-tr" data-id-pendencia="{{ $value->a027_id_pendencia }}"
-                                data-aceite-pendencia="{{ $value->a027_pendencia_aceite }}">
-                                @php 
-                                    $nome_empresa = $value->Empresa_belongsTo->a005_nome_fantasia ??
-                                                    $value->Empresa_belongsTo->a005_razao_social ??
-                                                    $value->Empresa_belongsTo->a005_nome_completo;
-                                @endphp
-                                <td>{{$nome_empresa}}</td>
-                                <td>{{$value->a027_pendencia}}</td>
-                                <td>{{$value->created_at}}</td>
-                                <td>
-                                @if (isset($value->a027_pendencia_aceite))
-                                    @if ($value->a027_pendencia_aceite)
-                                    <span class="badge badge-success">Aceito</span>
-                                    @else
-                                    <span class="badge badge-danger">Rejeitado</span>
-                                    @endif
-                                @else
-                                    <span class="badge badge-secondary">Pendente</span>
-                                @endif
-                                </td>
-                                <td>
-                                    @if (!$value->da_minha_empresa)
-                                    <button type="button" onclick="confirmChangeStatus(1, this)" class="btn btn-success">Aceitar</button>
-                                    <button type="button" onclick="confirmChangeStatus(0, this)" class="btn btn-danger">Rejeitar</button>
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @endif
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {!! Form::label('nova_pendencia', 'Pendência:', ['class' => 'control-label']) !!}
+                            {!! Form::text('nova_pendencia', null, ['class' => 'form-control', 'autocomplete' => 'off']) !!}
+                        </div>
+                        <div class="col-md-2 mt-5">
+                            Para a empresa
+                            @php $emp =  isset($isFornecedorOrAdmin) && $isFornecedorOrAdmin ? $contrato->Empresa_belongsTo : $cli_for @endphp
+                            <b>{{ $emp->a005_razao_social ?? ($emp->a005_nome_fantasia ?? $emp->a005_nome_completo) }}</b>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <br>
+                            <button type="button" class="ml-2 button-modal btn bg-info" onclick="addPendencia()">
+                                <i class="fa fa-pencil"></i> Adicionar pendência
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    @if ($pendencias ?? '' != '')
+                        <table class="display responsive nowrap" style="width:100%" id="tablePendencias">
+                            <thead>
+                                <th>Para a empresa</th>
+                                <th>Pendência</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Alterar status</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($pendencias as $key => $value)
+                                    <tr class="data-tr" data-id-pendencia="{{ $value->a027_id_pendencia }}"
+                                        data-aceite-pendencia="{{ $value->a027_pendencia_aceite }}">
+                                        @php
+                                            $nome_empresa = $value->Empresa_belongsTo->a005_nome_fantasia ?? ($value->Empresa_belongsTo->a005_razao_social ?? $value->Empresa_belongsTo->a005_nome_completo);
+                                        @endphp
+                                        <td>{{ $nome_empresa }}</td>
+                                        <td>{{ $value->a027_pendencia }}</td>
+                                        <td>{{ $value->created_at }}</td>
+                                        <td>
+                                            @if (isset($value->a027_pendencia_aceite))
+                                                @if ($value->a027_pendencia_aceite)
+                                                    <span class="badge badge-success">Aceito</span>
+                                                @else
+                                                    <span class="badge badge-danger">Rejeitado</span>
+                                                @endif
+                                            @else
+                                                <span class="badge badge-secondary">Pendente</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (!$value->da_minha_empresa)
+                                                <button type="button" onclick="confirmChangeStatus(1, this)"
+                                                    class="btn btn-success">Aceitar</button>
+                                                <button type="button" onclick="confirmChangeStatus(0, this)"
+                                                    class="btn btn-danger">Rejeitar</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+                </div>
+
             </div>
-        
-        </div>
-        <!-- ========================= END FORM PENDENCIAS ================= -->
+            <!-- ========================= END FORM PENDENCIAS ================= -->
         @endisset
         <div class="tab-pane" id="form_alteracao">@include ('sistema.contrato.formAlteracao')</div>
     </div>
@@ -236,7 +240,7 @@
 
 @push('js')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var tableRenovacaoContrato, tablePendencias, tableFinanceiro, id_anotacao_selecionada;
 
             $('.select2').select2({
@@ -245,8 +249,7 @@
 
             if ($("#a013_periodicidade_reajuste").val() != "") {
                 $("#a013_indice_reajuste").prop("required", true);
-            }
-            else {
+            } else {
                 $("#a013_indice_reajuste").prop("required", false);
             }
 
@@ -255,23 +258,21 @@
             verificatermos();
 
             @isset($contrato)
-            verificaPermissaoUsuario();
+                verificaPermissaoUsuario();
             @endisset
             criaDataTableHistorico();
             criaDataTableUsuariosContrato();
             criaDataTablePendencias();
             criaDataTableFinanceiro();
 
-            if("{{ ($contrato->a013_assinatura??"")}}" != "")
-            {
-                $(".a013_assinatura").prop("required",false);
+            if ("{{ $contrato->a013_assinatura ?? '' }}" != "") {
+                $(".a013_assinatura").prop("required", false);
             }
 
-            if('{{$contrato->a013_id_contrato??0}}' != '0')
-            {
-                $("#a013_data_inicio").prop('readonly', true).attr('tabIndex','-1');
-                $("#a013_prazo_contrato").prop('readonly', true).attr('tabIndex','-1');
-                $("#a013_data_fim").prop('readonly', true).attr('tabIndex','-1');
+            if ('{{ $contrato->a013_id_contrato ?? 0 }}' != '0') {
+                $("#a013_data_inicio").prop('readonly', true).attr('tabIndex', '-1');
+                $("#a013_prazo_contrato").prop('readonly', true).attr('tabIndex', '-1');
+                $("#a013_data_fim").prop('readonly', true).attr('tabIndex', '-1');
                 // $('.periodo').hide();
 
                 $("#a013_data_renovacao").prop('readonly', false).removeAttr("tabIndex");;
@@ -281,7 +282,7 @@
 
 
 
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
             var target = $(e.target).attr("href");
             if ((target == '#form_alteracao')) {
                 $('#tableHistoricoContrato').DataTable().destroy();
@@ -292,41 +293,39 @@
             }
         });
 
-        $(".a013_status").click(function(){
+        $(".a013_status").click(function() {
             verificaStatus();
         });
 
-        $("#a013_aceita_termo").click(function(){
+        $("#a013_aceita_termo").click(function() {
             verificatermos();
         });
 
-        $('#a005_id_empresa').change(function () {
+        $('#a005_id_empresa').change(function() {
             carregaOptionsEmpresa();
         });
-        $('#a008_id_cat_contrato').change(function () {
+        $('#a008_id_cat_contrato').change(function() {
             CarregaCategoriaDocumentos();
         });
         /*$(".validaunico").blur(function () {
             validaCampoUnicoExistente(this);
         });*/
 
-        $("#a013_periodicidade_reajuste").blur(function () {
+        $("#a013_periodicidade_reajuste").blur(function() {
             if ($(this).val() != "") {
                 $("#a013_indice_reajuste").prop("required", true);
-            }
-            else {
+            } else {
                 $("#a013_indice_reajuste").prop("required", false);
             }
         });
 
 
-        $("#periodo").change(function () {
+        $("#periodo").change(function() {
             if (this.value == "") {
                 $('#valor_periodo').val(1);
                 $('#valor_periodo').attr('readonly', true);
                 $('#a013_data_fim').attr('readonly', false);
-            }
-            else {
+            } else {
                 $('#valor_periodo').attr('readonly', false);
                 $('#a013_data_fim').attr('readonly', true);
                 let value = $("#a013_prazo_contrato").val();
@@ -335,7 +334,7 @@
         });
 
 
-        $("#valor_periodo").blur(function () {
+        $("#valor_periodo").blur(function() {
             let tipo = $('#periodo').val();
             calculaDataFinal(tipo, this);
         });
@@ -343,21 +342,21 @@
         //     let tipo = $('#periodo').val();
         //     calculaDataFinal(tipo, this);
         // });
-        $("#valor_periodo").focusout(function () {
+        $("#valor_periodo").focusout(function() {
             let tipo = $('#periodo').val();
             calculaDataFinal(tipo, this);
         });
 
 
-        $("#a013_data_renovacao").focusout(function () {
+        $("#a013_data_renovacao").focusout(function() {
             let tipo = $('#periodo').val();
             calculaDataFinal(tipo, this);
         });
-        $("#a013_data_inicio").focusout(function () {
+        $("#a013_data_inicio").focusout(function() {
             let tipo = $('#periodo').val();
             calculaDataFinal(tipo, this);
         });
-        $("#a013_data_fim").focusout(function () {
+        $("#a013_data_fim").focusout(function() {
             let tipo = $('#periodo').val();
             calculaDataFinal(tipo, this);
         });
@@ -367,19 +366,18 @@
             language: 'pt-BR',
             startDate: new Date(),
             autoclose: true,
-        }).on('changeDate', function (obj) {
+        }).on('changeDate', function(obj) {
             calculaDataFinal('data', this)
-        }).on('focus',function(){
-            $('.datepicker').css("display","none");
+        }).on('focus', function() {
+            $('.datepicker').css("display", "none");
         })
 
-        $('.dataMask').focusin(function(){
-            $('.datepicker').css("display","none");
+        $('.dataMask').focusin(function() {
+            $('.datepicker').css("display", "none");
         });
-        
 
-        function verificaPermissaoUsuario()
-        {
+
+        function verificaPermissaoUsuario() {
             let permission = "{{ isset($permission_user) && $permission_user }}"
 
             if (!permission) {
@@ -393,14 +391,14 @@
             var idEmpresa = $("#a005_id_empresa").val();
 
             $.ajax({
-                url: '/carregaOptionsEmpresa',
+                url: '/new_gebit/app.dealix.com.br/appcarregaOptionsEmpresa',
                 type: 'GET',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: {
                     idEmpresa: idEmpresa,
                 },
-                success: function (response) {
+                success: function(response) {
 
                     //console.log(response);
 
@@ -413,77 +411,84 @@
                     $('#a012_id_tipo_vencimento_form').html('');
 
 
-                    $.each(response.comboEmpresaClieFor, function (key, value) {
+                    $.each(response.comboEmpresaClieFor, function(key, value) {
                         if (key == "") {
-                            $('#a005_id_empresa_cli_for').prepend($("<option></option>").attr("value", key).text(value));
+                            $('#a005_id_empresa_cli_for').prepend($("<option></option>").attr("value",
+                                key).text(value));
+                        } else {
+                            $('#a005_id_empresa_cli_for').append($("<option></option>").attr("value",
+                                key).text(value));
                         }
-                        else {
-                            $('#a005_id_empresa_cli_for').append($("<option></option>").attr("value", key).text(value));
-                        }
-                        $('#a005_id_empresa_cli_for').val($("#a005_id_empresa_cli_for option:first").val());
+                        $('#a005_id_empresa_cli_for').val($("#a005_id_empresa_cli_for option:first")
+                            .val());
                     });
-                    $.each(response.comboCategoria_contrato, function (key, value) {
+                    $.each(response.comboCategoria_contrato, function(key, value) {
                         if (key == "") {
-                            $('#a008_id_cat_contrato').prepend($("<option></option>").attr("value", key).text(value));
-                        }
-                        else {
-                            $('#a008_id_cat_contrato').append($("<option></option>").attr("value", key).text(value));
+                            $('#a008_id_cat_contrato').prepend($("<option></option>").attr("value", key)
+                                .text(value));
+                        } else {
+                            $('#a008_id_cat_contrato').append($("<option></option>").attr("value", key)
+                                .text(value));
                         }
                         // $('#a008_id_cat_contrato').val($("#a008_id_cat_contrato option:first").val());
                     });
-                    $.each(response.comboTipo_contrato, function (key, value) {
+                    $.each(response.comboTipo_contrato, function(key, value) {
                         if (key == "") {
-                            $('#a010_id_tipo_contrato').prepend($("<option></option>").attr("value", key).text(value));
-                        }
-                        else {
-                            $('#a010_id_tipo_contrato').append($("<option></option>").attr("value", key).text(value));
+                            $('#a010_id_tipo_contrato').prepend($("<option></option>").attr("value",
+                                key).text(value));
+                        } else {
+                            $('#a010_id_tipo_contrato').append($("<option></option>").attr("value", key)
+                                .text(value));
                         }
                         $('#a010_id_tipo_contrato').val($("#a010_id_tipo_contrato option:first").val());
                     });
-                    $.each(response.comboArea_contrato, function (key, value) {
+                    $.each(response.comboArea_contrato, function(key, value) {
                         if (key == "") {
-                            $('#a011_id_area').prepend($("<option></option>").attr("value", key).text(value));
-                        }
-                        else {
-                            $('#a011_id_area').append($("<option></option>").attr("value", key).text(value));
+                            $('#a011_id_area').prepend($("<option></option>").attr("value", key).text(
+                                value));
+                        } else {
+                            $('#a011_id_area').append($("<option></option>").attr("value", key).text(
+                                value));
                         }
                         $('#a011_id_area').val($("#a011_id_area option:first").val());
                     });
 
 
-                    $.each(response.comboResponsavel, function (key, value) {
+                    $.each(response.comboResponsavel, function(key, value) {
                         if (key == "") {
-                            $('#a001_id_usuario').prepend($("<option></option>").attr("value", key).text(value));
-                        }
-                        else {
-                            $('#a001_id_usuario').append($("<option></option>").attr("value", key).text(value));
+                            $('#a001_id_usuario').prepend($("<option></option>").attr("value", key)
+                                .text(value));
+                        } else {
+                            $('#a001_id_usuario').append($("<option></option>").attr("value", key).text(
+                                value));
                         }
                         // $('#a001_id_usuario').val($("#a001_id_usuario option:first").val());
-                        $('#a001_id_usuario').val('{{Auth::user()->a001_id_usuario}}');
+                        $('#a001_id_usuario').val('{{ Auth::user()->a001_id_usuario }}');
                     });
 
 
-                    $.each(response.comboTipo_vencimento, function (key, value) {
+                    $.each(response.comboTipo_vencimento, function(key, value) {
                         if (key == "") {
-                            $('#a012_id_tipo_vencimento_form').prepend($("<option></option>").attr("value", key).text(value));
+                            $('#a012_id_tipo_vencimento_form').prepend($("<option></option>").attr(
+                                "value", key).text(value));
+                        } else {
+                            $('#a012_id_tipo_vencimento_form').append($("<option></option>").attr(
+                                "value", key).text(value));
                         }
-                        else {
-                            $('#a012_id_tipo_vencimento_form').append($("<option></option>").attr("value", key).text(value));
-                        }
-                        $('#a012_id_tipo_vencimento_form').val($("#a012_id_tipo_vencimento_form option:first").val());
+                        $('#a012_id_tipo_vencimento_form').val($(
+                            "#a012_id_tipo_vencimento_form option:first").val());
                     });
 
 
                 },
-                error: function () {
+                error: function() {
 
                 }
             });
         }
 
         function calculaDataFinal(tipo, campo) {
-            if($("#a013_data_inicio").val().length<10)
-            {
+            if ($("#a013_data_inicio").val().length < 10) {
                 return;
             }
             var dataInicio = new Date(formataData_BR_to_DB($("#a013_data_inicio").val()) + " 00:00");
@@ -494,8 +499,7 @@
 
 
             if (($("#a013_data_renovacao").val() != "")) {
-                if($("#a013_data_renovacao").val().length<10)
-                {
+                if ($("#a013_data_renovacao").val().length < 10) {
                     return;
                 }
                 dataInicio = new Date(formataData_BR_to_DB($("#a013_data_renovacao").val()) + " 00:00");
@@ -506,7 +510,7 @@
                 $(".a013_status").prop('checked', false)
                 $($(".a013_status")[0]).prop('checked', true)
 
-                if(($(campo).attr("id") == "a013_data_renovacao")) {
+                if (($(campo).attr("id") == "a013_data_renovacao")) {
                     ///criado essas variaveis pois nao pode mexer nas atuais (dataInicio,dataFinal,dias) pois elas sao validadas depois
                     var inicioRenov = dataInicio;
                     var finalRenov = dataFinal;
@@ -522,30 +526,27 @@
                 }
             }
 
-            if (dataInicio != "" && valor_periodo != "") { 
+            if (dataInicio != "" && valor_periodo != "") {
                 let calc_date = new Date(dataInicio);
 
                 if (tipo == "dias") {
                     calc_date.setDate(dataInicio.getDate() + parseInt(valor_periodo));
                     dataFinal = new Date(calc_date)
                     $("#a013_data_fim").val(dtFormatadaBr(dataFinal));
-                }
-                else if (tipo == "semanas") {
+                } else if (tipo == "semanas") {
                     calc_date.setDate(dataInicio.getDate() + parseInt(valor_periodo) * 7);
                     dataFinal = new Date(calc_date)
                     $("#a013_data_fim").val(dtFormatadaBr(dataFinal));
-                }
-                else if (tipo == "meses") {
+                } else if (tipo == "meses") {
                     calc_date.setMonth(dataInicio.getMonth() + parseInt(valor_periodo));
                     dataFinal = new Date(calc_date)
                     $("#a013_data_fim").val(dtFormatadaBr(dataFinal));
-                }
-                else if (tipo == "anos") {
+                } else if (tipo == "anos") {
                     calc_date.setFullYear(dataInicio.getFullYear() + parseInt(valor_periodo));
                     dataFinal = new Date(calc_date)
                     $("#a013_data_fim").val(dtFormatadaBr(dataFinal));
                 }
-                
+
                 if (dataFinal != "") {
                     let Difference_In_Time = dataFinal.getTime() - dataInicio.getTime();
                     let dias = Difference_In_Time / (1000 * 3600 * 24);
@@ -564,22 +565,21 @@
             }
         }
 
-        function CarregaCategoriaDocumentos()
-        {
+        function CarregaCategoriaDocumentos() {
             var idCategoria = $("#a008_id_cat_contrato").val();
-            var idContrato = "{{$contrato->a013_id_contrato??0}}";
+            var idContrato = "{{ $contrato->a013_id_contrato ?? 0 }}";
 
-            if(idCategoria != "") {
+            if (idCategoria != "") {
                 $.ajax({
-                    url: '/carregaCategoriaDocumentos',
+                    url: '/new_gebit/app.dealix.com.br/carregaCategoriaDocumentos',
                     type: 'GET',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: {
                         idCategoria: idCategoria,
-                        idContrato:idContrato
+                        idContrato: idContrato
                     },
-                    success: function (response) {
+                    success: function(response) {
 
                         var documentos = response.documentos;
                         var html = '';
@@ -590,13 +590,12 @@
 
                             var required = "";
                             //campos obrigatorios data e obs
-                            if(documentos[x].a009_ind_obrigatorio == 1)
-                            {
+                            if (documentos[x].a009_ind_obrigatorio == 1) {
                                 required = 'required="required"';
                             }
 
                             var urlsalva = documentos[x].a014_documento;
-                            var url = "http://{{$_SERVER['HTTP_HOST']}}/storage/app/public"+urlsalva;
+                            var url = "http://{{ $_SERVER['HTTP_HOST'] }}/storage/app/public" + urlsalva;
                             var a014_data = documentos[x].a014_data;
                             var a014_data_vencimento = documentos[x].a014_data_vencimento;
                             var a014_obs = documentos[x].a014_obs;
@@ -609,10 +608,19 @@
                             html = '' +
                                 '   <div class="col-md-12">' +
                                 '       <div class="form-group has-error has-danger">' +
-                                '           <label for="a014_documento'+idDoc+'" class="control-label" style="width: 100%;">'+documentos[x].a009_descricao+'</label>' +
-                                '           <a download href="'+url+'" class="jUrlSalva'+idDoc+'">Baixar contrato</a> <div class="btn btn-xs btn-danger jdelUrlSalva jUrlSalva'+idDoc+'" id="'+idDoc+'"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>' +
-                                '           <input class="jUpload'+idDoc+'" name="a014_documento'+idDoc+'" id="a014_documento'+idDoc+'" obrigatorio="'+documentos[x].a009_ind_obrigatorio+'" type="file" data-error="Adicione '+documentos[x].a009_descricao+'" value="'+urlsalva+'" >' +
-                                '           <input name="id_cat_contrato[]" type="hidden" value="'+idDoc+'" >' +
+                                '           <label for="a014_documento' + idDoc +
+                                '" class="control-label" style="width: 100%;">' + documentos[x].a009_descricao +
+                                '</label>' +
+                                '           <a download href="' + url + '" class="jUrlSalva' + idDoc +
+                                '">Baixar contrato</a> <div class="btn btn-xs btn-danger jdelUrlSalva jUrlSalva' +
+                                idDoc + '" id="' + idDoc +
+                                '"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>' +
+                                '           <input class="jUpload' + idDoc + '" name="a014_documento' + idDoc +
+                                '" id="a014_documento' + idDoc + '" obrigatorio="' + documentos[x]
+                                .a009_ind_obrigatorio + '" type="file" data-error="Adicione ' + documentos[x]
+                                .a009_descricao + '" value="' + urlsalva + '" >' +
+                                '           <input name="id_cat_contrato[]" type="hidden" value="' + idDoc +
+                                '" >' +
                                 '           <div class="help-block with-errors"></div>' +
                                 '        </div>' +
                                 '    </div>' +
@@ -620,14 +628,18 @@
                                 '   <div class="col-md-4">' +
                                 '        <div class="form-group">' +
                                 '            <label for="a014_data_vencimento" class="control-label">Data Vencimento</label>' +
-                                '            <input class="form-control dataMask" name="a014_data_vencimento[]" type="text" value="'+a014_data_vencimento+'" id="a014_data_vencimento[]" maxlength="10" '+required+' pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\\/](0[1-9]|1[012]))|((29|30|31)[\\/](0[13578]|1[02]))|((29|30)[\\/](0[4,6,9]|11)))[\\/](19|[2-9][0-9])\\d\\d$)|(^29[\\/]02[\\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)">' +
+                                '            <input class="form-control dataMask" name="a014_data_vencimento[]" type="text" value="' +
+                                a014_data_vencimento + '" id="a014_data_vencimento[]" maxlength="10" ' +
+                                required +
+                                ' pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\\/](0[1-9]|1[012]))|((29|30|31)[\\/](0[13578]|1[02]))|((29|30)[\\/](0[4,6,9]|11)))[\\/](19|[2-9][0-9])\\d\\d$)|(^29[\\/]02[\\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)">' +
                                 '            <div class="help-block with-errors"></div>' +
                                 '        </div>' +
                                 '    </div>' +
                                 '   <div class="col-md-8">' +
                                 '        <div class="form-group">' +
                                 '            <label for="a014_obs" class="control-label">Observação</label>' +
-                                '            <input class="form-control" name="a014_obs[]" type="text" value="'+a014_obs+'" id="a014_obs[]" maxlength="500" '+required+'>' +
+                                '            <input class="form-control" name="a014_obs[]" type="text" value="' +
+                                a014_obs + '" id="a014_obs[]" maxlength="500" ' + required + '>' +
                                 '            <div class="help-block with-errors"></div>' +
                                 '        </div>' +
                                 '    </div>' +
@@ -636,31 +648,28 @@
 
                             $(".divAddDivsDocumento").append(html);
 
-                            if(documentos[x].a009_ind_obrigatorio == 1)
-                            {
-                                $('.jUpload'+idDoc).prop("required", true);
+                            if (documentos[x].a009_ind_obrigatorio == 1) {
+                                $('.jUpload' + idDoc).prop("required", true);
                                 //$(".jUpload").prop("required", true);
                             }
-                            if(urlsalva != "")
-                            {
-                                $('.jUpload'+idDoc).prop("required", false);
-                                $('.jUpload'+idDoc).hide();
-                            }
-                            else {
-                                $('.jUrlSalva'+idDoc).hide();
+                            if (urlsalva != "") {
+                                $('.jUpload' + idDoc).prop("required", false);
+                                $('.jUpload' + idDoc).hide();
+                            } else {
+                                $('.jUrlSalva' + idDoc).hide();
                             }
                         }
 
 
-                        $(".jdelUrlSalva").click(function(){
+                        $(".jdelUrlSalva").click(function() {
                             var id = $(this).attr('id');
-                            $(".jUrlSalva"+id).hide();
-                            $(".jUpload"+id).show();
-                            if($(".jUpload"+id).attr('obrigatorio')>0)
-                                $('.jUpload'+id).prop("required", true);
+                            $(".jUrlSalva" + id).hide();
+                            $(".jUpload" + id).show();
+                            if ($(".jUpload" + id).attr('obrigatorio') > 0)
+                                $('.jUpload' + id).prop("required", true);
 
-                            var idsDel  = $("#id_documento_del").val();
-                            idsDel += ","+id;
+                            var idsDel = $("#id_documento_del").val();
+                            idsDel += "," + id;
                             $("#id_documento_del").val(idsDel);
 
 
@@ -702,11 +711,15 @@
             var txt = $("#a012_id_tipo_vencimento_form").find(":selected").text();
 
             var addLinha = '<tr class="dados_id bg_add_linha">' +
-                '<td>' + txt + '<input type="hidden" name="a012_id_tipo_vencimento[]" id="a012_id_tipo_vencimento" value="' + a012_id_tipo_vencimento + '"></td>' +
-                '<td>' + a017_valor + '<input type="hidden" name="a017_valor[]" id="a017_valor" value="' + a017_valor + '"></td>' +
+                '<td>' + txt +
+                '<input type="hidden" name="a012_id_tipo_vencimento[]" id="a012_id_tipo_vencimento" value="' +
+                a012_id_tipo_vencimento + '"></td>' +
+                '<td>' + a017_valor + '<input type="hidden" name="a017_valor[]" id="a017_valor" value="' + a017_valor +
+                '"></td>' +
                 '<td>' +
                 '<div class="btn btn-info" title="Editar Contato" onclick="editaContratoTipoVencimento(this)"><i class="fa fa-edit" aria-hidden="true"></i></div> ' +
-                '<div class="btn btn-danger" title="Excluir Contato" onclick="removeContratoTipoVencimento(\'Tem certeza que deseja excluir este Contato?\', this)">' + '<i class="fa fa-trash-o" aria-hidden="true"></i></div>' +
+                '<div class="btn btn-danger" title="Excluir Contato" onclick="removeContratoTipoVencimento(\'Tem certeza que deseja excluir este Contato?\', this)">' +
+                '<i class="fa fa-trash-o" aria-hidden="true"></i></div>' +
                 '</td>' +
                 '</tr>';
             $('#table-contato').append(addLinha);
@@ -728,7 +741,7 @@
                     confirm: {
                         text: 'Excluir',
                         btnClass: 'btn-danger',
-                        action: function () {
+                        action: function() {
                             $(thiscampo).parents('.dados_id').remove();
                         }
                     },
@@ -756,9 +769,8 @@
         }
 
 
-        
-        function criaDataTableHistorico()
-        {
+
+        function criaDataTableHistorico() {
             $('#tableHistoricoContrato').DataTable({
                 responsive: true,
                 "pageLength": 100,
@@ -766,12 +778,16 @@
                     header: true,
                     footer: false
                 },
-                order: [[0, 'desc']],
+                order: [
+                    [0, 'desc']
+                ],
                 dom: 'Bfrtip',
                 buttons: [
                     'excel', 'pdf'
                 ],
-                "language": { "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json" }
+                "language": {
+                    "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json"
+                }
             });
 
             tableRenovacaoContrato = $('#tableRenovacaoContrato').DataTable({
@@ -781,17 +797,20 @@
                     header: true,
                     footer: false
                 },
-                order: [[1, 'desc']],
+                order: [
+                    [1, 'desc']
+                ],
                 dom: 'Bfrtip',
                 buttons: [
                     'excel', 'pdf'
                 ],
-                "language": { "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json" }
+                "language": {
+                    "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json"
+                }
             });
         }
 
-        function criaDataTablePendencias()
-        {
+        function criaDataTablePendencias() {
             tablePendencias = $('#tablePendencias').DataTable({
                 responsive: true,
                 "pageLength": 100,
@@ -804,12 +823,13 @@
                     'excel', 'pdf'
                 ],
                 "ordering": false,
-                "language": { "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json" }
+                "language": {
+                    "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json"
+                }
             });
         }
 
-        function criaDataTableFinanceiro()
-        {
+        function criaDataTableFinanceiro() {
             tableFinanceiro = $('#tableFinanceiro').DataTable({
                 responsive: true,
                 "pageLength": 100,
@@ -822,7 +842,9 @@
                     'excel', 'pdf'
                 ],
                 "ordering": false,
-                "language": { "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json" }
+                "language": {
+                    "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json"
+                }
             });
         }
 
@@ -831,43 +853,44 @@
             let observacao = tr.data('obs-anotacao')
             let aceite = tr.data('aceite-anotacao')
             let da_minha_empresa = tr.data('da-minha-empresa-anotacao')
-            
-            let html = '<div class="card"><div class="card-footer">Anotação</div><div class="card-body"><div class="p-5">' + value + '</div></div>';
+
+            let html = '<div class="card"><div class="card-footer">Anotação</div><div class="card-body"><div class="p-5">' +
+                value + '</div></div>';
 
             if (observacao) {
-                html += '<div class="card ml-5"><div class="card-footer">Comentário</div><div class="card-body"><div class="p-5 comment">'+ observacao +'</div></div></div></div>'
-                html += '<div class="p-5"><button data-toggle="modal" data-target="#addComentarioAnotacao" class="button-modal anotacao-comentario btn '
+                html +=
+                    '<div class="card ml-5"><div class="card-footer">Comentário</div><div class="card-body"><div class="p-5 comment">' +
+                    observacao + '</div></div></div></div>'
+                html +=
+                    '<div class="p-5"><button data-toggle="modal" data-target="#addComentarioAnotacao" class="button-modal anotacao-comentario btn '
 
                 if (aceite !== '') {
                     if (aceite != 0)
                         html += 'btn-success disabled" disabled>Aceito</button></div>';
                     else
                         html += 'btn-danger disabled" disabled>Rejeitado</button></div>';
-                }
-                else if (!da_minha_empresa) {
+                } else if (!da_minha_empresa) {
                     html += 'btn btn-info">Aceitar / Rejeitar</button></div>';
-                }
-                else {
+                } else {
                     html += 'btn btn-info disabled" disabled>Aceitar / Rejeitar</button></div>';
                 }
-            }
-            else {
-                html += '<div class="card ml-5 hidden"><div class="card-footer">Comentário</div><div class="card-body"><div class="p-5 comment"></div></div></div></div>'
-                html += '<div class="p-5"><button type="button" data-toggle="modal" data-target="#addComentarioAnotacao" class="button-modal anotacao-comentario btn ';
+            } else {
+                html +=
+                    '<div class="card ml-5 hidden"><div class="card-footer">Comentário</div><div class="card-body"><div class="p-5 comment"></div></div></div></div>'
+                html +=
+                    '<div class="p-5"><button type="button" data-toggle="modal" data-target="#addComentarioAnotacao" class="button-modal anotacao-comentario btn ';
 
                 if (aceite !== '') {
                     if (aceite != 0)
                         html += 'btn-success disabled" disabled>Aceito</button></div>';
                     else
                         html += 'btn-danger disabled" disabled>Rejeitado</button></div>';
-                }
-                else if (!da_minha_empresa) {
+                } else if (!da_minha_empresa) {
                     html += 'btn btn-info">Aceitar / Rejeitar</button></div>';
-                }
-                else {
+                } else {
                     html += 'btn btn-info disabled" disabled>Aceitar / Rejeitar</button></div>';
                 }
-                
+
                 html += '</div>';
             }
 
@@ -877,16 +900,17 @@
 
         function format_details_financeiro(tr) {
             let justificativa = tr.data('justificativa-financeiro')
-            
-            let html = '<div class="card"><div class="card-footer">Justificativa</div><div class="card-body"><div class="p-5">' 
-                        + justificativa + '</div></div></div>';
+
+            let html =
+                '<div class="card"><div class="card-footer">Justificativa</div><div class="card-body"><div class="p-5">' +
+                justificativa + '</div></div></div>';
 
             return html;
         }
 
 
         // Add event listener for opening and closing details
-        $('#tableRenovacaoContrato').on('click', 'td.details-control', function () {
+        $('#tableRenovacaoContrato').on('click', 'td.details-control', function() {
             var tr = $(this).closest('tr');
             var row = tableRenovacaoContrato.row(tr);
 
@@ -900,12 +924,12 @@
                 tr.addClass('shown');
             }
 
-            $('.anotacao-comentario').on('click', function(){
+            $('.anotacao-comentario').on('click', function() {
                 id_anotacao_selecionada = $(this).closest('tr').prev().data('id-anotacao')
             })
         });
 
-        $('#tableFinanceiro').on('click', 'td.details-control', function () {
+        $('#tableFinanceiro').on('click', 'td.details-control', function() {
             var tr = $(this).closest('tr');
             var row = tableFinanceiro.row(tr);
 
@@ -919,14 +943,14 @@
                 tr.addClass('shown');
             }
 
-            $('.financeiro-justificativa').on('click', function(){
+            $('.financeiro-justificativa').on('click', function() {
                 id_parcela_selecionada = $(this).closest('tr').prev().data('id-anotacao')
             })
         });
 
-        var dataTableUsuariosContrato; 
-        function criaDataTableUsuariosContrato()
-        {
+        var dataTableUsuariosContrato;
+
+        function criaDataTableUsuariosContrato() {
             dataTableUsuariosContrato = $('#tableUsuariosContrato').DataTable({
                 responsive: true,
                 "pageLength": 100,
@@ -935,39 +959,34 @@
                     footer: false
                 },
                 dom: 'Bfrtip',
-                buttons: [
-                ],
-                "language": { "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json" }
+                buttons: [],
+                "language": {
+                    "url": "/bower_components/admin-lte/plugins/datatables/lang/pt-BR.json"
+                }
             });
         }
 
-        function verificaStatus()
-        {
-            if($('.a013_status:checked').val() == 'C')
-            {
-                @if (($contrato->a013_status??'A') == 'C')
-                $(".a013_status").prop("disabled", true)
+        function verificaStatus() {
+            if ($('.a013_status:checked').val() == 'C') {
+                @if (($contrato->a013_status ?? 'A') == 'C')
+                    $(".a013_status").prop("disabled", true)
                 @endif
                 $(".jMostraTermo").show();
                 $("#a013_aceita_termo").prop("required", "required");
-            }
-            else {
+            } else {
                 $(".jMostraTermo").hide();
                 $("#a013_aceita_termo").prop("required", false);
             }
         }
 
-        function verificatermos()
-        {
-            if($("#a013_aceita_termo").prop("checked"))
-            {
+        function verificatermos() {
+            if ($("#a013_aceita_termo").prop("checked")) {
                 $('.jMotraDataUserCancelou').show();
 
-                if($(".dataCancelamento").html().length<5) {
+                if ($(".dataCancelamento").html().length < 5) {
                     $(".dataCancelamento").html(mostraDataHoraAtual());
                 }
-            }
-            else {
+            } else {
                 $('.jMotraDataUserCancelou').hide();
             }
         }
@@ -1029,188 +1048,197 @@
             @endisset
 
 
-                function confirmChangeStatusFinanceiro(status, that)
-                {
-                    let tipo = status ? 'paga' : 'atrasada';
+        function confirmChangeStatusFinanceiro(status, that) {
+            let tipo = status ? 'paga' : 'atrasada';
 
-                    $.confirm({
-                        theme: 'light',
-                        title: 'ALERTA',
-                        content: 'Tem certeza que deseja definir esta parcela como '+ tipo +'?',
-                        buttons: {
-                            confirm: {
-                                text: tipo,
-                                btnClass: status ? 'btn-success' : 'btn-danger',
-                                action: function () {
-                                    changeStatusFinanceiro(status, that)
-                                }
-                            },
-                            cancel: {
-                                text: 'Cancelar',
-                            }
+            $.confirm({
+                theme: 'light',
+                title: 'ALERTA',
+                content: 'Tem certeza que deseja definir esta parcela como ' + tipo + '?',
+                buttons: {
+                    confirm: {
+                        text: tipo,
+                        btnClass: status ? 'btn-success' : 'btn-danger',
+                        action: function() {
+                            changeStatusFinanceiro(status, that)
                         }
-                    });
+                    },
+                    cancel: {
+                        text: 'Cancelar',
+                    }
                 }
+            });
+        }
 
-                function changeStatusFinanceiro(status, that)
-                {
-                    let id_financeiro = $(that).closest('tr').data('id-financeiro')
-                    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        function changeStatusFinanceiro(status, that) {
+            let id_financeiro = $(that).closest('tr').data('id-financeiro')
+            let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-                    $.ajax({
-                        url: "/salvarStatusFinanceiro/"+id_financeiro,
-                        type: "POST",
-                        data: {a028_status: status},
-                        headers: {'X-CSRF-TOKEN': CSRF_TOKEN},
-                        success: function (response) {
-                            if (!response.success) {
-                                $.alert(response.message);
-                            }
-                            else {
-                                let status = response.data.a028_status;
-                                let status_button = '<td><span class="badge badge-'
-                                if (status == '1') {
-                                    status_button += 'success">Pago'
-                                }
-                                else {
-                                    status_button += 'danger">Atrasado'
-                                }
-                                status_button += '</span></td>'
-                                
-                                tableFinanceiro.row($(that).closest('tr')).remove();
-                                tableFinanceiro.row.add( [
-                                    '<td></td>',
-                                    new Date(response.data.a028_data_cobranca + ' 00:00:00').toLocaleDateString('pt-br'),
-                                    response.data.nome_empresa,
-                                    response.data.a028_valor_fracao,
-                                    response.data.a028_recorrencia,
-                                    response.data.a028_valor_comissao,
-                                    response.data.a028_valor_extra,
-                                    status_button,
-                                    '<td><button type="button" onclick="confirmChangeStatusFinanceiro(1, this)" class="btn btn-success">Pago</button>&nbsp'+
-                                        '<button type="button" onclick="confirmChangeStatusFinanceiro(0, this)" class="btn btn-danger">Atrasado</button></td>'
-                                ] ).draw( false );
-
-                                $('#tableFinanceiro tbody tr:last-child td:first-child').addClass('details-control')
-                                $('#tableFinanceiro tbody tr:last-child').attr('data-id-financeiro', response.data.a028_id_contrato_financeiro)
-                                $('#tableFinanceiro tbody tr:last-child').attr('data-status-financeiro', response.data.a028_status ?? '')
-                                $('#tableFinanceiro tbody tr:last-child').attr('data-justificativa-financeiro', response.data.a028_justificativa ?? '')
-                            }
-                        },
-                        error: function (response) {
-                            $.alert('Não foi possível alterar a parcela');
-                            console.log(response)
+            $.ajax({
+                url: "/salvarStatusFinanceiro/" + id_financeiro,
+                type: "POST",
+                data: {
+                    a028_status: status
+                },
+                headers: {
+                    'X-CSRF-TOKEN': CSRF_TOKEN
+                },
+                success: function(response) {
+                    if (!response.success) {
+                        $.alert(response.message);
+                    } else {
+                        let status = response.data.a028_status;
+                        let status_button = '<td><span class="badge badge-'
+                        if (status == '1') {
+                            status_button += 'success">Pago'
+                        } else {
+                            status_button += 'danger">Atrasado'
                         }
-                    });
+                        status_button += '</span></td>'
+
+                        tableFinanceiro.row($(that).closest('tr')).remove();
+                        tableFinanceiro.row.add([
+                            '<td></td>',
+                            new Date(response.data.a028_data_cobranca + ' 00:00:00').toLocaleDateString(
+                                'pt-br'),
+                            response.data.nome_empresa,
+                            response.data.a028_valor_fracao,
+                            response.data.a028_recorrencia,
+                            response.data.a028_valor_comissao,
+                            response.data.a028_valor_extra,
+                            status_button,
+                            '<td><button type="button" onclick="confirmChangeStatusFinanceiro(1, this)" class="btn btn-success">Pago</button>&nbsp' +
+                            '<button type="button" onclick="confirmChangeStatusFinanceiro(0, this)" class="btn btn-danger">Atrasado</button></td>'
+                        ]).draw(false);
+
+                        $('#tableFinanceiro tbody tr:last-child td:first-child').addClass('details-control')
+                        $('#tableFinanceiro tbody tr:last-child').attr('data-id-financeiro', response.data
+                            .a028_id_contrato_financeiro)
+                        $('#tableFinanceiro tbody tr:last-child').attr('data-status-financeiro', response.data
+                            .a028_status ?? '')
+                        $('#tableFinanceiro tbody tr:last-child').attr('data-justificativa-financeiro', response
+                            .data.a028_justificativa ?? '')
+                    }
+                },
+                error: function(response) {
+                    $.alert('Não foi possível alterar a parcela');
+                    console.log(response)
                 }
+            });
+        }
 
-                @isset($emp)
-                function addPendencia()
-                {
-                    let pendencia = $('#nova_pendencia').val();
-                    let id_empresa_pendencia = {{ $emp->a005_id_empresa }};
-                    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        @isset($emp)
+            function addPendencia() {
+                let pendencia = $('#nova_pendencia').val();
+                let id_empresa_pendencia = {{ $emp->a005_id_empresa }};
+                let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-                    $.ajax({
-                        url: "/salvarPendencia/{{ $contrato->a013_id_contrato }}",
-                        type: "POST",
-                        data: {a027_pendencia: pendencia, a005_id_empresa: id_empresa_pendencia},
-                        headers: {'X-CSRF-TOKEN': CSRF_TOKEN},
-                        success: function (response) {
-                            if (!response.success) {
-                                $.alert(response.message);
-                            }
-                            else {
-                                tablePendencias.row.add( [
-                                    response.data.nome_empresa,
-                                    response.data.a027_pendencia,
-                                    response.data.created_at,
-                                    '<td><span class="badge badge-secondary">Pendente</span></td>',
-                                    '<td><button type="button" onclick="confirmChangeStatus(1, this)" class="btn btn-success">Aceitar</button>&nbsp'+
-                                        '<button type="button" onclick="confirmChangeStatus(0, this)" class="btn btn-danger">Rejeitar</button></td>'
-                                ] ).draw( false );
+                $.ajax({
+                    url: "/salvarPendencia/{{ $contrato->a013_id_contrato }}",
+                    type: "POST",
+                    data: {
+                        a027_pendencia: pendencia,
+                        a005_id_empresa: id_empresa_pendencia
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': CSRF_TOKEN
+                    },
+                    success: function(response) {
+                        if (!response.success) {
+                            $.alert(response.message);
+                        } else {
+                            tablePendencias.row.add([
+                                response.data.nome_empresa,
+                                response.data.a027_pendencia,
+                                response.data.created_at,
+                                '<td><span class="badge badge-secondary">Pendente</span></td>',
+                                '<td><button type="button" onclick="confirmChangeStatus(1, this)" class="btn btn-success">Aceitar</button>&nbsp' +
+                                '<button type="button" onclick="confirmChangeStatus(0, this)" class="btn btn-danger">Rejeitar</button></td>'
+                            ]).draw(false);
 
-                                $('#tablePendencias tbody tr:last-child').attr('data-id-pendencia', response.data.a027_id_pendencia)
-                                $('#tablePendencias tbody tr:last-child').attr('data-aceite-pendencia', response.data.a027_pendencia_aceite ?? '')
-                            }
-                        },
-                        error: function (response) {
-                            $.alert('Não foi possível adicionar a pendência');
-                            console.log(response)
+                            $('#tablePendencias tbody tr:last-child').attr('data-id-pendencia', response.data
+                                .a027_id_pendencia)
+                            $('#tablePendencias tbody tr:last-child').attr('data-aceite-pendencia', response
+                                .data.a027_pendencia_aceite ?? '')
                         }
-                    });
-                }
-                @endisset
+                    },
+                    error: function(response) {
+                        $.alert('Não foi possível adicionar a pendência');
+                        console.log(response)
+                    }
+                });
+            }
+        @endisset
 
-                function confirmChangeStatus(status, that)
-                {
-                    let tipo = status ? 'aceitar' : 'rejeitar';
+        function confirmChangeStatus(status, that) {
+            let tipo = status ? 'aceitar' : 'rejeitar';
 
-                    $.confirm({
-                        theme: 'light',
-                        title: 'ALERTA',
-                        content: 'Tem certeza que deseja '+ tipo +' esta pendência?',
-                        buttons: {
-                            confirm: {
-                                text: tipo,
-                                btnClass: status ? 'btn-success' : 'btn-danger',
-                                action: function () {
-                                    changeStatus(status, that)
-                                }
-                            },
-                            cancel: {
-                                text: 'Cancelar',
-                            }
+            $.confirm({
+                theme: 'light',
+                title: 'ALERTA',
+                content: 'Tem certeza que deseja ' + tipo + ' esta pendência?',
+                buttons: {
+                    confirm: {
+                        text: tipo,
+                        btnClass: status ? 'btn-success' : 'btn-danger',
+                        action: function() {
+                            changeStatus(status, that)
                         }
-                    });
+                    },
+                    cancel: {
+                        text: 'Cancelar',
+                    }
                 }
+            });
+        }
 
-                function changeStatus(status, that)
-                {
-                    let id_pendencia = $(that).closest('tr').data('id-pendencia')
-                    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        function changeStatus(status, that) {
+            let id_pendencia = $(that).closest('tr').data('id-pendencia')
+            let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-                    $.ajax({
-                        url: "/salvarStatusPendencia/"+id_pendencia,
-                        type: "POST",
-                        data: {a027_pendencia_aceite: status},
-                        headers: {'X-CSRF-TOKEN': CSRF_TOKEN},
-                        success: function (response) {
-                            if (!response.success) {
-                                $.alert(response.message);
-                            }
-                            else {
-                                let status = response.data.a027_pendencia_aceite;
-                                let pendencia_button = '<td><span class="badge badge-'
-                                if (status == '1') {
-                                    pendencia_button += 'success">Aceito'
-                                }
-                                else {
-                                    pendencia_button += 'danger">Rejeitado'
-                                }
-                                pendencia_button += '</span></td>'
-                                
-                                tablePendencias.row($(that).closest('tr')).remove();
-                                tablePendencias.row.add( [
-                                    response.data.nome_empresa,
-                                    response.data.a027_pendencia,
-                                    response.data.created_at,
-                                    pendencia_button,
-                                    '<td><button type="button" onclick="confirmChangeStatus(1, this)" class="btn btn-success">Aceitar</button>&nbsp'+
-                                        '<button type="button" onclick="confirmChangeStatus(0, this)" class="btn btn-danger">Rejeitar</button></td>'
-                                ] ).draw( false );
-
-                                $('#tablePendencias tbody tr:last-child').attr('data-id-pendencia', response.data.a027_id_pendencia)
-                                $('#tablePendencias tbody tr:last-child').attr('data-aceite-pendencia', response.data.a027_pendencia_aceite ?? '')
-                            }
-                        },
-                        error: function (response) {
-                            $.alert('Não foi possível alterar a pendência');
-                            console.log(response)
+            $.ajax({
+                url: "/salvarStatusPendencia/" + id_pendencia,
+                type: "POST",
+                data: {
+                    a027_pendencia_aceite: status
+                },
+                headers: {
+                    'X-CSRF-TOKEN': CSRF_TOKEN
+                },
+                success: function(response) {
+                    if (!response.success) {
+                        $.alert(response.message);
+                    } else {
+                        let status = response.data.a027_pendencia_aceite;
+                        let pendencia_button = '<td><span class="badge badge-'
+                        if (status == '1') {
+                            pendencia_button += 'success">Aceito'
+                        } else {
+                            pendencia_button += 'danger">Rejeitado'
                         }
-                    });
+                        pendencia_button += '</span></td>'
+
+                        tablePendencias.row($(that).closest('tr')).remove();
+                        tablePendencias.row.add([
+                            response.data.nome_empresa,
+                            response.data.a027_pendencia,
+                            response.data.created_at,
+                            pendencia_button,
+                            '<td><button type="button" onclick="confirmChangeStatus(1, this)" class="btn btn-success">Aceitar</button>&nbsp' +
+                            '<button type="button" onclick="confirmChangeStatus(0, this)" class="btn btn-danger">Rejeitar</button></td>'
+                        ]).draw(false);
+
+                        $('#tablePendencias tbody tr:last-child').attr('data-id-pendencia', response.data
+                            .a027_id_pendencia)
+                        $('#tablePendencias tbody tr:last-child').attr('data-aceite-pendencia', response.data
+                            .a027_pendencia_aceite ?? '')
+                    }
+                },
+                error: function(response) {
+                    $.alert('Não foi possível alterar a pendência');
+                    console.log(response)
                 }
+            });
+        }
     </script>
 @endpush
-
-

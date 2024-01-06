@@ -32,7 +32,7 @@
         formData.append("a005_id_empresa", $('#a005_id_empresa').val()); 
 
         $.ajax({
-          url: "/categoria_contrato/create",
+          url: "/new_gebit/app.dealix.com.br/categoria_contrato/create",
           type: "POST",
           data: formData,
           contentType: false,

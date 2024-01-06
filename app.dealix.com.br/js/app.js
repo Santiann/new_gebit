@@ -619,7 +619,7 @@ function validaCampoUnicoExistente(thiis, submit= false)
     }
 
     $.ajax({
-        url: '/app.dealix.com.br/validaUnicoExistente',
+        url: '/new_gebit/app.dealix.com.br/validaUnicoExistente',
         type: 'GET',
         data: {
             valorDigitado: valorDigitado,
@@ -668,14 +668,61 @@ function validaCampoUnicoExistente(thiis, submit= false)
 
 
             }
-            if(submit) {
-                $('.form').unbind('submit').submit();
+            if (submit) {
+                criaContrato();
             }
-            return true;
         });
-}
-
-
+    }
+    
+    function criaContrato() {
+        const radiosEmpresa = document.getElementsByName('a013_empresa_contratante');
+        const radiosStatus = document.getElementsByName('a013_status');
+    
+        const valEmpresa = getValorSelecionado(radiosEmpresa);
+        const valStatus = getValorSelecionado(radiosStatus);
+    
+        const dadosContrato = {
+            a013_moeda: $("#a013_moeda").val(),
+            a013_status: valStatus,
+            a013_data_fim: $("#a013_data_fim").val(),
+            a013_finalidade: $("#a013_finalidade_cliente").val(),
+            a013_valor_extra: $("#a013_valor_extra").val(),
+            a013_data_inicio: $("#a013_data_inicio").val(),
+            a013_obs_contrato: $("#a013_obs_contrato_cliente").val(),
+            a013_valor_fracao: $("#a013_valor_fracao").val(),
+            a013_classificacao: $("#a013_classificacao").val(),
+            a013_prazo_contrato: $("#a013_prazo_contrato").val(),
+            a013_numero_contrato: $("#a013_numero_contrato").val(),
+            a008_id_cat_contrato: $("#a008_id_cat_contrato").val(),
+            a013_dias_vencimento: $("#a013_dias_vencimento").val(),
+            a005_id_empresa_select: $("#a005_id_empresa").val(),
+            a005_id_empresa_cli_for: $("#a005_id_empresa_cli_for").val(),
+            a013_empresa_contratante: valEmpresa,
+            a013_valor_total_contrato: $("#a013_valor_total_contrato").val(),
+            a013_valor_extra_referencia: $("#a013_valor_extra_referencia").val()
+        };
+    
+        $.ajax({
+            url: '/new_gebit/app.dealix.com.br/contrato/createcontrato',
+            type: 'GET',
+            data: dadosContrato
+        }).done(function (response) {
+            if (response == '1') {
+                window.location.href = '/new_gebit/app.dealix.com.br/contrato';
+            } else {
+                console.error('Ocorreu um erro.');
+            }
+        });
+    }
+    
+    function getValorSelecionado(radios) {
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                return radios[i].value;
+            }
+        }
+        return '';
+    }
 
 function unique(list) {
     var result = [];

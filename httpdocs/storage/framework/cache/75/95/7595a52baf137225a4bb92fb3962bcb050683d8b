@@ -1,0 +1,5 @@
+1704495082a:1:{s:21:"common/pre-footer.htm";a:5:{s:8:"fileName";s:21:"common/pre-footer.htm";s:7:"content";s:138:"<div class="container px-md-0 pre-footer">
+    <img class="img-fluid" src="{{ 'assets/img/pre-footer.svg'|theme }}" alt="Dealix">
+</div>";s:5:"mtime";i:1703114532;s:6:"markup";s:138:"<div class="container px-md-0 pre-footer">
+    <img class="img-fluid" src="{{ 'assets/img/pre-footer.svg'|theme }}" alt="Dealix">
+</div>";s:4:"code";N;}}
